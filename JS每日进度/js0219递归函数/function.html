@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			//匿名函数格式：
+			var fn = function() {console.log(1)}
+			fn();
+			;(function() {console.log(2)})();
+			;(function() {console.log(3)}());
+			*/
+			;(function(){console.log(1)});
+			console.log((function(){console.log(1)}));
+			console.log(function(){console.log(3)});
+			;(function(){console.log(2)});
+			console.log(function(){console.log(2)});
+//			function(){console.log(1)}
+//			function(){console.log(2)}
+		</script>
+	</body>
+</html>

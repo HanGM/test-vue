@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			.main{
+				width: 400px;
+				border: 1px solid black;
+				overflow: hidden;
+			}
+			.main h1{
+				text-align: center;
+				background: #bfa;
+				border-bottom: 1px solid black;
+			}
+			.main ul{
+				width: 50%;
+				float: left;
+			}
+			.main li{
+				padding: 10px 50px;
+				border-right: 1px solid black;
+			}
+			.main li:hover{
+				background: #bfa;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<h1>点菜系统</h1>
+			<ul class="menu">
+				<li>1个菜</li>
+				<li>2个菜</li>
+				<li>3个菜</li>
+				<li>4个菜</li>
+				<li>5个菜</li>
+				<li>6个菜</li>
+			</ul>
+			<ul class="check"></ul>
+		</div>
+		<script>
+			var check=document.getElementsByClassName('check')[0];
+			var li=document.getElementsByTagName('li');
+			for(var i=0;i<li.length;i++){
+				li[i].onclick=function(){
+					var liClone=this.cloneNode(true);
+					check.appendChild(liClone);
+//					var liCheck=document.createElement('li');
+//					liCheck.innerHTML=this.innerHTML;
+//					check.appendChild(liCheck);
+				}
+			}
+		</script>
+	</body>
+</html>

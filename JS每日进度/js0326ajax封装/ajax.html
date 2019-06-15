@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax</title>
+	</head>
+	<body>
+		<div>
+			<p>账号：<input type="text"/></p>
+			<p>密码：<input type="password"/></p>
+			<p>再次输入密码：<input type="password"/></p>
+			<p>性别：<input type="radio"/>男 <input type="radio"/>女</p>
+			<p>爱好：<input type="checkbox"/>篮球 <input type="checkbox"/>足球</p>
+			<p>个人评价：<textarea name="" cols="30" rows="10"></textarea></p>
+			<p><button>注册</button></p>
+		</div>
+		<script>
+			//获取xhr对象，xhr对象是ajax技术的
+			var xhr = new XMLHttpRequest();
+			console.log(xhr)
+			
+			xhr.open('get','xml.xml',false);
+			xhr.send(null);
+			console.log(xhr.responseXML);
+//			xhr.open('get','cookie.html',false);
+//			xhr.send(null);
+//			console.log(xhr.responseText);
+		</script>
+	</body>
+</html>

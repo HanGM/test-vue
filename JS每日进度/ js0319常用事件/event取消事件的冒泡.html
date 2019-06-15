@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>阻止事件的冒泡</title>
+		<style>
+			div{
+				padding: 60px;
+				border: 1px solid black;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box1">
+			<div class="box2">
+				<div class="box3">
+					<div class="box4">
+						<div class="box5"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="box"></div>
+		<script>
+			var divs=document.querySelectorAll('div');
+			var box=document.querySelector('.box');
+			divs[0].onclick=function(event){
+				alert('box1');
+				box.style.display='none';
+			}
+			divs[1].onclick=function(event){
+				alert('box2');
+			}
+			divs[4].onclick=function(event){
+				alert('box5');
+				box.style.display='block';
+				stopProp();
+			}
+			function stopProp(event){
+				var evt=event||window.event;
+				if(event){
+					evt.stopPropagation();//非IE
+				}else{
+					evt.cancelBubble=true;//IE
+				}
+			}
+		</script>
+	</body>
+</html>

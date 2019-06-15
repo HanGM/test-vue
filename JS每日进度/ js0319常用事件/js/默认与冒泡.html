@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>默认行为和事件冒泡</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			div{
+				padding: 60px;
+				border: 1px solid black;
+			}
+			#div{
+				width: 300px;
+				height: 60px;
+				background-color: red;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<p>num：<input type="text" /></p>
+		<a href="https://www.baidu.com">num大于5跳转，小于5不跳转</a>
+		<div id="box1">
+			<div id="box2">
+				<div id="box3">
+					<div id="box4">
+						<div id="box5"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="div"></div>
+		<script>
+			var inp = document.querySelector('input');
+			var a = document.links[0];
+			var box = document.querySelectorAll('div');
+			var div = document.getElementById('div');
+			var num;
+			a.onclick = function(evt){
+				console.log(inp.value)
+				if(inp.value<=5){
+					preventDefault(evt);
+				}
+			}
+			function preventDefault(evt){
+				var e = evt || window.event;
+				if(evt){
+					e.preventDefault();
+				}else{
+					e.returnValue = false;
+				}
+			}
+			function stopProp(evt){
+				var e = evt || window.event;
+				if(evt){
+					e.stopPropagation();
+				}else{
+					e.cancelBubble = true;
+				}
+			}
+//			box[0].onclick =function(){
+//				div.style.display = 'none';
+//				alert(0)
+//			}
+//			box[1].onclick =function(){
+//				div.style.display = 'block';
+//				alert(1)
+//			}
+//			box[3].onclick =function(){
+//				div.style.display = 'none';
+//				alert(3)
+//			}
+			box[4].onclick =function(evt){
+				stopProp(evt);
+				div.style.display = 'block';
+				alert(4)
+			}
+			
+		</script>
+	</body>
+</html>

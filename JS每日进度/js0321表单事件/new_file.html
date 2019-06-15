@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>气球</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				overflow: hidden;
+				background-color: #ccc;
+			}
+			.ball{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 160px;
+				height: 160px;
+				background-color: #faf9f9;
+				border-radius: 160px 160px 64px 160px;
+				transform: rotate(45deg);
+				box-shadow: -10px -10px 80px -10px #873940 inset;
+			}
+			.ball:after{
+				position: absolute;
+				bottom: 0;
+				right: 0;
+				content: "";
+				border: 10px solid transparent;
+				border-right-color: #873940;
+				transform: rotate(45deg);
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			var num=10;
+			init();
+			function init(){
+				var fragment=document.createDocumentFragment();
+				for(var i=0;i<num;i++){
+					var oBall=document.createElement('div');
+					oBall.className='ball';
+					fragment.appendChild(oBall);
+				}
+				document.body.appendChild(fragment);
+			}
+		</script>
+	</body>
+</html>

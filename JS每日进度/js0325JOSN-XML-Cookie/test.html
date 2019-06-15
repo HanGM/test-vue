@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>记录拖拽坐标</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<script>
+			var box = $('.box');
+			var theX = window.innerWidth - box.offsetWidth;
+			var theY = window.innerHeight - box.offsetHeight;
+			var flag = false;
+			var x,y,curX,curY;
+			if(getCookie('left') && getCookie('top')){
+				box.style.left = getCookie('left');
+				box.style.top = getCookie('top');
+			}
+			box.onmousedown = function(evt){
+				flag = true;
+				
+				var e = evt || window.event;
+				x = e.clientX - box.offsetLeft;
+				y = e.clientY - box.offsetTop;
+			}
+			document.onmousemove = function(evt){
+				var e = evt || window.event;
+				curX = e.clientX - x;
+				curY = e.clientY - y;
+				//边界判断
+				if(curX < 0){
+					curX = 0;
+				}else if(curX > theX){
+					curX = theX;
+				}
+				if(curY < 0){
+					curY = 0;
+				}else if(curY > theY){
+					curY = theY;
+				}
+				if(flag){
+					box.style.left = curX + 'px';
+					box.style.top = curY + 'px';
+				}
+			}
+			box.onmouseup = function(){
+				flag = false;
+				setCookie('left',this.style.left,7);
+				setCookie('top',this.style.top,7);
+			}
+			//设置指定有效时间的cookie
+			function setCookie(key,value,day){
+				var str = key + '=' + value;
+				if(typeof day != undefined){
+					var date = new Date();
+					date.setDate(date.getDate() + day);
+					str += ';expires=' + date;
+				}
+				document.cookie = str;
+			}
+			//获取指定的cookie内容
+			function getCookie(key){
+				var arr = document.cookie.split(';');
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].split('=')[0].trim() === key){
+						return arr[i].split('=')[1];
+					}
+				}
+			}
+			//获取指定CSS类名的元素
+			function $(selector){
+				return document.querySelector(selector);
+			}
+		</script>
+	</body>
+</html>

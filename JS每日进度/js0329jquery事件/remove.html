@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格行删除</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			table{
+				width: 50%;
+				text-align: center;
+				margin: auto;
+			}
+			table tr{
+				height: 40px;
+			}
+		</style>
+	</head>
+	<body>
+		<table border="1" cellspacing="0" cellpadding="0">
+			<tr>
+				<th>姓名</th><th>操作</th>
+			</tr>
+			<tr>
+				<td>小明</td>
+				<td><button>删除</button></td>
+			</tr>
+			<tr>
+				<td>小红</td>
+				<td><button>删除</button></td>
+			</tr>
+			<tr>
+				<td>小白</td>
+				<td><button>删除</button></td>
+			</tr>
+			<tr>
+				<td>小黑</td>
+				<td><button>删除</button></td>
+			</tr>
+			<tr>
+				<td>小辉</td>
+				<td><button>删除</button></td>
+			</tr>
+			<tr>
+				<td>小兰</td>
+				<td><button>删除</button></td>
+			</tr>
+		</table>
+		<script src="jquery.js"></script>
+		<script>
+			$('button').click(function(){
+				$(this).parents('tr').remove()
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title id="one"></title>
+	</head>
+	<body>
+		<a href="window.html" class="demo"></a>
+		<button class="box demo"></button>
+		<div class="demo item"></div>
+		<input type="text" class="box demo item" />
+	</body>
+	<script>
+		console.log(document.getElementById('one'));
+		
+		var demo=document.getElementsByTagName('*');
+		//正则遍历类名
+		/*for(var i=0;i<demo.length;i++){
+//			var result=demo[i].className.match(/\bdemo\b/);
+			var result=demo[i].className.match(/(^|\s)demo($|\s)/);
+			if(result){
+				console.log(demo[i]);
+			}
+		}*/
+		//数组切割遍历类名
+		/*for(var i=0;i<demo.length;i++){
+			var arr=demo[i].className.split(" ");
+			for(var j=0;j<arr.length;j++){
+				if(arr[j]=='demo'){
+					console.log(demo[i]);
+				}
+			}
+		}*/
+	</script>
+</html>

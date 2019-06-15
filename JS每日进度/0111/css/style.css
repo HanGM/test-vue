@@ -1,0 +1,196 @@
+header {
+	height: 70px;
+	background: #305065;
+}
+
+nav {
+	height: 70px;
+	overflow: hidden;
+}
+
+.title {
+	width: 115px;
+	height: 43px;
+	margin: 13px 0px;
+}
+
+.logo,
+.toulian {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#p1 {
+	width: 970px;
+	text-align: center;
+	margin-top: 30px;
+}
+
+#p1 a {
+	font-size: 18px;
+	padding: 0px 5px;
+}
+
+.loginbar {
+	width: 115px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	background: #DB6968;
+	margin: 10px 0px;
+	border-radius: 5px;
+}
+
+.loginbar a {
+	font-size: 16px;
+	padding: 0px 5px;
+	border-right: 1px solid white;
+}
+
+.loginbar a:last-child {
+	border-right: none;
+}
+
+.banner {
+	height: 250px;
+	background: url(../img/logo_bg.png) no-repeat;
+	background-size: 100% 100%;
+}
+
+.bg {
+	height: 766px;
+	background: url(../img/bg.png)no-repeat;
+	background-size: 100% 100%;
+}
+
+.main {
+	background: #F7F7F7;
+	overflow: hidden;
+}
+
+.container1 {
+	height: 50px;
+	margin: 10px auto;
+}
+
+.container1-inner {
+	width: 210px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 16px;
+	color: white;
+	background: #0EA8E4;
+	border-radius: 5px;
+	margin: 0px 25px 0px 5px;
+}
+
+.container1-inner:hover {
+	color: black;
+	background: #F7F7F7;
+}
+
+.container2 {
+	height: 342px;
+	margin: 25px auto;
+}
+
+.container2-inner {
+	width: 268px;
+	height: 340px;
+	background: #FFFFFF;
+	margin: 0px 15px;
+	border: 1px solid #f7f7f7;
+}
+
+.container2-inner:hover {
+	border: 1px solid #0EA8E4;
+}
+
+#a1 {
+	margin-left: 20px;
+}
+
+#p2:before {
+	content: url(../img/icon1.png);
+}
+
+.container3 {
+	width: 1170px;
+	word-break: keep-all;
+	word-spacing: 15px;
+	line-height: 50px;
+	margin-bottom: 20px;
+}
+
+.container4 {
+	height: 5px;
+	width: 20%;
+}
+
+.bg1 {
+	background: #DB6968;
+}
+
+.bg2 {
+	background: #0EA9E2;
+}
+
+.bg3 {
+	background: #23C3A9;
+}
+
+.bg4 {
+	background: #5095E2;
+}
+
+.bg5 {
+	background: #3B6480;
+}
+
+footer {
+	background: #1F2932;
+	overflow: hidden;
+}
+
+.footer-wrap {
+	width: 1152px;
+	margin: 36px 0px;
+	overflow: hidden;
+}
+
+.footer-inner1 {
+	width: 288px;
+}
+
+.footer-inner2 {
+	width: 576px;
+	margin-top: 120px;
+}
+
+.footer-inner2 ul {
+	border-left: 1px solid gray;
+}
+
+.footer-inner2 li {
+	text-indent: 80px;
+}
+
+.p3 {
+	color: #0EA9E2;
+	font-size: 20px;
+	padding-bottom: 50px;
+}
+
+#p3:after {
+	content: url(../img/wx.png);
+}
+
+li {
+	color: white;
+	line-height: 36px;
+}
+
+li a {
+	font-size: 16px;
+}

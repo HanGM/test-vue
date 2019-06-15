@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			document.onmousedown=function(event){
+				event=event||window.event;
+//				console.log(event.button);
+//				console.log('clientX：'+event.clientX);
+//				console.log('clientY：'+event.clientY);
+//				console.log('screenX：'+event.screenX);
+//				console.log('screenY：'+event.screenY);
+			}
+			function getButtonValue(event){
+				if(!event){
+					switch(window.event.button){
+						case 1:
+						return 0;
+						case 4:
+						return 1;
+						case 2:
+						return 2;
+					}
+				}else{
+					return event.button;
+				}
+			}
+		</script>
+	</body>
+</html>

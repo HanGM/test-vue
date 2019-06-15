@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				padding: 10px;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+		<button>点我</button>
+		<p id="1">我是p标签</p>
+		<div id="box">
+			<p id="2">我是p标签</p>
+			<span>我是span</span>
+		</div>
+		<h1 class="box">我是大标题</h1>
+		<div class="box1">
+			<div class="box2">
+				<div class="box3"></div>
+			</div>
+		</div>
+		<script src="js/jquery.js"></script>
+		<script>
+//			var box = document.querySelector('#box');
+//			console.log(box);
+////			console.log($('#box')[0])js dom节点
+////			console.log($('#box').get(0))js dom节点
+//			console.log($('#box').eq(0))//jq对象
+			//JQ对象是类数组，与JS中的DOM节点不同
+			
+			
+			console.log($('.box3').parent())
+			console.log($('.box3').parents())
+			console.log($('.box3').index())
+			
+			$('button').click(function(){
+				var div = document.createElement('div');
+				div.innerHTML = '我是js创建的DOM节点'
+//////				$('#box').append(div);
+//				$('#box').append($(div));
+				
+//				$('#box').append('<div>我是字符串创建的</div>')
+//				$('#box').append($('<div>我是jq对象</div>'))
+//				$('#box').append(function(index,html){
+//					console.log(index,html)
+////					return $(div);
+////					return $('<div>我是字符串创建的</div>');
+////					return '<div>我是字符串创建的</div>';
+////					return div;
+//				})
+//				$('<div>我是字符串创建的</div>').appendTo($('#box'))
+//				$(div).appendTo($('#box'));
+
+//				$('#box').prepend('<div>我是字符串创建的</div>')
+//				$('#box').prepend(div)
+//				$('#box').prepend($('<div>我是字符串创建的</div>'))
+//				$('#box').prepend($(div))
+//				$('#box').prepend(function(i,v){
+////					return div;
+////					return $(div);
+////					return '<div>我是字符串创建的</div>';
+////					return $('<div>我是字符串创建的</div>');
+//				})
+//				$(div).prependTo($('#box'));
+//				$('<div>我是字符串创建的</div>').prependTo($('#box'));
+//				$('#box').after(div)
+//				$('#box').after($(div))
+//				$('#box').after('<div>我是字符串创建的</div>')
+//				$('#box').after($('<div>我是字符串创建的</div>'))
+//				$('#box').after(function(){
+//					return div;
+//				})
+//				$('#box').before(div)
+//				$('#box span').insertBefore($('#box'))
+//				$('#box span').insertAfter($('#box'))
+//				$('#box').wrap(div)
+//				$('#box').wrap('<div>我是字符串创建的</div>')
+//				$('span').unwrap()
+//				$('#box').wrapAll(div)
+//				$('#box').wrapInner('<b></b>')
+//				$('#box').click(function(){
+//					console.log(2);
+//				})
+////				$('#box').after($('#box').clone())
+//				$('#box').after($('#box').clone(true))
+////				console.log($('#box').clone())
+//				$('#box span').remove()
+//				$('#box').empty()
+//				$('#box').replaceWith(div)
+//				console.log($('#box').get(0))
+//				console.log($('#box').eq(0))
+//				console.log($('#box').next())
+//				console.log($('#box').nextAll())
+//				console.log($('#box').prev())
+//				console.log($('#box').prevAll())
+//				console.log($('#box').find('span'))
+//				console.log($('#box').find('span').end())
+//				console.log($('#box').siblings())
+//				console.log($('#box').children())
+//				console.log($('p').first())
+//				console.log($('p').last())
+//				console.log($('*').not('.box'))
+//				console.log($('*').filter('#box'))
+//				console.log($('#box').parent())
+			})
+		</script>
+	</body>
+</html>

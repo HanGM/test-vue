@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.main{
+				width: 400px;
+				height: 200px;
+				border: 1px solid black;
+			}
+			.box{
+				width: 400px;
+				height: 80px;
+				border: 1px solid black;
+			}
+			.move{
+				width: 100px;
+				height: 100px;
+				background: #bfa;
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body style="height: 1000px;">
+		<div class="main"></div>
+		<br />
+		<div class="box"></div>
+		<br />
+		<div class="move"></div>
+		<script>
+			var main=document.getElementsByClassName('main')[0];
+			var box=document.getElementsByClassName('box')[0];
+			main.onmousemove=function(event){
+				event=event||window.event;
+				var x=event.clientX;
+				var y=event.clientY;
+				box.innerHTML='x='+x+',y='+y;
+			}
+			var move=document.getElementsByClassName('move')[0];
+			document.onmousemove=function(event){
+				event=event||window.event;
+				var st=document.body.scrollTop||document.documentElement.scrollTop;
+				var sl=document.body.scrollLeft||document.documentElement.scrollLeft;
+				console.log(st)
+				console.log(sl)
+				var x=event.clientX;
+				var y=event.clientY;
+				move.style.left=x+sl+'px';
+				move.style.top=y+st+'px';
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>打开者</title>
+	</head>
+	<body>
+		<button>关闭新页面</button>
+		欢迎你：<span id="myId"></span>
+		<script>
+//			var result=confirm('确定要离开本页面吗？');
+//			if(result){
+//				close();
+//			}else{
+//				alert('欢迎回来！');
+//			}
+			
+			var myId=document.querySelector('#myId');
+			var result=prompt('请输入你的名字','小明');
+			console.log(result)
+			myId.innerHTML=result;
+			
+//			var window2=open('open.html');
+//			console.log(window2);
+//			console.log(window);
+//			console.log(window===window2);
+//			console.log(window2.opener)
+//			console.log(window2.opener===window);
+//			console.log(window2.closed)
+//			var btn=document.querySelector('button');
+//			console.log(btn);
+//			btn.onclick=function(){
+//				window2.close();
+//				if(window.closed){
+//					alert('新页面已关闭');
+//				}
+//			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jq基础DOM和css操作</title>
+		<style>
+			/**{
+				margin: 0;
+				padding: 0;
+			}*/
+			.box{
+				width: 400px;
+				height: 400px;
+				background-color: red;
+				padding: 10px;
+				margin: 10px;
+				border: 20px solid black;
+			}
+			.on{
+				font-size: 40px;
+				border: 10px solid black;
+			}
+			.cur{
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<span>ok</span>
+		</div>
+		<input type="text" value="1"/>
+		<input type="text" value="2"/>
+		<input type="text" value="3"/>
+		<script src="js/jquery.js"></script>
+		<script>
+//			console.log($('.box').html());//查
+//			$('.box').html('<p>yes</p>');//增改,会解析标签
+//			console.log($('.box').text());//查
+//			$('.box').text('<p>yes</p>');//增改,不会解析标签
+//			console.log($('input'));
+//			console.log($('input').val());
+//			$('input').val('6');
+//			console.log($('input').attr('type'));
+//			$('input').attr('type','password');
+//			$('input').attr({
+//				type : 'checkbox',
+//				title : '标题'
+//			})
+//			$('input').attr('type',function(i,v){
+//				console.log(i,v)
+//			})
+//			console.log($('.box').css('width'));
+//			$('.box').css('width',600)
+//			console.log($('.box').css(['width','height','background-color']));
+//			$('input').css('width',function(i,v){
+//				console.log(i,v)
+//				return 500
+//			})
+//			$('input').css({
+//				width:100,
+//				height:30,
+//				background:'black'
+//			})
+//			$('.box').addClass('on');
+//			$('.box').addClass('on cur');
+//			$('.box').removeClass('on');
+//			$('.box').removeClass('on cur');
+//			$('.box').click(function(){
+//				$('.box').toggleClass('on')
+//			})
+//			$('.box').click(function(){
+//				$('.box').toggleClass('on cur')
+//			})
+//			$('.box').click(function(){
+//				$('.box').toggleClass('on cur','1000')
+//			})
+//			console.log($('.box').width());
+//			$('.box').width(500);
+//			$('.box').width(function(i,w){
+//				console.log(i,w)
+//				return 200;
+//			});
+//			console.log($('.box').height());
+//			$('.box').height(200)
+//			$('.box').height(function(i,h){
+//				console.log(i,h);
+//				return 200;
+//			})
+			console.log($('.box').width());//w
+			console.log($('.box').height());
+			console.log($('.box').innerWidth());//client=w+padding
+			console.log($('.box').innerHeight());
+			console.log($('.box').outerWidth());//offset=w+padding+border
+			console.log($('.box').outerHeight());
+			console.log($('.box').outerWidth(true));
+			console.log($('.box').outerHeight(true));//offset+margin
+			console.log($('.box').offset());//返回值为对象
+			console.log($('.box').position());//返回值为对象
+			console.log($('.box').offset().left);
+			console.log($('.box').offset().top);
+			console.log($('.box').position().left);
+			console.log($('.box').position().top);
+//			
+//			console.log($('.box').scrollTop());
+//			console.log($('.box').scrollTop(100));
+//			console.log($('.box').scrollLeft());
+//			console.log($('.box').scrollLeft(100));
+			
+		</script>
+	</body>
+</html>

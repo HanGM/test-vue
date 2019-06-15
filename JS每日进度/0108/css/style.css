@@ -1,0 +1,10 @@
+.box{width: 225px;height: 200px;background: url(../img/bg2.png);}
+.b1{background-position: 0px -200px;}
+.b1:hover{background-position: 0px 0px;}
+.b2{width: 195px; background-position: -223px 0px;}
+.b2:hover{background-position: -223px -200px;}
+.b3{width: 203px; background-position: -416px 0px;}
+.b3:hover{background-position: -416px -200px;}
+.b4{width: 203px;background-position: -617px 0px;}
+.b4:hover{background-position: -617px -200px;}
+

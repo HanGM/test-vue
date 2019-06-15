@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>正则模式匹配</title>
+	</head>
+	<body>
+		查找内容：<input type="text" id="find" placeholder="贪婪"/>
+		替换内容：<input type="text" id="change" placeholder="勤奋"/>
+		<button id="btn">全部替换</button>
+		<p id="text">
+			简单说是贪婪匹配与非贪婪匹配的区别。
+比如说匹配输入串A: 101000000000100
+使用 1.*1 将会匹配到1010000000001, 匹配方法: 先匹配至输入串A的最后, 然后向前匹配, 直到可以匹配到1, 称之为贪婪匹配。
+使用 1.?1 将会匹配到101, 匹配方法: 匹配下一个1之前的所有字符, 称之为非贪婪匹配。
+所有带有量词的都是非贪婪匹配: .*?, .+?, .{2,6}? 甚至 .??
+		</p>
+		<script>
+			var text=document.getElementById('text');
+			var btn=document.getElementById('btn');
+			btn.onclick = function(){
+				var find=document.getElementById('find').value;			
+				var change=document.getElementById('change').value;
+				text.innerHTML = text.innerHTML.replace(new RegExp(find,'g'),change);
+			}
+			
+//			var text=document.getElementById('text');
+//			var find=document.getElementById('find');			
+//			var change=document.getElementById('change');
+//			var btn=document.getElementById('btn');
+//			btn.onclick = function(){				
+//				text.innerHTML = text.innerHTML.replace(new RegExp(find.value,'g'),change.value);
+//			}
+		</script>
+		<!--<script>
+			var text=document.getElementById('text');
+			var find=document.getElementById('find');
+			var change=document.getElementById('change');
+			var btn=document.getElementById('btn');
+			var str=text.innerHTML;
+			btn.onclick=function(){
+				text.innerHTML=text.innerHTML.replace(new RegExp(find.value,'g'),change.value);
+				/*find=find.value;
+				change=change.value;
+				text.innerHTML=text.innerHTML.replace(new RegExp(find,'g'),change);
+				*/
+			}
+		</script>-->
+		<!--<script>
+			var str='adjskADjgd\naDklfojw';
+			var result=str.match(/d/ig);
+//			var result=str.match(/aD/igm);
+//			var str='欧佩克是佛牌浮动克拉拉块';
+//			var result=str.replace(/克/g,'齐');
+			console.log(result);
+			console.log(str);
+		</script>-->
+	</body>
+</html>

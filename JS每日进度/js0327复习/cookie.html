@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie封装和ajax封装</title>
+	</head>
+	<body>
+		<script>
+			function ajax(obj){
+				var type = obj.type == undefined ? 'get' : obj.type;
+				var async = obj.async == undefined ? true : obj.async;
+				var dataType = obj.dataType == undefined ? 'json' : obj.dataType;
+				var arr = [];
+				for(var i in obj.data){
+					arr.push(i + '=' + obj.data[i]);
+				};
+				var data = arr.join('&');
+				var xhr = new XMLHttpRequest();
+				if(async){
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							callback();
+						}
+					}
+				};
+				if(type === 'get'){
+					obj.url += (obj.url.indexOf('?') == -1 ? '?' : '&') + data;
+				};
+				xhr.open(type,obj.url,async);
+				if(type === 'post'){
+					xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+					xhr.send(data);
+				}else{
+					send(null);
+				}
+				if(!async){
+					callback();
+				};
+				function callback(){
+					if(xhr.status == 200){
+						xhr.responseText = dataType == 'json' ? JSON.parse(xhr.responseText) : xhr.responseText;
+						obj.success(xhr.responseText);
+					}else{
+						console.log('请求失败！状态码：' + xhr.status + '状态描述:' + xhr.statusText);
+					}
+				}
+			}
+			
+			function setCookie(key,value,day){
+				var str = key + '=' + value;
+				if(typeof day != undefined){
+					var date = new Date();
+					date.setDate(date.getDate() + day);
+					str += ';expires=' + date;
+				}
+				document.cookie = str;
+			}
+			
+			function getCookie(key){
+				var arr = document.cookie.split(';');
+				for(var i =0;i<arr.length;i++){
+					if(arr[i].split('=')[0].trim() === key){
+						return arr[i].split('=')[1];
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

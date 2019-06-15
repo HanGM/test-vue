@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			/*.box{
+				width: 200px;
+				height: 200px;
+				background: #000;
+			}*/
+			div{
+				text-align: center;
+			}
+			div span{
+				display: inline-block;
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				background: #00f;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="list">
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
+		<span></span>
+		
+		<script>
+			var list=document.getElementsByClassName('list')[0];
+			var span=list.getElementsByTagName('span');
+			console.log(span);
+			for(var i=0;i<span.length;i++){
+				span[i].onclick=function(){
+					for(var j=0;j<span.length;j++){
+						span[j].style='background:#f00;';
+//						span[j].style.background='#f00';
+					}
+					this.style='background:#0f0;';
+//					this.style.background='#0f0';
+				}
+			}
+		</script>
+		
+		<!--<button>点击</button>
+		<div></div>
+		<script>
+			var btn=document.getElementsByTagName('button')[0];
+			var div=document.getElementsByTagName('div')[0];
+			var flag=false;
+			btn.onclick=function(){
+				flag=!flag;
+				if(flag){
+					div.className='box';
+				}else{
+					div.className='';
+				}
+			}
+		</script>-->
+	</body>
+</html>

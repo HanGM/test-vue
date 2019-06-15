@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>点菜系统</title>
+		<style>
+			body,h1,ul,li{
+				margin: 0;
+				padding: 0;
+			}
+			.main{
+				border: 2px solid #000;
+			}
+			.main h1{
+				height: 60px;
+				line-height: 60px;
+				text-align: center;
+				background-color: #000;
+				color:#fff;
+			}
+			.menu{
+				overflow: hidden;
+			}
+			.menu ul{
+				float: left;
+				width: 50%;
+				list-style-type: none;
+			}
+			.menu ul li{
+				padding: 10px 40px;
+				border-right:2px solid #000 ;
+			}
+			.menu ul li:hover{
+				background-color: #ccc;
+			}
+		</style>
+		<script src="common.js"></script>
+	</head>
+	<body>
+		<div class="main">
+			<h1>菜单</h1>
+			<div class="menu">
+				<ul>
+					<li>烤全羊</li>
+					<li>蒙古酒</li>
+					<li>酥油茶</li>
+					<li>青稞酒</li>
+					<li>手抓肉</li>
+				</ul>
+				<ul class="checked"></ul>
+			</div>
+		</div>
+		<script>
+			var list=getTag('li');
+			var checked=getClass('checked')[0];
+			for(var i=0;i<list.length;i++){
+				list[i].onclick=function(){
+					/*var li=document.createElement('li');
+					li.innerHTML=this.innerHTML;*/
+					var li=this.cloneNode(true);
+					checked.appendChild(li);
+				}	
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>函数</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			function add(a,b){
+				console.log('加法运算:'+a+'+'+b+'='+(a+b));
+				document.write('加法运算:'+a+'+'+b+'='+(a+b)+'<br />');
+			}
+			function sub(a,b){
+				console.log('减法运算:'+a+'-'+b+'='+(a-b));
+				document.write('减法运算:'+a+'-'+b+'='+(a-b)+'<br />');
+			}
+			function mul(a,b){
+				console.log('乘法运算:'+a+'*'+b+'='+(a*b));
+				document.write('乘法运算:'+a+'*'+b+'='+(a*b)+'<br />');
+			}
+			function div(a,b){
+				console.log('除法运算:'+a+'/'+b+'='+(a/b));
+				document.write('除法运算:'+a+'/'+b+'='+(a/b)+'<br />');
+			}
+			var x=3;
+			var y=1;
+			add(x,y);
+			sub(x,y);
+			mul(x,y);
+			div(x,y);
+			//四个函数合一
+			var m=100;
+			var n=20;
+			myfn(m,n);
+			function myfn(a,b){
+				document.write('加法：'+a+'+'+b+'='+(a+b)+'<br />');
+				document.write('减法：'+a+'-'+b+'='+(a-b)+'<br />');
+				document.write('乘法：'+a+'*'+b+'='+(a*b)+'<br />');
+				document.write('除法：'+a+'/'+b+'='+(a/b)+'<br />');
+			}
+			</script>
+	</body>
+</html>

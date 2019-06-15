@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function test(x){
+				x=x;
+				console.log(x)
+			}
+			test(6);
+			console.log(x);
+		</script>
+		<script>
+			function animate(el,obj,time,callback){
+				if(typeof time==='function'||time===undefined){
+					callback=time;
+					time=300;
+				}
+				var t=16;
+				var start={};
+				for(var i in obj){
+					start[i]=parseFloat(getComputedStyle(el,null)[i]);
+				}
+				clearInterval(el.timer);
+				el.timer=setInterval(function(){
+					var flag=true;
+					for(var i in obj){
+						var attr=i;
+						var target=obj[i];
+						var current=parseFloat(getComputedStyle(el,null)[attr]);
+						var step=(target-start[i])/time*t;
+						if(step>=0&&current>=(target-step)||step<=0&&current<=(target-step)){
+							el.style[attr]=target+'px';
+						}else{
+							el.style[attr]=current+step+'px';
+							flag=false;
+						}
+					}
+					if(flag){
+						clearInterval(el.timer);
+						callback&&callback.call(el);
+					}
+				},t);
+			}
+			function getBtnValue(event){
+				var evt=event||window.event;
+				if(event){
+					switch(evt.button){
+						case 1:
+						return 0;
+						case 4:
+						return 1;
+						case 2:
+						return 2;
+					}
+				}else{
+					return evet.button;
+				}
+			}
+			//取消默认行为
+			function preventDefault(event){
+				var evt=event||window.event;
+				if(event){
+					evt.preventDefault();
+				}else{
+					evt.returnValue=false;
+				}
+			}
+			//阻止冒泡
+			function stopProp(event){
+				var evt=event||window.event;
+				if(event){
+					evt.stopPropagation();
+				}else{
+					evt.cancelBubble=true;
+				}
+			}
+			//获取事件的目标
+			function getTarget(event){
+				var evt=event||window.event;
+				if(event){
+					return evt.target;
+				}else{
+					return evt.srcElement;
+				}
+			}
+		</script>
+	</body>
+</html>

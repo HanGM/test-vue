@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//字符串函数(与正则相关) match()/replace()/search()/split();
+			var str = 'aeqw1odsl3kdf';
+//			var reg = /q/img;//不可以使用变量
+			var reg = new RegExp('q','img');//第一个参数可以是正则表达式，也可以使用变量；
+			var result = str.match(reg)//正则匹配  返回值数组（匹配不成功返回null）；
+			console.log(result);
+			var result = str.replace(reg,'8')//正则替换  正则内容（此处最好使用变量正则以便使用匹配模式，灵活性高），替换的内容   返回值为替换后的字符串  
+			console.log(result);
+			console.log(str);
+			var result = str.search(reg)//正则匹配  返回值匹配内容的下标，不匹配返回-1
+			console.log(result);
+			var reg=/\d/;
+			var result = str.split(reg);//利用正则拆分字符串，返回数组。
+			console.log(result);
+			
+			//正则函数 test()/exec()/compile()
+			var str = 'aeqwodslkdf';  
+			var reg = /s/;  
+			var result = reg.test(str);//检索字符串中的正则匹配，返回布尔值
+			console.log(result);
+			var result = reg.exec(str);//检索字符串中的正则匹配，返回数组
+			console.log(reg);
+			console.log(result);
+			var result = reg.compile('a');//重新编译正则规则，相当于创建一个新的正则对象，会改变原正则对象，返回值为新的正则对象
+			console.log(reg);
+			console.log(result);
+		</script>
+	</body>
+</html>

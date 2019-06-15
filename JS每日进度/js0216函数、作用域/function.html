@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			
+			function a(b){
+				alert('father');
+				var m=2;
+				var n=3;
+				return b(m,n);
+			}
+			function b(m,n){
+				alert('child');
+				return m+n;
+			}
+			(function(){
+				var result=a(b);
+				alert('result='+result);
+			})();
+			
+			/*
+			function fn(){
+				var a=1;
+				a++;
+				console.log(a);
+			}
+			fn();
+			console.log(typeof fn());
+			
+			function fn1(){
+				console.log(2);
+				return 1;
+			}
+			console.log(fn1());
+			*/
+			var x=1,y=2;
+			function add(a,b){
+				console.log(a+b);
+				return a+b;
+			}
+			function sub(a,b){
+				console.log(a-b);
+				return a-b;
+			}
+			function mul(a,b){
+				console.log(a*b);
+				return a*b;
+			}
+			function div(a,b){
+				console.log(a/b);
+				return a/b;
+			}
+			add(x,add(x,y));
+			
+			/*
+			var he=add(x,y);
+			var cha=sub(x,y);
+			var ji=mul(x,y);
+			var shang=div(x,y);
+			document.write(x+'与'+y+'的和是'+he+'<br />');
+			document.write(x+'与'+y+'的差是'+cha+'<br />');
+			document.write(x+'与'+y+'的商是'+shang+'<br />');
+			document.write(x+'与'+y+'的积是'+ji+'<br />');
+			document.write(he+cha+shang+ji);
+			*/
+		</script>
+	</body>
+</html>

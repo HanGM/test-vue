@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>模拟论坛标题页</title>
+		<script src="data.js"></script>
+	</head>
+	<body>		
+		<ul></ul>
+		<script src="jquery.js"></script>
+		<script>
+//			var html='';
+//			for(var i=0;i<data.length;i++){
+//				html+='<li><a href="main.html#'+data[i].id+'">'+data[i].title+'</a></li>';
+//			}
+//			$('ul').append(html)
+			
+			//get传参
+			var html='';
+			for(var i=0;i<data.length;i++){
+				html+='<li><a href="main.html?id='+data[i].id+'">'+data[i].title+'</a></li>';
+			}
+			$('ul').append(html)
+		</script>
+	</body>
+</html>

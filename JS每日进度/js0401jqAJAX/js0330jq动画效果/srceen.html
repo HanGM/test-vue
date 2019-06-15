@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>全屏滚动</title>
+		<style type="text/css">
+			#wrapper{
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				overflow: hidden;
+			}
+			#wrapper .wrap{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="wrap">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+		</div>
+		<script src="jquery.js"></script>
+		<script>
+			var color = ['green','red','blue'];
+			var num =0;
+			var flag =true;
+			$('.item').each(function(i,v){
+				$(this).css({
+					height:$('#wrapper').height(),
+					background:color[i]
+				})
+			})
+			$(window).resize(function(){
+				$('.item').css('height',$('#wrapper').height());
+				$('.wrap').stop().animate({
+						marginTop:-num*$('#wrapper').height()
+					},function(){
+						flag = true;
+					})
+			})
+			$(window).bind('mousewheel DOMMouseScroll',function(evt){
+				var detail = evt.originalEvent.wheelDelta || evt.originalEvent.detail*-40;
+//				var detail = evt.originalEvent.wheelDelta ? evt.originalEvent.wheelDelta : evt.originalEvent.detail*-40;
+				if(flag){
+					flag = false;
+					if(detail>0){
+						num = num <=0 ? 0 : --num;
+					}else if(detail<0){
+						num = num >= $('.item').length-1 ? $('.item').length-1 : ++num;
+					}
+					$('.wrap').stop().animate({
+						marginTop:-num*$('#wrapper').height()
+					},function(){
+						flag = true;
+					})
+				}	
+			})
+		</script>
+	</body>
+</html>

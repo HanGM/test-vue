@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM动画</title>
+		<style>
+			#myDiv{
+				width: 200px;
+				height: 200px;
+				background: #000;
+			}
+		</style>
+		<script src="common.js"></script>
+	</head>
+	<body>
+		<!--<div id="myDiv" style="width: 200px;height: 200px;"></div>-->
+		<div id="myDiv"></div>
+		<script>
+			var myDiv=document.getElementById('myDiv');
+			//封装获取元素内部/外部样式方法
+			/*function getStyle(el,attr){
+				if(typeof getComputedStyle!='undefined'){
+					return getComputedStyle(el,null)[attr];
+				}else{
+					return el.currentStyle[attr];
+				}
+			}
+			console.log(getStyle(myDiv,'width'));*/
+//			console.log(getComputedStyle(myDiv,null).width);
+//			console.log(myDiv.currentStyle.width);
+			var w=parseInt(getStyle(myDiv,'width'));
+			myDiv.onclick=function(){
+//				clearInterval(timer);
+//				var w=parseInt(myDiv.style.width);//内部样式属性值获取方法
+//				var w=parseInt(getComputedStyle(myDiv,null).width);//非IE内部/外部样式属性值获取方法
+//				var w=parseInt(myDiv.currentStyle.width);//IE内部/外部样式属性值获取方法,其他浏览器不支持
+				
+				var m=10;
+				var timer=setInterval(function(){
+					if(w>=400){
+						m=-10;
+					}else if(w<=200){
+						m=10;
+					}
+					w+=m;
+					myDiv.style='width:'+w+'px;height:'+w+'px;background:#0f0;';
+				},30);
+			};
+		</script>
+	</body>
+</html>

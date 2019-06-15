@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>我是滚动字幕,看！我会动~~~</title>
+	</head>
+	<body>
+		<form action="" method="post">
+			
+			<input type="submit" value=""/>
+		</form>
+		<a href="" name="first"></a>
+		<a href=""></a>
+		<img src="" alt="" />
+		<a href=""></a>
+		<a href="" name="four"></a>
+		<a href=""></a>
+		<img src="" alt="" />
+		<a href=""></a>
+		<img src="" alt="" />
+		<form action=""></form>
+		<script>
+			console.log(document.anchors);
+			console.log(document.anchors[0]);
+			console.log(document.anchors.first);
+			console.log(document.anchors[1]);
+			console.log(document.anchors.four);
+			console.log(document.links);
+			console.log(document.images);
+			console.log(document.forms);
+			console.log(document.URL);
+			console.log(document.domain);
+			//字符串方式
+			var timer=setInterval(function(){
+				var myTitle=document.title;
+//				document.title=myTitle.substr(1)+myTitle.substr(0,1);
+//				document.title=myTitle.substr(1)+myTitle.charAt(0);
+//				document.title=myTitle.substring(1)+myTitle[0];
+//				document.title=myTitle.substr(1)+myTitle[0];
+				document.title=myTitle.slice(1)+myTitle[0];
+			},100);
+			/*//数组方式
+			var time=setInterval(function(){
+				var arr=document.title.split('');
+				arr.push(arr.shift());
+				document.title=arr.join('');
+			},200);*/
+		</script>
+	</body>
+</html>

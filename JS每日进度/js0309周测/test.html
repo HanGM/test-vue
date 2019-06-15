@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JS程序题</title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background: #000;
+			}
+			ul{
+				overflow: hidden;
+				list-style: none;
+			}
+			ul li{
+				width: 50px;
+				height: 50px;
+				background: #000;
+				float: left;
+				margin: 0 10px;
+			}
+			div{
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--<script>
+			var str='?name=xiaoming&age=17&height=160&sex=girl';
+			str=str.substr(1);
+			var arr=str.split('&');
+			var obj={};
+			for(var i=0;i<arr.length;i++){
+				obj[arr[i].split('=')[0]]=arr[i].split('=')[1];
+			}
+			console.log(obj);
+		</script>-->
+		
+		<!--//程序题1
+		<script>
+			document.write('<h1>乘法口诀表</h1>');
+			document.write('<table border="1">');
+			for(var i=1;i<10;i++){
+				document.write('<tr>');
+				for(var j=1;j<=i;j++){
+					document.write('<td>'+i+'*'+j+'='+i*j+'</td>');
+				}
+				document.write('</tr>');
+			}
+			document.write('</table>');
+		</script>-->
+		
+		//程序题2
+		<h1 id="timeBox"></h1>
+		<script>
+			setInterval(function(){
+				var time=new Date();
+				var timeBox=document.getElementById('timeBox');
+				var arr=[time.getFullYear(),time.getMonth()+1,time.getDate()];
+				for(var i=1;i<arr.length;i++){
+					if(arr[i]<10){
+						arr[i]='0'+arr[i];
+					}
+					timeBox.innerHTML=arr[0]+"-"+arr[1]+"-"+arr[2];
+				}
+			},1000);
+		</script>
+		
+		<!--//程序题3
+		<ul>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<script>
+			var ul=document.getElementsByTagName('ul')[0];
+			var lis=ul.getElementsByTagName('li');
+			var div=document.getElementsByTagName('div');
+			for(var i=0;i<lis.length;i++){
+				lis[i].index=i;
+				lis[i].onclick=function(){
+					for(var j=0;j<lis.length;j++){
+						lis[j].style.background='';
+						div[j].style='';
+					}
+					this.style.background='red';
+					div[this.index].style='display:block;';
+				}
+			}
+		</script>-->
+		<!--//程序题4
+		<div id="box"></div>
+		<script>
+			var box=document.getElementById('box');
+			var x=0;
+			var timer=setInterval(function(){
+				if(x==400){
+					clearInterval(timer);
+				}
+				x+=10;
+				box.style.marginLeft=x+'px';
+			},100);
+		</script>-->
+		
+		<!--//程序题5
+		<script>
+			function numMatch(str){
+				var reg=/^1([358]\d|66|7[35-8]|9[89])\d{8}$/;
+				if(str.match(reg)){
+					alert('手机号码格式正确~');
+				}else{
+					alert('手机号码格式不正确~');
+				}
+			}
+			var str='18357768987';
+			numMatch(str);
+		</script>-->
+	</body>
+</html>

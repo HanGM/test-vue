@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 400px;
+				height: 400px;
+				border: 2px solid black;
+				border-radius: 50%;
+				position: relative;
+			}
+			span{
+				position: absolute;
+				transform: translate(-50%,-50%);
+			}
+		</style>
+	</head>
+	<body>
+		<!--<div id="box"></div>
+		<script>
+			var box = document.getElementById('box');
+			var r=200;
+			var deg=270;
+			for(var i=1;i<13;i++){
+				deg+=30;
+				var x=r+Math.cos(Math.PI/180*deg)*r;
+				var y=r+Math.sin(Math.PI/180*deg)*r;
+				box.innerHTML+='<span style="left:'+x+'px;top:'+y+'px;">'+i+'</span>';
+			}
+		</script>-->
+		<script>
+			var arr=[2,5,65,32,113,75,13,45];
+			var arr1=[true,undefined,null,false];
+			var arr2=['q','d','e','h','p'];
+			//数组反转
+			//arr.reverse();
+			/*Array.prototype.rever=function(){
+				for(var i=0;i<this.length/2;i++){
+						var temp=this[i];
+						this[i]=this[this.length-1-i];
+						this[this.length-1-i]=temp;
+				}
+				return this;
+			}
+			console.log(arr.rever());*/
+			//数组遍历
+			/*Array.prototype.each=function(callback){
+					for(var i=0;i<this.length;i++){
+					callback(this[i],i);
+				}
+			}
+			arr.each(function(v,i){
+				console.log('该数组的值是：'+v+';对应下标为：'+i);
+			});*/
+			//数组冒泡排序
+			/*arr.sort(function(a,b){return a-b;});
+			console.log(arr);*/
+			/*Array.prototype.bubbing=function(){
+				for(var i=0;i<this.length-1;i++){
+					for(var j=0;j<this.length-1-i;j++){
+						if(this[j]>this[j+1]){
+							var temp=this[j];
+							this[j]=this[j+1];
+							this[j+1]=temp;
+						}
+					}
+				}
+				return this;
+			}
+			console.log(arr.bubbing());*/
+			//数组去重
+			var arr=[2,45,67,9,3,2,54,9,3];
+			var a=[];
+			a[0]=arr[0];
+			for(var i=0;i<arr.length;i++){
+				for(var j=0;j<a.length;j++){
+					if(a[j]==arr[i]){
+						break;
+					}
+					if(j==a.length-1){
+						a.push(arr[i]);
+					}
+				}
+			}
+			console.log(a);
+		</script>
+	</body>
+</html>

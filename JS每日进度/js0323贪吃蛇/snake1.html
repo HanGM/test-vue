@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>贪吃蛇</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrap{
+				width: 400px;
+				margin: auto;
+				text-align: center;
+				/*border: 1px solid black;*/
+			}
+			.wrap input{
+				width: 100px;
+				height: 40px;
+				color: #fff;
+				font-size: 16px;
+				background-color: #000;
+			}
+			.wrap h4{
+				color: #fff;
+				padding: 10px 0;
+				text-indent: 20px;
+				background-color: #000;
+			}
+			.box{
+				position: relative;
+				width: 400px;
+				height: 400px;
+				background-color: #ccc;	
+			}
+			.snake{
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				background-color: #f00;
+			}
+			.snake:nth-child(0){
+				left: 0;
+				top: 0;
+			}
+			.snake:nth-child(1){
+				left: 10px;
+				top: 0;
+			}
+			.snake:nth-child(2){
+				left: 20px;
+				top: 0;
+			}
+			.food{
+				position: absolute;
+				width: 10px;
+				height: 10px;
+				background-color: #0f0;
+			}
+			.cover{
+				position: relative;
+				width: 100%;
+				height: 100%;
+				background-color: rgba(0,0,0,.6);
+				display: none;
+			}
+			.end{
+				position: absolute;
+				top: 170px;
+				left: 100px;
+				width: 200px;
+				height: 60px;
+				color: #fff;
+				line-height: 60px;
+				text-align: center;
+				border-radius: 10px;
+				background-color: rgba(0,0,0,1);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<input type="button" name="begin" value="开始游戏" />
+			<input type="button" name="over" value="退出游戏" />
+			<h4>当前得分：<span class="info"></span></h4>
+			<div class="box">
+				<div class="snake"></div>
+				<div class="snake"></div>
+				<div class="snake"></div>
+				<div class="food"></div>
+				<div class="cover">
+					<div class="end">游戏结束</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var begin = document.getElementsByName('begin')[0];
+			var over = document.getElementsByName('over')[0];
+			var cover = document.querySelector('.cover');
+			var info = document.querySelector('.info');
+			var num = 0;
+			info.innerHTML = num;
+			var box = document.querySelector('.box');
+			var snake = document.querySelectorAll('.snake');
+			var snakeArr = [[0,0],[10,0],[20,0]];
+			var food = document.querySelector('.food');
+			var code = 0;
+			var direction = 39;
+			var t = 400;
+			randomFood();
+			eventHandler(begin,'click',start);
+			function start(){
+				begin.disabled = true;
+				move();
+			}
+			over.onclick = function(){
+				window.close();
+			}
+			document.onkeydown = function(evt){
+				var e = evt || window.event;
+				direction = e.keyCode;				
+			}
+			function move(){
+				setTimeout(function(){
+					if(code != 37 && direction == 39 || code != 38 && direction == 40 || code != 39 && direction == 37 || code != 40 && direction == 38){
+						code = direction;
+					}
+					tailX = snakeArr[0][0];
+					tailY = snakeArr[0][1];
+					for(var i=0;i<snakeArr.length-1;i++){
+						snakeArr[i][0] = snakeArr[i+1][0];
+						snakeArr[i][1] = snakeArr[i+1][1];
+					}
+					var head = snakeArr[snakeArr.length-1];
+					if(code == 37){
+						head[0] -= 10;
+					}else if(code == 38){
+						head[1] -= 10;
+					}else if(code == 39){
+						head[0] += 10;
+					}else if(code == 40){
+						head[1] += 10;
+					}
+					for(var i=0;i<snakeArr.length-1;i++){
+						if(head[0] == snakeArr[i][0] && head[1] == snakeArr[i][1]){
+							alert('GameOver');
+							location.reload();
+						}
+					}
+					if(head[0] < 0 || head[0] > 390 || head[1] < 0 || head[1] > 390 ){
+						alert('GameOver');
+						location.reload();
+					}
+					if(head[0] == foodX && head[1] == foodY){
+						snakeAdd();
+						randomFood();
+					}else{
+						for(var i=0;i<snakeArr.length;i++){
+							if(foodX == snakeArr[i][0] && foodY == snakeArr[i][1]){
+								snakeAdd();
+								randomFood();
+							}		
+						}	
+					}
+					snake = document.querySelectorAll('.snake');
+					for(var i=0;i<snake.length;i++){
+						snake[i].style.left = snakeArr[i][0] + 'px';
+						snake[i].style.top = snakeArr[i][1] + 'px';
+					}
+				move();	
+				},t);	
+			}
+			function snakeAdd(){
+				num ++;
+				info.innerHTML = num*10;
+				snakeArr.unshift([foodX,foodY]);
+				var tail = document.createElement('div');
+				tail.className = 'snake';
+				box.appendChild(tail);
+				if(t > 100){
+					t -= 10;
+				}
+			}
+			function randomFood(){
+				foodX = Math.floor(Math.random()*40)*10;
+				foodY = Math.floor(Math.random()*40)*10;
+				food.style.left = foodX + 'px';
+				food.style.top = foodY + 'px';
+			}
+			function eventHandler(el,type,callback){
+				if(el.addEventListener){
+					el.addEventListener(type,callback);
+				}else if(el.attachEvent){
+					el.attachEvent('on'+type,callback);
+				}else{
+					el['on'+type] = callback;
+				}
+			}
+			function removeHandler(el,type,callback){
+				if(el.removeEventListener){
+					el.removeEventListener(type,callback);
+				}else if(el.detachEvent){
+					el.detachEvent('on'+type,callback);
+				}else{
+					el['on'+type] = null;
+				}
+			}
+			function animate(el,obj,time,callback){
+				if(typeof time === 'function' || time === undefined){
+					callback = time;
+					time = 300;
+				}
+				var start = {};
+				for(var i in obj){
+					start[i] = parseFloat(getComputedStyle(el,null)[i]);
+				}
+				var t =16;
+				clearInterval(el.timer);
+				el.timer = setInterval(function(){
+					var flag = true;
+					for(var i in obj){
+						var attr = i;
+						var target = obj[i];
+						var cur = parseFloat(getComputedStyle(el,null)[attr]);
+						var step = (target - start[i]) / time * t;
+						if(step>=0&&cur>=(target-step)||step<=0&&cur<=(target-step)){
+							el.style[attr] = target + 'px';
+						}else{
+							flag = false;
+							el.style[attr] = cur + step + 'px';
+						}
+					}
+					if(flag){
+						clearInterval(el.timer);
+						callback && callback.call(el);
+					}
+				},t);
+			}
+		</script>
+	</body>
+</html>

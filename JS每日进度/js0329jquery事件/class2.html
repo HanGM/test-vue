@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>手风琴效果2</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				width: 1200px;
+				height: 400px;
+				margin: auto;
+				position: relative;
+				background-color: #ccc;
+			}
+			.box .title{
+				width: 100px;
+				height: 100%;
+				float: left;
+				position: relative;
+				cursor: pointer;
+			}
+			.box .title span{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%,-50%);
+				font-size: 50px;
+				text-shadow: 0 0 10px red;
+			}
+			.box .pic{
+				float: left;
+				width: 0;
+				height: 400px;
+				overflow: hidden;
+				transition: all .5s;
+			}
+			.box .pic.cur{
+				width: 600px;
+				height: 400px;
+				overflow: hidden;
+			}
+			.box img{
+				width: 600px;
+				height: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<div class="title"><span>图片1</span></div>
+			<div class="pic cur"><img src="img/1.jpg" alt="" /></div>
+			<div class="title"><span>图片2</span></div>
+			<div class="pic"><img src="img/2.jpg" alt="" /></div>
+			<div class="title"><span>图片3</span></div>
+			<div class="pic"><img src="img/3.jpg" alt="" /></div>
+			<div class="title"><span>图片4</span></div>
+			<div class="pic"><img src="img/4.jpg" alt="" /></div>
+			<div class="title"><span>图片5</span></div>
+			<div class="pic"><img src="img/5.jpg" alt="" /></div>
+			<div class="title"><span>图片6</span></div>
+			<div class="pic"><img src="img/6.jpg" alt="" /></div>
+		</div>
+		<script src="jquery.js"></script>
+		<script>
+			$('.box .title').click(function(){
+				$(this).next().addClass('cur').siblings().removeClass('cur')
+			})
+		</script>
+	</body>
+</html>

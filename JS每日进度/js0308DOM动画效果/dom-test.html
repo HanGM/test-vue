@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>DOM动画效果</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				min-width: 600px;
+			}
+			ul{
+				display: flex;
+				justify-content: space-around;
+				width: 600px;
+				border: 1px solid #000;
+				list-style: none;
+				margin: auto;
+			}
+			ul li{
+				float: left;
+				border-top: 2px solid transparent;
+				padding: 10px 0;
+			}
+			div{
+				width: 600px;
+				height: 400px;
+				line-height: 400px;
+				font-weight: bold;
+				font-size: 100px;
+				background: #800080;
+				text-align: center;
+				display: none;
+				margin: auto;
+			}
+		</style>
+		<script>
+			window.onload=function(){
+				var ul=document.getElementsByTagName('ul')[0];
+				var lis=ul.getElementsByTagName('li');
+				var div=document.getElementsByTagName('div');
+				for(var i=0;i<lis.length;i++){
+					lis[i].index=i;
+					lis[i].onclick=function(){
+						for(var j=0;j<lis.length;j++){
+							lis[j].style='';
+							div[j].style='';
+						}
+						this.style='border-top-color:#800080;color:#800080';
+						div[this.index].style='display:block;';
+					}
+				}
+			};
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>新闻</li>
+			<li>音乐</li>
+			<li>视频</li>
+			<li>图片</li>
+			<li>军事</li>
+			<li>直播</li>
+			<li>地图</li>
+		</ul>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<div>7</div>
+	</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#yzm{
+				width: 60px;
+				height: 30px;
+				background: #555;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text" />
+		<div id="yzm"></div>
+		<script>
+			/*var arr=[1,34,64,212,768,21,22,];
+			var result=Math.min.apply(null,arr);//查找数字数组中最小元素
+			console.log(result);
+			console.log(Math.max(1,5,3,2,6,83,321));
+			console.log(Math.min(1,5,3,2,6,83,321));
+			function Arr(){
+				console.log(this);
+			}
+			Arr();
+			var arr=new Arr();
+			Arr.call(arr);
+			
+			function fn(){
+				alert(5);
+			}
+			var fn=function(){alert(4)};
+			fn();*/
+			
+			
+//			var str='abcdefghigklmnopqrstuvwxyz0123456789';
+//			var yzm=document.getElementById('yzm');
+////			function createYzm(){
+////				var result='';
+////				for(var i=0;i<4;i++){
+////					var index=Math.floor(Math.random()*str.length);
+////					result+=str[index];
+////				}
+////				yzm.innerHTML=result;
+////			}
+//			function createYzm(){
+//				var arr=str.split('');
+//				var result=[];
+//				for(var i=0;i<4;i++){
+//					var index=Math.floor(Math.random()*arr.length);
+//					result=result.concat(arr.slice(index,index+1));	
+////					result=result.concat(arr.splice(index,1));	
+//				}
+//				yzm.innerHTML= result.join('');
+//			}				
+//			yzm.onclick=function(){
+//				createYzm();
+//			}
+			console.log(location.search);
+			var arr=location.search.split('&');
+			for(var i=0;i<arr.length;i++){
+				var result=arr[i].split('=');
+				console.log(result[1]);
+			}
+			/*var arr1=[];
+			for(var i=0;i<arr.length;i++){
+				arr1.push(arr[i].split('=').pop());
+			}
+			for(var i=0;i<arr1.length;i++){
+				console.log(arr1[i]);
+			}*/
+			
+			/*	
+			for(var i=0;i<arr.length;i++){
+				var index=arr[i].indexOf('=')+1;
+				console.log(arr[i].substr(index));
+			}*/
+		</script>
+	</body>
+</html>

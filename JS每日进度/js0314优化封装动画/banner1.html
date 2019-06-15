@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画封装</title>
+		<style>
+			.father{
+				width: 800px;
+				height: 600px;
+				border: 1px solid black;
+				margin: 50px auto;
+				text-align: center;
+			}
+			.box1{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			.box2{
+				width: 100px;
+				height: 100px;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="father">
+			<button class="btn01">box1运动</button>
+			<button class="btn02">box2运动</button>
+			<div class="box1"></div>
+			<div class="box2"></div>
+		</div>
+		<script>
+			var btn01=document.getElementsByClassName('btn01')[0];
+			var btn02=document.getElementsByClassName('btn02')[0];
+			var box1=document.getElementsByClassName('box1')[0];
+			var box2=document.getElementsByClassName('box2')[0];
+			function animate(el,obj,time,callback){
+				for(var i in obj){
+					var attr=i;
+					var target=obj[i];
+				}
+				var start=parseInt(getComputedStyle(el,null)[attr]);
+				var t=16;
+				var step=(target-start)/time*t;
+				var timer=setInterval(function(){
+					if(step>0&&start>=(target-step)||step<0&&start<=(target-step)){
+						clearInterval(timer);
+						el.style[attr]=target+'px';
+						if(callback) callback();
+					}else{
+						start+=step;
+						el.style[attr]=start+'px';
+					}
+				},16);
+			}
+			btn01.onclick=function(){
+				animate(box1,{marginLeft:400},500);
+			}
+			btn02.onclick=function(){
+				animate(box2,{marginLeft:400},500);
+			}
+		</script>
+	</body>
+</html>

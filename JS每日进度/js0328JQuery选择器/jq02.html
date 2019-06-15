@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html style="background: red;">
+	<head>
+		<meta charset="UTF-8">
+		<title>jq选择器</title>
+	</head>
+	<body>
+		<div><p>ok</p></div>
+		<ul>
+			<li id="11">第1个</li>
+			<li id="12" class="two">第2个</li>
+			<li id="13"><h1>第3个</h1></li>
+			<li id="14">第4个</li>
+			<li id="15">第5个</li>
+		</ul>
+		<ul>
+			<li id="21">第6个</li>
+			<li id="22"><h6>第7个</h6></li>
+			<li id="23">第8个</li>
+			<li id="24">第9个</li>
+			<li id="25">第10个</li>
+		</ul>
+		<input type="text" />
+		<input type="text" />
+		<input type="text" />
+		<input type="text" />
+		<script src="js/jquery.js"></script>
+		<script>
+			$('li:first').css({color:'red'});
+			$('li:last').css({color:'blue'});
+			$('ul li:first').css({color:'red'});//first/last是所有该元素中的第一个和最后一个
+			$('ul li:last').css({color:'blue'});//和其父元素是谁无关
+//			$('ul li:first-child').css({color:'green'});
+//			$('ul li:last-child').css({color:'orange'});
+			$('li:not(.two)').css({color:'gold'});//除了指定类名的元素
+			$('li:even').css({color:'red'})//下标为偶数
+			$('li:odd').css({color:'blue'})//下标为奇数
+			$('li:eq(3)').css({color:'pink'})//指定下标的元素
+			$('li:gt(2)').css({color:'yellow'})//大于指定下标的元素
+			$('li:lt(4)').css({color:'green'})//小于指定下标的元素
+			$(':header').css({fontSize:60})//h1-h6标题元素
+//			$(':focus').css({backgroundColor:'black'})
+			$(':contains("9")').css({backgroundColor:'black'})
+
+			console.log($(':header'))
+			console.log($(':focus'))
+			console.log($(':contains("6")'))
+			console.log($(':empty'))
+			console.log($(':parent'))
+			console.log($(':hidden'))
+			console.log($(':visible'))
+			console.log($('li:first-child'))
+			console.log($('li:last-child'))
+			console.log($('li:only-child'))
+			console.log($(':only-child'))
+			console.log($('li:nth-child(even)'))//索引从1开始
+			console.log($('li:nth-child(odd)'))
+			console.log($('li:nth-child(5)'))
+			console.log($('li').is('.two'))
+			console.log($('li').eq(1).hasClass('two'))
+			console.log($('li').slice(0,2))
+			console.log($('li').filter('.two'))
+			console.log($('div').find('p').end())
+			console.log($('div').contents())
+		</script>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>while循环</title>
+	</head>
+	<body>
+		<script>
+			var x = 1;
+			document.write('<table border="1">');
+			while(x < 10){
+				document.write('<tr>');  
+				var y = 1;
+				while(y < 10){
+					if(y%2 == 1){
+					document.write('<td style="background: red;">'+ x + '*' + y + '=' + x * y + '</td>');
+					}else{
+						document.write('<td>'+ x + '*' + y + '=' + x * y + '</td>');
+					}
+					y++;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+		</script>
+	</body>
+</html>

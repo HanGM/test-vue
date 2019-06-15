@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id='demo'>点击查看</button>
+		<script>
+//			console.log(Math.PI);//圆周率
+//			console.log(Math.random());//随机数0~1
+//			console.log(Math.floor(Math.random()*10));//向下取整0~9
+//			console.log(Math.ceil(Math.random()*10));//向上取整1~10
+//			console.log(Math.round(Math.random()*(y-x)+x));取x~y的数
+//			console.log(Math.round(Math.random()*5+5));//取5~10数
+			var btn=document.getElementById('demo');
+			var a=['xiaoming','xiaolan','xiaohong','xiaobai','xiaohui'];
+			btn.onclick=function(){
+				var index=Math.floor(Math.random()*a.length);
+				var result=a.splice(index,1);
+				if(result.length!=0){
+					console.log('今天该'+result[0]+'值日了！');
+				}else{
+					console.log('下一组');
+				}
+			}
+			
+		</script>
+	</body>
+</html>

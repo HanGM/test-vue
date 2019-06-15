@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			function b(arg){
+//				console.log('b执行代码'+arg);
+//				return function c(arg){
+//					console.log('c执行代码'+arg);
+//					return function d(arg){
+//						console.log("d执行的代码"+arg);
+//					}
+//				}
+//			}
+//			function a(fn){
+//				fn('b1');
+//				fn('b2')('c1');
+//				fn('b3')('c2')('d1');
+//			}
+//			a(b);
+
+//function father(){
+//	var num=10;
+//	function a(fn){
+//		fn(num);
+//	}
+//	a(b);
+//}
+//father();
+//function b(num){
+//	console.log(num);
+//}
+var fn = function (){
+	console.log('匿名函数赋值给变量，变量后加()调用');
+}
+fn();
+;(function(){
+	console.log('只运行一次');
+})();
+function father(){
+	function a(fn){
+		console.log('a');
+		fn();
+	}
+	a(function (){
+	console.log('b');
+	});
+}
+father();
+//(function (){
+//	console.log('b');
+//})
+		</script>
+	</body>
+</html>

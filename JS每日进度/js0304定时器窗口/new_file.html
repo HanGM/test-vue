@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//模拟屏保反弹动画
+			/*var x=100,y=100;
+			var m=10,n=10;
+			var time=setInterval(function(){
+				if(x==0){
+					m=10;
+				}else if(x>=1000){
+					m=-10;
+				}
+				if(y==0){
+					n=10;
+				}else if(y>=700){
+					n=-10;
+				}
+				x+=m;
+				y+=n;
+				moveTo(x,y);
+			},20)*/
+			//移动窗口位置
+			/*var x=0,y=0;
+			var time=setInterval(function(){
+				if(x<800){
+					x+=10;	
+				}else {
+					y+=10;
+				}
+				moveTo(x,y);
+			},10);*/
+			
+			/*var x=0,y=0;
+			var m=10;
+			var time=setInterval(function(){
+				if(x<800&&y==0){
+					m=10
+					x+=m;
+				}else if(x==800&&y<600){
+					y+=m;
+				}else if(x>0&&y==600){
+					m=-10;
+					x+=m;
+				}else{
+					y+=m;
+				}
+				moveTo(x,y);
+			},10);*/
+			
+			//改变窗口大小
+			/*var x=300,y=300;
+			var m=10;
+			var time=setInterval(function(){
+				if(x>=800){
+					m=-10;
+				}
+				x+=m;
+				y+=m;
+				if(x<=300){
+					m=10;
+				}
+				resizeTo(x,y);
+			},100);*/
+			
+			/*var x=300,y=300;
+			var m=10;
+			var time=setInterval(function(){
+				if(x>=800){
+					m=-10;
+				}
+				x+=m;
+				y+=m;
+				if(x<=300){
+					clearInterval(time);
+				}
+				resizeTo(x,y);
+			},100);*/
+			
+			/*var x=300,y=300;
+			var time=setInterval(function(){
+				x+=10;
+				y+=10;
+				if(x==800){
+					clearInterval(time);
+				}
+				resizeTo(x,y);
+			},100);*/
+			
+//			resizeTo(300,300);
+		</script>
+	</body>
+</html>

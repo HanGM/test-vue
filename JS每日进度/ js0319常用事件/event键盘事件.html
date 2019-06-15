@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top: 0;
+				left: 0;
+				transition: all .1s;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<script>
+			var box=document.querySelector('.box');
+			document.onkeydown=function(event){
+				var evt=event||window.event;
+				switch(evt.keyCode){
+					case 37:
+					box.style.left=parseFloat(getComputedStyle(box,null).left)-10+'px';
+					break;
+					case 38:
+					box.style.top=parseFloat(getComputedStyle(box,null).top)-10+'px';
+					break;
+					case 39:
+					box.style.left=parseFloat(getComputedStyle(box,null).left)+10+'px';
+					break;
+					case 40:
+					box.style.top=parseFloat(getComputedStyle(box,null).top)+10+'px';
+					break;
+				}
+			}
+		</script>
+	</body>
+</html>

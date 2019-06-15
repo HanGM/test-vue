@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>邮箱正则</title>
+	</head>
+	<body>
+		邮箱：<input type="mail" id="mail" placeholder="请输入您的邮箱"/>
+		<button id="btn">提交验证</button>
+		<script>
+			var mail = document.getElementById('mail');
+			var btn = document.getElementById('btn');
+			btn.onclick = function(){
+				var reg = /^\w{6,18}@[a-z\d]{2,8}\.(com(\.cn)?|net|org)$/;
+				var result = reg.test(mail.value);
+				if(result){
+					alert('邮箱验证通过！');
+				}else{
+					alert('邮箱格式错误！');
+				};
+			}
+			
+		</script>
+	</body>
+</html>

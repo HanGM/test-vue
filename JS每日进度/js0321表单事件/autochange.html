@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>输入自动补全</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.box{
+				position: relative;
+				width: 400px;
+				height: 40px;
+				border: 1px solid black;
+				margin:40px auto;
+			}
+			.box input{
+				width: 100%;
+				height: 100%;
+				border: none;
+				text-indent: 10px;
+				font-size: 16px;
+			}
+			.box .wrap{
+				position: absolute;
+				top: 40px;
+				left: -1px;
+				width: 100%;
+				border: 1px solid black;
+				display: none;
+			}
+			.box .wrap .item{
+				height: 30px;
+				line-height: 30px;
+				text-indent: 10px;
+				overflow: hidden;
+			}
+			.box .wrap .item.on{
+				background-color: #ccc;
+			}
+		</style>
+		<script src="common.js"></script>
+	</head>
+	<body>
+		<div class="box">
+			<input type="text" />
+			<div class="wrap">
+				<div class="item on"><span></span>@qq.com</div>
+				<div class="item"><span></span>@sina.com</div>
+				<div class="item"><span></span>@yahoo.com</div>
+				<div class="item"><span></span>@126.com</div>
+				<div class="item"><span></span>@163.com</div>
+			</div>
+		</div>
+		<script>
+			var inputs = document.querySelector('input');
+			var wrap = document.querySelector('.box .wrap');
+			var item = document.querySelectorAll('.box .wrap .item');
+			var span = document.querySelectorAll('span');
+			var len = item.length;
+			var num = 0;
+			var flag = true;
+			for( var i = 0; i < len; i++){
+				item[i].index = i;
+				item[i].onmousedown = function(){
+//					inputs.value = this.innerHTML.replace(/<\/?span>/g,'');
+					inputs.value = this.childNodes[0].innerHTML + this.childNodes[1].nodeValue;
+				}
+				item[i].onmouseover = function(){
+					num = this.index;
+					setItem();
+				}
+			}
+			function setItem(){
+				var sib = siblings(item[num]);
+				for(var i=0;i<sib.length;i++){
+					removeClass(sib[i],'on')
+				}
+				addClass(item[num],'on')
+			}
+			inputs.onkeydown=function(evt){
+				var e = evt || window.event;
+				switch(e.keyCode){
+					case 38:
+					num = num <=0 ? 0 : --num;
+					break;
+					case 40:
+					num = num >= len-1 ? len-1 : ++num;
+					break;
+					case 13:
+					if(flag){
+						flag = false;
+						inputs.value = item[num].innerHTML.replace(/<\/?span>/g,'');
+						wrap.style.display = 'none';
+					}
+					break;
+				}
+				setItem();
+			}
+//			inputs.onfocus = getFocus;
+			eventHandler(inputs,'focus',getFocus)
+			inputs.onblur = function(){
+				wrap.style.display = 'none';
+			}
+			function getFocus(){
+				if(inputs.value.indexOf('@') != -1){
+					wrap.style.display = 'none';
+				}else{
+					flag = true;
+					wrap.style.display = 'block';
+				}
+			}
+			inputs.onkeyup = function(){
+				getFocus();
+				for( var i = 0; i < len; i++){
+					span[i].innerHTML = this.value;
+				}
+			}
+			
+		</script>
+	</body>
+</html>

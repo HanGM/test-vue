@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			var num1=0,num2=1,num3=1.1,num4=NaN,
+			str1='',str2='1',str3='1.2',str4='1.2.3',
+			str5='1你好',str6='1.2你好',str7='你好',
+			flag1=true,flag2=false,
+			nul=null,und=undefined,
+			obj={},func=function(){};			
+			console.log('parseInt('+num1+')='+parseInt(num1));
+			console.log('parseInt('+num2+')='+parseInt(num2));
+			console.log('parseInt('+num3+')='+parseInt(num3));
+			console.log('parseInt('+num4+')='+parseInt(num4));
+			console.log('parseInt('+str1+')='+parseInt(str1));
+			console.log('parseInt('+str2+')='+parseInt(str2));
+			console.log('parseInt('+str3+')='+parseInt(str3));
+			console.log('parseInt('+str4+')='+parseInt(str4));
+			console.log('parseInt('+str5+')='+parseInt(str5));
+			console.log('parseInt('+str6+')='+parseInt(str6));
+			console.log('parseInt('+str7+')='+parseInt(str7));
+			console.log('parseInt('+flag1+')='+parseInt(flag1));
+			console.log('parseInt('+flag2+')='+parseInt(flag2));
+			console.log('parseInt('+nul+')='+parseInt(nul));
+			console.log('parseInt('+und+')='+parseInt(und));
+			console.log('parseInt('+obj+')='+parseInt(obj));
+			console.log('parseInt('+func+')='+parseInt(func));
+			*/
+			
+			var x=null;
+			if(typeof x!='string'){
+				document.write('var x='+x+';<br />');
+			}else{
+				document.write('var x=\''+x+'\';<br />');
+			}
+			
+			function myfn(y){
+				document.write('parseInt('+y+')='+parseInt(y)+';<br/>');
+				document.write('parseFloat('+y+')='+parseFloat(y)+';<br/>');
+				document.write('Number('+y+')='+Number(y)+';<br/>');
+				document.write('Boolean('+y+')='+Boolean(y)+';<br/>');
+				document.write('String('+y+')=\''+String(y)+'\';<br/>');
+			}
+			myfn(x);
+		</script>
+	</body>
+</html>

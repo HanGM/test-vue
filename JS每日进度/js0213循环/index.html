@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			typeof undefined === "undefined";//true
+//			typeof true === "boolean";//true
+//			typeof 42 === "number";//true
+//			typeof "42" === "string";//true
+//			typeof Symbol() === "symbol";//true  ES6新加入类型
+//			typeof {life:42} === "object";//true
+//			typeof function a(){} === "function";//true  
+//			/*function(函数)是JS内置类型，实际上是object的一个子类型
+//			 具体说，函数是"可调用对象"，他有一个内部属性[[Call]],该属性使其可以被调用。 
+//			*/
+//			typeof [1,2,3] === "object";//true
+//			//array(数组)也是对象，是object的一个子类型
+//			typeof null === "object";//true
+//			var a=null;
+//			(!a && typeof a === "object");//true
+//			console.log(typeof [1,2,3]);
+//			var x = -0/2;
+//			console.log(Number(x));
+//			console.log(String(x));  
+//			var s=new String("hello world");
+//			console.log(typeof s);  
+//			console.log(s.toString());
+//			var a=false;
+//			var b=12;
+//			console.log(a); 
+//			console.log(b>=a); 
+//			function foo(){
+//				var a=1;
+//				if(a>=1){
+//					let b=2;
+//					while(b<5){
+//						let c=b*2;
+//						b++;
+//						console.log(a+b+c);
+//					}    
+//				}
+//			}
+//			foo();
+//			var a="a";
+//			var b="b";
+//			console.log(a||b);
+//			var str=NaN;
+//			switch(str){
+//				case NaN:
+//				console.log("今天是"+str+"去哪里玩呢？");
+//				break;
+//				case "星期二":
+//				console.log("今天是"+str+"\n去哪里玩呢？");
+//				break;
+//				case "星期三":
+//				console.log("今天是"+str+"\n去哪里玩呢？");
+//				break;
+//				case "星期四":
+//				console.log("今天是"+str+"\n去哪里玩呢？");
+//				break;
+//				case "星期五":
+//				console.log("今天是"+str+"\n去哪里玩呢？");
+//				break;
+//				case "星期六":
+//				console.log("今天是"+str+"\n去哪里玩呢？");
+//				break;
+//				case "星期日":
+//				console.log("今天是"+str+"\n去哪里玩呢？");
+//				break;
+//				default:
+//				console.log("你跑到火星啦！");
+//			}
+//			var num=0;
+//			while(num<5){
+//				++num;
+//				console.log(++num);
+//			}
+//			var i = 0;
+//			while(i<4){
+//				console.log("i的值是"+i);
+//				var j=0;
+//				while(j<3){
+//					console.log("\tj的值是"+j);
+//					var k=0;
+//					while(k<2){
+//						console.log("\t\tk的值是"+k);
+//						k++;
+//					}
+//					j++;
+//				}
+//				i++;
+//			}
+//			var a = 0;
+//			
+//			while(a<5){
+//				console.log(a);
+//				var b = 1;
+//				while(b<5){
+//					console.log("\t"+b);
+//					b++;
+//				}
+//				a++;
+//				console.log(b);
+//			}
+//			console.log(++b);
+//			var b=3;
+//			console.log(++b);
+//			var i=0;
+//			while(i<10){
+//				if(/*i%2!=0*/i%2==1){
+//					console.log(i);
+//				}
+//				
+//				i++;
+//			}
+//			console.log(0/2);
+//var a=1;
+//while(a<10){
+//	console.log(a);
+//	var b=1;
+//	while(b<10){
+//		console.log("\ta的值是"+a);
+//		console.log("\tb的值是"+b);
+//		console.log("\ta*b的值是"+a+"*"+b+"="+a*b);
+//		b++;
+//	}
+//	a++;
+//}
+		var x=1;
+		document.write('<table border="1">');
+		while(x<10){
+			document.write('<tr>');
+			var y=0;
+			while(y<10){
+				document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+				y++;
+			}			
+			x++;
+			document.write('</tr>');
+		}
+		document.write('</table>');
+		</script>
+	</body>
+</html>
+ 

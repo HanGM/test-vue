@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AJAX封装</title>
+		<!--<script src="tools.js"></script>-->
+	</head>
+	<body>
+		<script>
+			function ajax(obj){
+				var type = obj.type == undefined ? 'get' : obj.type;//是否默认get请求
+				var async = obj.async ==undefined ? true : obj.async;//是否默认异步处理
+				var dataType = obj.dataType == undefined ? 'json' : obj.dataType;//返回数据是否默认为json字符串
+				//处理待传入后台数据，将对象数据转成规定格式字符串
+				var arr =[];
+				for( var i in obj.data){
+					arr.push(i + '=' + obj.data[i]);
+				}
+				var data = arr.join('&')
+				//创建xhr对象
+				var xhr = new XMLHttpRequest();
+				console.log(type,async,dataType,data,xhr)
+				//异步处理时操作响应的返回数据
+				if(async){
+					xhr.onreadystatechange = function(){
+						if(xhr.readyState == 4){
+							 callback();
+						}
+					}
+				}
+				//get请求时处理提交数据，数据在地址后提交
+				if(type === 'get'){
+					//地址中是否提交有数据，并拼接提交数据
+					obj.url += (obj.url.indexOf('?') == -1 ? '?' : '&') + data;
+				}
+				xhr.open(type,obj.url,async);//启动向后台发送数据操作
+				//post请求时处理提交数据
+				if(type === 'post'){
+					//post请求添加模拟请求头
+					xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+					xhr.send(data);//数据在send()中提交
+				}else{
+					xhr.send(null);//get请求send(null)
+				}
+				//同步时操作响应的返回数据
+				if(!async){
+					callback();
+				}
+				function callback(){
+					if(xhr.status == 200){//数据提交及响应ok
+						//调用success回调函数，以便将返回的数据在函数外部调用，判断返回数据类型是否为json字符串，是则转为对象以便调用
+						obj.success(dataType == 'json' ? JSON.parse(xhr.responseText) : xhr.responseText); 
+					}else{
+						console.log('获取失败！状态码：' + xhr.status + '状态描述：' + xhr.statusText)
+					}	
+				}
+			}
+			ajax({
+				url : 'http://192.168.1.115:3000',
+//				type : 'post',//不写时默认get请求
+//				async : false,//不写时默认true，异步处理
+//				dataType : 'json',//不写时默认后台响应数据为'json'字符串,
+//				data : 'name=xiaoming&sex=man',//使用对象格式储存数据更清晰明了
+				data : {
+					name : 'xiaoming' ,
+					sex : 'man'
+				},
+				success : function(result){					
+					//result为后台响应的数据，可在此做各种处理
+				}
+			})
+		</script>
+	</body>
+</html>

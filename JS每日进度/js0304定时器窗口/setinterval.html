@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body style="height: 1600px;">
+		<script>
+			//定时器基本格式
+			/*var num=0;
+			var time=setInterval(function(){
+				if(num<5){
+					console.log(num);
+					num++;
+				}else{
+					clearInterval(time);
+				}
+			},1000);*/
+			//函数格式
+			/*var num=0;
+			var time=setInterval(fn,1000);
+			function fn(){
+				if(num<5){
+					console.log(num);
+					num++;
+				}else{
+					clearInterval(time);
+				}
+			}*/
+			//变种一:闭包函数
+/*			var time=setInterval(fn(2),1000);
+			function fn(num){
+				var num=0;//声明在函数内部从0开始，在函数外部从传入的实参开始
+				return function(){
+					if(num<5){
+						console.log(num);
+						num++;
+					}else{
+						clearInterval(time);
+					}
+				}
+			}*/
+			//变种二：字符串代码格式
+//			eval('console.log(true)');
+			/*var time=setInterval('fn(0)',1000);//有局限,只会重复执行fn(0);
+			function fn(num){
+				if(num<5){
+					console.log(num);
+					num++;
+				}else{
+					clearInterval(time);
+				}
+			}*/
+			//延时定时器基本格式
+//			var time=setTimeout(function(){
+//				console.log(5);
+//			},5000)//5s后执行，且只执行一次
+			//滚动条滚动
+			//scrollTo(x,y)滚动条移动到指定位置
+			/*var y=0;
+			var time=setInterval(function(){
+				y+=10;
+				scrollTo(0,y);
+			},100)*/
+			//scrollBy(x,y)滚动条增量x,增量y
+			/*var time=setInterval(function(){
+				scrollBy(0,10);
+			},1000)*/
+			//open()打开页面     地址     新页面/自身     新页面大小   
+			var demo=open('bom.html','_blank','width=400,height=400');
+		</script>
+	</body>
+</html>

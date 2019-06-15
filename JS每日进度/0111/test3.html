@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>练习3<</title>
+			<style type="text/css">
+				*{padding: 0px;margin: 0px;}
+				a{text-decoration: none;color: black;}
+				a:hover{color: #4B86D1;}
+			.playlist{
+				width: 1225px;
+				height: 307px;
+				margin: 0px auto;
+			}
+			.container{
+				width: 225px;
+				height: 287px;
+				padding: 10px;
+				float: left;
+			}
+			.box{
+				width: 225px;
+				height: 225px;	
+				position: relative;
+			}
+			.box-cover{
+				width: 100%;
+				height: 100%;
+				background: rgba(0,0,0,0.5);
+				position: absolute;
+				top: 0px;
+				left: 0px;
+				display: none;
+			}
+			.box:hover .box-cover{display: block;}
+			.cover-album{
+				width:100%;
+				height: 100%;
+			}
+			.cover-play{
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -32px;
+				margin-left: -32px;
+			}
+			.container p{
+				color: gray;
+				margin-top: 10px;
+			}
+			.album{color: black;font-weight: bold;}
+			.singer{color: gray;}
+			</style>
+	</head>
+	<body>
+		<div class="playlist">
+			<div class="container">
+				<div class="box">
+					<img class="cover-album" src="img/1.jpg"/>
+					<div class="box-cover">
+						<img class="cover-play" src="img/cover-play.png"/>
+					</div>
+				</div>
+				<p><a class="album" href="#">爱个够</a></p>
+				<p><a class="singer" href="#">海鸣威</a></p>
+			</div>
+
+			<div class="container">
+				<div class="box">
+					<img class="cover-album" src="img/2.jpg"/>
+					<div class="box-cover">
+						<img class="cover-play" src="img/cover-play.png"/>
+					</div>
+				</div>
+				<p><a class="album" href="#">谢芳菲</a></p>
+				<p><a class="singer" href="#">双笙</a></p>
+			</div>
+
+			<div class="container">
+				<div class="box">
+					<img class="cover-album" src="img/3.jpg"/>
+					<div class="box-cover">
+						<img class="cover-play" src="img/cover-play.png"/>
+					</div>
+				</div>
+				<p><a class="album" href="#">一粒米</a></p>
+				<p><a class="singer" href="#">云朵</a></p>
+			</div>
+
+			<div class="container">
+				<div class="box">
+					<img class="cover-album" src="img/4.jpg"/>
+					<div class="box-cover">
+						<img class="cover-play" src="img/cover-play.png"/>
+					</div>
+				</div>
+				<p><a class="album" href="#">儿子娃娃</a></p>
+				<p><a class="singer" href="#">那吾克热LIL-EM</a></p>
+			</div>
+
+			<div class="container">
+				<div class="box">
+					<img class="cover-album" src="img/5.jpg"/>
+					<div class="box-cover">
+						<img class="cover-play" src="img/cover-play.png"/>
+					</div>
+				</div>
+				<p><a class="album" href="#">小火锅</a></p>
+				<p><a class="singer" href="#">萌萌哒天团</a>/<a class="singer" href="#">李彩瑞</a></p>
+			</div>
+		</div>
+	</body>
+</html>

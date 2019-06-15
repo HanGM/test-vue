@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul class="banner" style="background: #080;">
+			<li>我是第1个li</li>
+			<li>我是第2个li</li>
+			<li>我是第3个li</li>
+			<li>我是第4个li</li>
+			<li>我是第5个li</li>
+		</ul>
+		<a href="#">a标签</a>
+		<script>
+			var ul=document.getElementsByTagName('ul')[0];
+			var a=document.getElementsByTagName('a')[0];
+			var li=document.getElementsByTagName('li')[2];
+			ul.replaceChild(a,li);
+			console.log(ul==ul.cloneNode());//本体和克隆体是两个不同的对象
+			console.log(ul.cloneNode());//元素标签克隆
+			console.log(ul.cloneNode(true));//深度克隆
+		</script>
+	</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.main{
+				border: 2px solid black;
+			}
+			.main h1{
+				height: 80px;
+				line-height: 80px;
+				text-align: center;
+				background-color: black;
+				color: white;
+			}
+			.menu{
+				overflow: hidden;
+			}
+			.menu ul{
+				width: 50%;
+				float: left;
+				list-style-type: none;
+			}
+			.menu ul li{
+				padding:10px 50px;
+				border-right: 1px solid black;
+			}
+			.menu ul li:hover{
+				background: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<h1>点菜系统</h1>
+			<div class="menu">
+				<ul>
+					<li>水果</li>
+					<li>饮料</li>
+					<li>面食</li>
+					<li>凉菜</li>
+					<li>热菜</li>
+				</ul>
+				<ul class="newUl">
+				</ul>
+			</div>
+		</div>
+		<script>
+			var list=document.getElementsByTagName('li');
+			var newUl=document.getElementsByClassName('newUl');
+			for(var i=0;i<list.length;i++){
+				list[i].onclick=function(){
+				var newLi=document.createElement('li');
+					newUl[0].appendChild(newLi);
+					newLi.innerHTML=this.innerHTML;
+				}
+			}
+		</script>
+		<!--<div class="header">
+		</div>
+		<button>创建</button>
+		<button>取消</button>
+		<script>
+			var header=document.getElementsByClassName('header')[0];
+			var but=document.getElementsByTagName('button')[0];
+			var btn=document.getElementsByTagName('button')[1];
+			but.onclick=function(){
+				var h1=document.createElement('h1');
+				header.appendChild(h1);
+				h1.innerHTML='我是大标题h1';
+			}
+			btn.onclick=function(){
+				document.write('<h1>我是另一个大标题</h1>');
+			}
+		</script>-->
+	</body>
+</html>

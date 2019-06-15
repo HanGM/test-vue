@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery轮播图</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style:none;
+			}
+			.banner{
+				width: 600px;
+				height: 400px;
+				position: relative;
+				margin: auto;
+				overflow: hidden;
+			}
+			.banner li,.banner img{
+				width: 600px;
+				height: 400px;
+			}
+			.banner ul{
+				width: 4800px;
+				overflow: hidden;
+			}
+			.banner ul li{
+				float: left;
+			}
+			.banner .btn{
+				position: absolute;
+				top: 160px;
+				width: 40px;
+				height: 80px;
+				line-height: 80px;
+				text-align: center;
+				background-color: rgba(0,0,0,.4);
+				font-size: 20px;
+				font-family: '宋体' "微软雅黑";
+				cursor: pointer;
+			}
+			.banner .prev{
+				left: 0;
+			}
+			.banner .next{
+				right:0;
+			}
+			.banner .item{
+				position: absolute;
+				bottom: 15px;
+			}
+			.banner .item span{
+				float: left;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background-color: rgba(255,0,0,.4);
+				margin: 0 5px;
+			}
+			.banner .item span.cur{
+				background-color: rgba(255,0,0,.8)
+			}
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<ul>
+				<li><img src="img/1.jpg" alt="" /></li>
+				<li><img src="img/2.jpg" alt="" /></li>
+				<li><img src="img/3.jpg" alt="" /></li>
+				<li><img src="img/4.jpg" alt="" /></li>
+				<li><img src="img/5.jpg" alt="" /></li>
+				<li><img src="img/6.jpg" alt="" /></li>
+			</ul>
+			<div class="btn prev">&lt;</div>
+			<div class="btn next">&gt;</div>
+			<div class="item">
+				<span class="cur"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<script src="jquery.js"></script>
+		<script>
+			var first = $('.banner li').first().clone();
+			var last = $('.banner li').last().clone();
+			$('.banner .item').css('left',($('.banner').width()-$('.item').width())/2)
+			$('.banner ul').append($('.banner li').first().clone(first)).prepend(last).css('marginLeft',-$('.banner').width());
+			var num =0;
+			$('.next').click(function(){
+				$('.banner ul').animate({
+					marginLeft:'-=' + $('.banner').width()
+				},400,function(){
+					if(num >= $('.banner li').length-3){
+						num = 0;
+						$('.banner ul').css('marginLeft',-$('.banner').width())
+					}else{
+						num ++;
+					}
+					$('.banner span').eq(num).addClass('cur').siblings().removeClass('cur')
+				})
+			})
+			$('.prev').click(function(){
+				$('.banner ul').animate({
+					marginLeft:'+=' + $('.banner').width()
+				},400,function(){
+					if(num <= 0){
+						num = $('.banner li').length-3;
+						$('.banner ul').css('marginLeft',-($('.banner li').length-2)*$('.banner').width())
+					}else{
+						num --;
+					}
+					$('.banner span').eq(num).addClass('cur').siblings().removeClass('cur')
+				})	
+			})
+			$('.banner span').click(function(){
+				var num = $(this).index();
+				$(this).addClass('cur').siblings().removeClass('cur')
+				$('.banner ul').animate({
+					marginLeft: -(num+1)*$('.banner').width()
+				})
+			})
+		</script>
+	</body>
+</html>

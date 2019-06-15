@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<p>账号：<input type="text" class="user"/></p>
+		<p>密码：<input type="password" class="pass"/></p>
+		<p>姓名：<input type="text" class="name"/></p>
+		<p><button>注册</button></p>
+		<p><button class="btn01">获取注册用户列表</button></p>
+		<script>
+			var btn = $('button');
+			var btn01 = $('.btn01');
+			console.log(btn01)
+			//从后台获取注册用户列表
+			btn01.onclick = function(){
+				var xhr = new XMLHttpRequest();
+				//监听异步程序进程
+				xhr.onreadystatechange = function(){
+					//异步程序处理完成
+					if(xhr.readyState == 4){
+						if(xhr.status == 200){
+							console.log(xhr.responseText)
+						}else{
+							console.log('请求错误，状态码：' + xhr.status + '错误描述：' + xhr.statusText);
+						}
+					}
+				}
+				xhr.open('get','http://192.168.1.115:3000/fcjy/getUserInfo',true);
+				xhr.send(null);
+			}
+			//注册提交后台
+			btn.onclick = function(){
+				var xhr = new XMLHttpRequest();
+				//监听异步程序进程
+				xhr.onreadystatechange = function(){
+					//异步程序处理完成
+					if(xhr.readyState == 4){
+						if(xhr.status == 200){
+							console.log(xhr.responseText)
+						}else{
+							console.log('请求错误，状态码：' + xhr.status + '错误描述：' + xhr.statusText);
+						}
+					}
+				}
+				xhr.open('post','http://192.168.1.115:3000/fcjy/register',true)
+				xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+				xhr.send('user=' + $('.user').value + '&pass=' + $('.pass').value + '&name=' + $('.name').value);
+			}
+			function $(selector){
+				return document.querySelector(selector);
+			}
+			
+		</script>
+	</body>
+</html>

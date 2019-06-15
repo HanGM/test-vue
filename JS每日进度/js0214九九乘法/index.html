@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>js实现table表格</title>
+	</head>
+	<body>
+		<table>
+			<caption>课程表</caption>
+			<tr>
+				<th></th>
+			</tr>
+			<tr>
+				<td></td>
+			</tr>
+		</table>
+		<table border="" cellspacing="" cellpadding="">
+			<tr><th>Header</th></tr>
+			<tr><td>Data</td></tr>
+		</table>
+		<script>
+			var x=0;
+			document.write('<table border="1" bordercolor="blue">');
+			document.write('<caption>九九乘法口诀表</caption>');
+			while(x<10){
+				if(x==0){
+					document.write('<tr style="background: blue; color: white;">');
+				}else{
+					document.write('<tr>');
+				}
+				
+				var y=1;
+				while(y<10){
+					if(x==0 && y==1){
+						document.write('<th>一</th>');
+					}else if(x==0 && y==2){
+						document.write('<th>二</th>');
+					}else if(x==0 && y==3){
+						document.write('<th>三</th>');
+					}else if(x==0 && y==4){
+						document.write('<th>四</th>');
+					}else if(x==0 && y==5){
+						document.write('<th>五</th>');
+					}else if(x==0 && y==6){
+						document.write('<th>六</th>');
+					}else if(x==0 && y==7){
+						document.write('<th>七</th>');
+					}else if(x==0 && y==8){
+						document.write('<th>八</th>');
+					}else if(x==0 && y==9){
+						document.write('<th>九</th>');
+					}else if(y%2==1){
+						document.write('<td style="background: red;">'+x+'*'+y+'='+x*y+'</td>');
+					}else{
+						document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+					}
+					
+					y++;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+		</script>
+	</body>
+</html>

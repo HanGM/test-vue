@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			var m=10;
+//			while(m<10){
+//				console.log('while循环'+m);
+//				m++;
+//			}
+//			var n=10;
+//			do{
+//				console.log('do while循环'+n);
+//				n++;
+//			}while(n<10);
+
+//		for(var i=0;i<10;i++){
+//				console.log('for 循环结构'+i)
+//			}
+//			var j=0;
+//			for(;j<10;){
+//				console.log('for 循环结构2'+j)
+//				j++;
+//			}
+		document.write('<h2>九九乘法表</h2>');
+        document.write('<table border="1">');
+        for(var x=1;x<10;x++){
+        	document.write('<tr>');
+        	for(var y=1;y<10;y++){
+        		document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');   
+        
+		//
+        document.write('<h2>九九乘法表1</h2>');
+        document.write('<table border="1">');
+        for(var x=1;x<10;x++){
+        	if(x%2==1){
+        		document.write('<tr style="background: red;">');
+        	}else{
+        		document.write('<tr>');
+        	}
+        	for(var y=1;y<10;y++){
+        		document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+        document.write('<h2>九九乘法表2</h2>');
+        document.write('<table border="1">');
+        for(var x=1;x<10;x++){
+        	document.write('<tr>');
+        	for(var y=1;y<10;y++){
+        		if(y%2==1){
+        			document.write('<td style="background: red;">'+x+'*'+y+'='+x*y+'</td>');
+        		}else{
+        			document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        		}	
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+        document.write('<h2>九九乘法表3</h2>');
+        document.write('<table border="1">');
+        for(var x=1;x<10;x++){
+        	document.write('<tr>');
+        	for(var y=1;y<10;y++){
+        		if(y<=x){
+        			document.write('<td style="background: red;">'+x+'*'+y+'='+x*y+'</td>');
+        		}else{
+        			document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        		}	
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+        document.write('<h2>九九乘法表4</h2>');
+        document.write('<table border="1">');
+        for(var x=1;x<10;x++){
+        	document.write('<tr>');
+        	for(var y=1;y<10;y++){
+        		if(y>=x){
+        			document.write('<td style="background: red;">'+x+'*'+y+'='+x*y+'</td>');
+        		}else{
+        			document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        		}	
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+		document.write('<h2>九九乘法表5</h2>');
+        document.write('<table border="1">');
+        for(var x=1;x<10;x++){
+        	document.write('<tr>');
+        	for(var y=1;y<10;y++){
+        		if(x%2==1&&y%2==1||x%2==0&&y%2==0){
+        			document.write('<td style="background: red;">'+x+'*'+y+'='+x*y+'</td>');
+        		}else{
+        			document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        		}	
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+		document.write('<h2>九九乘法表6</h2>');
+        document.write('<table border="1">');
+        for(var x=1;x<10;x++){
+        	document.write('<tr>');
+        	for(var y=1;y<10;y++){
+        		if(x%2==1&&y%2==0||x%2==0&&y%2==1){
+        			document.write('<td style="background: red;">'+x+'*'+y+'='+x*y+'</td>');
+        		}else{
+        			document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        		}	
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+		document.write('<h2>九九乘法表7</h2>');
+        document.write('<table border="1">');
+        for(var x=1;x<10;x++){
+        	document.write('<tr>');
+        	for(var y=1;y<=x;y++){	
+        		document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+		document.write('<h2>九九乘法表8</h2>');
+        document.write('<table border="1">');
+        for(var x=9;x>0;x--){
+        	document.write('<tr>');
+        	for(var y=9;y>=x;y--){	
+        		document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+		document.write('<h2>九九乘法表9</h2>');
+        document.write('<table border="1">');
+        for(var x=1;x<10;x++){
+        	document.write('<tr>');
+        	for(var y=x;y>=x&&y<10;y++){	
+        		document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+		document.write('<h2>九九乘法表10</h2>');
+        document.write('<table border="1">');
+        for(var x=9;x>0;x--){
+        	document.write('<tr>');
+        	for(var y=x;y<=x&&y>0;y--){	
+        		document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+		document.write('<h2>九九乘法表11</h2>');
+        document.write('<table border="1">');
+        for(var x=1;x<10;x++){
+        	document.write('<tr>');
+        	for(var y=9;y>=x&&y>0;y--){	
+        		document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+        //
+		document.write('<h2>九九乘法表12</h2>');
+        document.write('<table border="1">');
+        for(var x=9;x>0;x--){
+        	document.write('<tr>');
+        	for(var y=1;y<=x&&y<10;y++){	
+        		document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+        	}
+        	document.write('</tr>');
+        }
+        document.write('</table>');
+        
+		</script>
+	</body>
+</html>

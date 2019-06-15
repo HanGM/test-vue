@@ -1,0 +1,43 @@
+/*reset*/
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	min-width: 1100px;
+	background-color: #F1F2F6;
+	font-size: 16px;
+	font-family: STKaiti, KaiTi_GB2312, "华文楷体", "宋体", Arial, Helvetica, sans-serif;
+	overflow-x: hidden;
+}
+li{
+	list-style: none;
+}
+img{
+	border: none;/*兼容IE*/
+}
+a{
+	text-decoration: none;
+}
+/*public*/
+.clearfix:before,.clearfix:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.pull-left{
+	float: left;
+}
+.pull-right{
+	float: right;
+}
+.text-left{
+	text-align: left;
+}
+.text-right{
+	text-align: right;
+}
+.container{
+	width: 1100px;
+	margin: auto;
+}

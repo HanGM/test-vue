@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>cookie记录多条数据</title>
+	</head>
+	<body>
+		<p>账号:<input type="text"/></p>
+		<p>密码:<input type="password"/></p>
+		<p>邮箱:<input type="email"/></p>
+		<p>手机号:<input type="phone"/></p>
+		<button>注册</button>
+		<script>
+			var user = $('input[type=text]');
+			var pass = $('input[type=password]');
+			var email = $('input[type=email]');
+			var phone = $('input[type=phone]');
+			var btn = $('button');
+			//点击储存多条数据
+			btn.onclick = function(){
+				var obj = {
+					user : user.value,
+					pass : pass.value,
+					email : email.value,
+					phone : phone.value
+				}
+				//将对象转成json字符串，以便存储
+				setCookie('data',JSON.stringify(obj),7)	
+			}
+			console.log(document.cookie)
+			var data = getCookie('data');
+			//判断cookie值存在，提取数据
+			if(data != undefined){
+				//将json字符串转成对象，以便提取使用
+				var result = JSON.parse(data);
+				user.value = result.user
+				pass.value = result.pass
+				email.value = result.email
+				phone.value = result.phone
+				console.log(result)
+			}
+			
+			
+			function getCookie(key){
+				var arr = document.cookie.split(';');
+				for( var i=0;i<arr.length;i++){
+					if(arr[i].split('=')[0].trim() === key){
+						return arr[i].split('=')[1];
+					}
+				}
+			}
+			function setCookie(key,value,day){
+				var str = key + '=' + value;
+				if(typeof day != undefined){
+					var date = new Date();
+					date.setDate(date.getDate() + day);
+					str += ';expires=' + date;
+				}
+				document.cookie = str;
+			}
+			function $(selector){
+				return document.querySelector(selector);
+			}
+		</script>
+	</body>
+</html>

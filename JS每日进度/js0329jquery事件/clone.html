@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JQUERY点菜系统</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			.box h1{
+				height: 40px;
+				line-height: 40px;
+				color: #fff;
+				background-color: #000;
+			}
+			.box{
+				width: 600px;
+				border: 1px solid black;
+				position: relative;
+				overflow: hidden;
+				margin: auto;
+				text-align: center;
+			}
+			.box:after{
+				content: '';
+				position: absolute;
+				height: 100%;
+				width: 1px;
+				left: 50%;
+				background-color: #000;
+			}
+			.box ul{
+				float: left;
+				width: 50%;
+			}
+			.box ul li{
+				height: 38px;
+				line-height: 38px;
+				cursor: pointer;
+			}
+			.box ul li:hover{
+				background-color: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<h1>点菜系统</h1>
+			<ul>
+				<li>菜名1</li>
+				<li>菜名2</li>
+				<li>菜名3</li>
+				<li>菜名4</li>
+				<li>菜名5</li>
+			</ul>
+			<ul></ul>
+		</div>
+		<script src="jquery.js"></script>
+		<script>
+			$('li').click(function(){
+				$('ul').last().append($(this).clone())
+			})
+		</script>
+	</body>
+</html>

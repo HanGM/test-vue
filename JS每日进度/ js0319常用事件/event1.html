@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 100px;
+				height: 100px;
+				background: #bfa;
+				position: absolute;
+			}
+			.box2{
+				width: 100px;
+				height: 100px;
+				background: #bba;
+				position: absolute;
+				left: 200px;
+			}
+		</style>
+	</head>
+	<body style="width: 4000px;height: 2000px;">
+		<div class="box"></div>
+		<div class="box2"></div>
+		<script>
+			var box=document.querySelector('.box');
+			var flag=false;
+			var theX=0,theY=0;
+			box.onmousedown=function(event){
+				flag=true;
+				var evt=event||window.event;
+				theX=evt.clientX-this.offsetLeft;
+				theY=evt.clientY-this.offsetTop;
+			}
+			box.onmouseup=function(){
+				flag=false;
+			}
+			document.onmousemove=function(event){
+				var evt=event||window.event;
+//				var sl=document.body.scrollLeft||document.documentElement.scrollLeft;
+//				var st=document.body.scrollTop||document.documentElement.scrollTop;
+//				console.log(sl,st)
+				if(flag){
+//					box.style.left=event.clientX-sl-theX+'px';
+//					box.style.top=event.clientY-st-theY+'px';
+					box.style.left=evt.clientX-theX+'px';
+					box.style.top=evt.clientY-theY+'px';
+				}
+//				if(flag){
+//					box.style.left=evt.clientX+'px';
+//					box.style.top=evt.clientY+'px';
+//				}
+			}
+			
+//			document.onclick=function(event){
+//				var evt=event||window.event;
+//				box.style.left=evt.clientX+'px';
+//				box.style.top=evt.clientY+'px';
+//				console.log(evt)
+//			}
+//			document.onmousemove=function(event){
+//				var evt=event||window.event;
+//				box.style.left=evt.clientX+'px';
+//				box.style.top=evt.clientY+'px';
+//				console.log(evt)
+//			}
+		</script>
+	</body>
+</html>

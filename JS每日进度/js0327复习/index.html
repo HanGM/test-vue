@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#box{
+				width: 100px;
+				height: 100px;
+				background-color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box"></div>
+		<script>
+			var box = document.getElementById('box');
+			console.time('从获取到打印元素样式时间');
+			console.log(getComputedStyle(box,null).width);
+			console.timeEnd('从获取到打印元素样式时间');
+			//下面这种方式性能更优
+			console.time('打印元素样式时间');
+			var style = getComputedStyle(box,null);
+			console.log(style.width);
+			console.timeEnd('打印元素样式时间');
+			
+			console.log(Function instanceof Object)
+			console.log(Array instanceof Object)
+			console.log(String instanceof Object)
+			console.log(Boolean instanceof Object)
+			console.log(Number instanceof Object)
+			
+			console.log(typeof NaN)
+			//NaN属于number类型,却代表不是数字，一般用于表示运算错误，算是个提示符，其不等于其自身也不等于任何值
+			//null属于object类型，却代表对象为空，不包含任何东西，是一个特殊的类型
+			console.log(typeof null)
+			console.log(Object instanceof null)
+			
+			
+			console.log(null instanceof Object)
+			console.log(undefined instanceof Object)
+		</script>
+		<!--<script>
+			//展开数组
+			var arr = [2,5,9];
+			console.log(Math.min(...arr))
+			function add(a,b,c){
+				return a+b+c;
+			}
+			console.log(add(...arr))
+		</script>-->
+	</body>
+</html>

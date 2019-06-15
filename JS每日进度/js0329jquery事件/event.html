@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jquery事件</title>
+		<style>
+			.box{
+				width: 400px;
+				height: 400px;
+				background-color: red;
+			}
+			img{
+				width: 400px;
+				height: 400px;
+			}
+			.father{
+				width: 200px;
+				height: 200px;
+				padding: 50px;
+				background-color: green;
+				overflow: auto;
+			}
+			.child{
+				width: 200px;
+				height: 1200px;
+				background-color: gold;
+			}
+		</style>
+	</head>
+	<body>
+		<button>点我</button>
+		<div class="father">
+			<div class="child"></div>
+		</div>
+		<!--<div class="box"></div>-->
+		<!--<img src="img/1.jpg"/>-->
+		
+		<form action="javascript:;" name="myForm">
+			<input type="text" />
+			<input type="submit" />
+		</form>
+		<script src="jquery.js"></script>
+		<script>
+//			$('.child').mouseover(function(event){
+//				event.preventDefault()
+//				console.log('经过')
+//			})
+//			$('.father').bind({
+//				click:function(){
+//					console.log('点击事件')
+//				},
+//				mouseover:function(){
+//					console.log('鼠标经过事件')
+//				},
+//				mousedown:function(){
+//					console.log('鼠标按下事件')
+//				}
+//			})
+//			$('.father').bind('click mouseover keydown',function(){
+//				console.log('绑定多个事件')
+//			})
+//			$('form').one('submit',function(){
+//				console.log('提交完成')
+//			})
+//			$('form').unbind('submit')
+//			$('form').submit(function(){
+//				console.log('提交完成')
+//			})
+//			$(window).resize(function(){
+//				console.log('窗口变了')
+//			})
+//			$('.father').scroll(function(){
+//				console.log('滚了')
+//			})
+//			$('.father').mouseenter(function(){
+//				console.log('鼠标移入')
+//			})
+//			$('.father').mouseleave(function(){
+//				console.log('鼠标离开')
+//			})
+//			$('.father').mousedown(function(){
+//				console.log('鼠标按下')
+//			})
+//			$('.father').mouseup(function(){
+//				console.log('鼠标松开')
+//			})
+//			$('.father').mouseout(function(){
+//				console.log('鼠标离开')
+//			})
+//			$('.father').mouseover(function(){
+//				console.log('鼠标经过')
+//			})
+//			$('input').keypress(function(){
+//				console.log('按住了')
+//			})
+//			$(document).keyup(function(){
+//				console.log('键盘松开')
+//			})
+//			$(document).keydown(function(){
+//				console.log('键盘按下')
+//			})
+//			$('input').focus(function(){
+//				console.log('获取焦点')
+//			})
+//			$('input').blur(function(){
+//				alert('失去焦点')
+//			})
+//			$('input').change(function(){
+//				alert('输入完成')
+//			})
+//			$('button').dblclick(function(){
+//				$('.box').text('双击了我')
+//			})
+//			$('img').load(function(){
+//				alert('图片加载完成')
+//			})
+		</script>
+	</body>
+</html>

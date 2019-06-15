@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>楼层跳转动画</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			.main{
+				height: 400px;
+				border: 1px solid black;
+				margin: 50px 0;
+			}
+			.nav{
+				width: 80px;
+				position: fixed;
+				top: 50px;
+				right: 20px;
+				color: #fff;
+				text-align: center;
+				cursor: pointer;
+			}
+			.nav li,.nav .backTop{
+				height: 40px;
+				line-height: 40px;
+				margin: 5px 0;
+				border-radius: 10px;
+				background-color: rgba(0,0,0,.5);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">内容1</div>
+		<div class="main">内容2</div>
+		<div class="main">内容3</div>
+		<div class="main">内容4</div>
+		<div class="main">内容5</div>
+		<div class="main">内容6</div>
+		<ul class="nav">
+			<li>跳到1</li>
+			<li>跳到2</li>
+			<li>跳到3</li>
+			<li>跳到4</li>
+			<li>跳到5</li>
+			<li>跳到6</li>
+			<div class="backTop">返回顶部</div>
+		</ul>
+		
+		<script src="jquery.js"></script>
+		<script>
+			$('.nav li').click(function(){
+				var main =$('.main').eq($(this).index());
+				$('html,body').animate({
+					scrollTop:main.offset().top
+				})
+			})
+			//
+			$('.backTop').click(function(){
+				$('html,body').animate({
+					scrollTop:0
+				},400)
+			})
+		</script>
+	</body>
+</html>

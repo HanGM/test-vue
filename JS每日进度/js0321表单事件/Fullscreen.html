@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>全屏滚动</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrapper{
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				overflow: hidden;
+			}
+			.wrap{
+				width: 100%;
+			}
+		</style>
+		<script src="common.js"></script>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="wrap">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+		</div>
+		<script>
+			var item=document.querySelectorAll('.item');
+			var wrap=document.querySelector('.wrap');
+			var color=['red','blue','green'];
+			var num=0;
+			var flag=true;
+			for(var i=0;i<item.length;i++){
+				item[i].style.height=innerHeight+'px';
+				item[i].style.background=color[i];
+			}
+			eventHandler(wrap,'mousewheel',move);
+			eventHandler(wrap,'DOMMouseScroll',move);
+			function move(evt){
+				console.log(flag)
+				if(flag){
+					flag=false;
+					if(getDelta(evt)<0){
+						num=num>=item.length-1?item.length-1:++num;
+					}else if(getDelta(evt)>0){
+						num=num<=0?0:--num;
+					}
+					animate(wrap,{
+						marginTop:-num*innerHeight
+					},500,function(){
+						flag=true;
+					})
+				}	
+				console.log(flag)
+			}
+		</script>
+	</body>
+</html>

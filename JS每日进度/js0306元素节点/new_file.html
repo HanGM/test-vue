@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			body,h1,ul,li{
+				margin: 0;
+				padding: 0;
+			}
+			h1{
+				height: 60px;
+				line-height: 60px;
+				background-color: #000;
+				color: #fff;
+				text-align: center;
+			}
+			.main{
+				border: 2px solid #000;
+			}
+			.menu{
+				overflow: hidden;
+			}
+			.menu ul{
+				list-style: none;
+				float: left;
+				width: 50%;
+			}
+			.menu ul li{
+				padding: 20px 40px;
+				border-right: 2px solid #000;
+			}
+			.menu ul li:hover{
+				background-color: #0f0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="main">
+			<h1>饮料点餐系统</h1>
+			<div class="menu">
+				<ul>
+					<li>抹茶</li>
+					<li>奶茶</li>
+					<li>咖啡</li>
+					<li>牛奶</li>
+					<li>红茶</li>
+					<li>黑茶</li>
+				</ul>
+				<ul id="drink"></ul>
+			</div>
+		</div>
+		<script>
+			var menu=document.getElementsByTagName('li');
+			var drink=document.getElementById('drink');
+			for(var i=0;i<menu.length;i++){
+				menu[i].onclick=function(){
+					var li=document.createElement('li');
+					drink.appendChild(li);
+					li.innerHTML=this.innerHTML;
+					
+				}
+			}
+		</script>
+		<!--<div>
+			<p></p>
+		</div>
+		<a href=""></a>
+		<div></div>
+		<script>
+			var div=document.getElementsByTagName('div')[0];
+			var p=document.getElementsByTagName('p')[0];
+			var a=document.getElementsByTagName('a')[0];
+			div.insertBefore(a,p);//向节点对象添加子节点
+			var div1=document.getElementsByTagName('div')[1];
+			div1.appendChild(a);//向空节点对象添加节点
+		</script>-->
+	</body>
+</html>

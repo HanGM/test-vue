@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<div class="box">
+			<div>a</div>
+			<a href="">p</a>
+			<p>p</p>
+		</div>-->
+		<ul>
+			<li><h1>第1个标签</h1><span>删除</span></li>
+			<li><h1>第2个标签</h1><span>删除</span></li>
+			<li><h1>第3个标签</h1><span>删除</span></li>
+			<li><h1>第4个标签</h1><span>删除</span></li>
+		</ul>
+		<script>
+			var ul=document.getElementsByTagName('ul')[0];
+			var span=document.getElementsByTagName('span');
+			for(var i=0;i<span.length;i++){
+				span[i].onclick=function(){
+					ul.removeChild(this.parentNode);
+				}
+			}
+			console.log(span[0].parentNode.parentNode.parentNode)
+		</script>
+		<!--<script>
+			var box=document.getElementsByClassName('box')[0];
+			var a=document.getElementsByTagName('a')[0];
+			box.removeChild(a);
+		</script>-->
+		<!--<script>
+			//回调函数
+			function num(a){
+				if(a==1||a==2){
+					return 1;
+				}else{
+					return num(a-1)+num(a-2);
+				}
+			}
+			for(var i=1;i<10;i++){
+				console.log(num(i));
+			}
+			function mul(a){
+				if(a>0){
+					return a*mul(--a);
+				}else{
+					return 1;
+				}
+			}
+			console.log(mul(5));
+			console.log(null==0);
+//			console.log(null+1);
+		</script>-->
+	</body>
+</html>

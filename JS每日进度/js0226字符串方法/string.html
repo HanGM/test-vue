@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			var str='?name=xiaoming&sex=man&age=16';
+			function fn(name){
+				var arr=str.substr(1).split('&');
+				for(var i=0;i<arr.length;i++){
+					var index=arr[i].indexOf('=');
+					if(name==arr[i].substr(0,index)){
+						return arr[i].substr(index+1);
+					}
+				}
+			}
+			console.log(fn('age'));
+		</script>
+	</body>
+</html>

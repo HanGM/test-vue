@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Player(name,hp,acttack,defense){
+				this.name=name;
+				this.hp=hp;
+				this.acttack=acttack;
+				this.defense=defense;
+			}
+			Player.prototype.interAct=function(obj){
+				console.log(this.name+'对'+obj.name+'发起了攻击！');
+				var i =0;
+				while(this.hp>0&&obj.hp>0){
+					i++;
+					console.log('第'+i+'回合');
+					obj.hp-=this.acttack-obj.defense;
+					this.hp-=obj.acttack-this.defense;
+					console.log(this.name+'的血量剩余'+this.hp+'，'+obj.name+'的血量剩余'+obj.hp+'！');
+					if(this.hp<=0){
+						console.log(this.name+'失败了！');
+					}else if(obj.hp<=0){
+						console.log(obj.name+'失败了！');
+					}
+				}
+			}
+			var guan=new Player('关羽',100,88,52);
+			var qin=new Player('秦琼',100,81,49);
+			guan.interAct(qin);
+		</script>
+	</body>
+</html>

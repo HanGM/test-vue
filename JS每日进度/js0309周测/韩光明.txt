@@ -1,0 +1,65 @@
+1、数组常用方法
+ concat()
+ join()
+ slice()
+ pop()
+ push()
+ unshift()
+ shift()
+ splice()
+ sort()
+ reverse()
+
+2、字符串常用方法
+charAt()
+charCodeAt()
+indexOf()
+lastIndexOf()
+concat()
+slice()
+substr()
+subString()
+split()
+toUpperCase()
+toLowerCase()
+match()
+replace()
+
+
+3、
+ 5
+
+4、
+ undefined
+ 2
+
+5、
+小明
+
+6、
+var str='?name=xiaoming&age=17&height=160&sex=girl';
+str=str.substr(1);	
+var arr=str.split('&');			
+var obj={};			
+for(var i=0;i<arr.length;i++){
+obj[arr[i].split('=')[0]]=arr[i].split('=')[1];
+}
+7、
+点击文档一次，打印一次5
+
+8、
+number
+string
+boolean
+object
+function
+undefined
+
+9、
+call（对象,值，值...）将分别将值作为实参传入函数中
+apply（对象,[值，值...]）将值放入一个数组中然后再将数组中的元素作为实参一一传入函数中
+函数劫持对象方法
+
+10、
+==等于，只要求值相等，类型可以不等
+===全等，值相等，类型也相等

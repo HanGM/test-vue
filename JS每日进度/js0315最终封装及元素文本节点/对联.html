@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.main{
+				width: 800px;
+				height: 480px;
+				position: relative;
+				margin: auto;
+			}
+			.top{
+				width: 300px;
+				height: 60px;
+				border: 1px solid black;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+			}
+			.left{
+				width: 0;
+				border: 1px solid black;
+				position: absolute;
+				left: 80px;
+				top: 0;
+				display: none;
+			}
+			.right{
+				width: 0;
+				border: 1px solid black;
+				position: absolute;
+				right: 80px;
+				top: 0;
+				display: none;
+			}
+		</style>
+	</head>
+	<script src="common.js"></script>
+	<body>
+		<div class="main">
+			<div class="top"></div>
+			<div class="item left"></div>
+			<div class="item right"></div>
+		</div>
+		<script>
+			var main=getClass('top')[0];
+			var item=getClass('item');
+			var flag=false;
+			main.onclick=function(){
+				flag=!flag;
+				for(var i=0; i<item.length;i++){
+					if(flag){
+						item[i].style.display='block';
+						animate(item[i],{width:80},function(){
+						animate(this,{top:60,height:400})
+						});
+					}else{
+						animate(item[i],{top:0,height:0},function(){
+							animate(this,{width:0},function(){
+								this.style.display='none';
+							});
+						});
+					}	
+				}
+			}
+			
+		</script>
+	</body>
+</html>

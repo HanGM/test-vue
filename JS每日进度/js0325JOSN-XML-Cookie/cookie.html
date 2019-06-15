@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>记住账号密码</title>
+	</head>
+	<body>
+		<p>账号：<input type="text" class="user" /></p>
+		<p>密码：<input type="password" class="pass" /></p>
+		<p><input type="checkbox" class="check" />记住账号密码</p>
+		<button class="btn">登录</button>
+		<script>
+			var user = $('.user');
+			var pass = $('.pass');
+			var check = $('.check');
+			var btn = $('.btn');
+			//判断cookie是否有记录
+			if(document.cookie){
+				user.value = getCookie('user');
+				pass.value = getCookie('pass');
+			}
+			//点击按钮并选择记住账号密码，将user和pass记录到cookie中
+			btn.onclick = function(){
+				//判断是否选择记住账号密码，如选择，刷新页面账号密码不用再次输入
+				if(check.checked){
+					document.cookie = 'user='+user.value;
+					document.cookie = 'pass='+pass.value;
+				}
+			}
+			console.log(document.cookie)	
+			//获取cookie中记录的指定内容
+			function getCookie(key){
+				var arr = document.cookie.split(';');
+				for(var i=0;i<arr.length;i++){
+					if(arr[i].split('=')[0].trim() === key){
+						return arr[i].split('=')[1];
+					}
+				}
+			}
+			//去除字符串前后空格
+			String.prototype.trim = function(){
+				return this.replace(/^\s*|\s*$/g,'');
+			}
+			//获取指定类名的元素
+			function $(selector){
+				return document.querySelector(selector);
+			}
+		</script>
+	</body>
+</html>

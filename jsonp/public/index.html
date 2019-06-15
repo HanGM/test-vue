@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jsonp</title>
+		<script src="jquery.js"></script>
+	</head>
+	<body>
+		<!--<script type="text/javascript">
+			function fn(res){
+				console.log(res)
+			}
+		</script>
+		<script src="http://127.0.0.1:3000/jsonp?callback=fn"></script>-->
+		<script>
+			$.ajax({
+				url: 'http://127.0.0.1:3000/jsonp',
+				type: 'get',
+				dataType: 'jsonp',
+				success(res){
+					console.log(res)
+				}
+			})
+		</script>
+	</body>
+</html>

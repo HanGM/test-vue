@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body style="height: 6000px;">
+	<script>
+//			setInterval(function(){
+//				console.log(10);
+//			},1000);
+
+//var time=setInterval(function(){
+//	console.log(10);
+//},1000);
+//clearInterval(time);
+
+//var num=1;
+//var time=setInterval(function(){
+//	console.log(num);
+//	num++;
+//	if(num>5){
+//		clearInterval(time);
+//	}	
+//},1000);
+
+//用函数名替代函数体
+//function fn(){
+//	console.log(5);	
+//}
+//var time=setInterval(fn,1000);
+
+//闭包格式
+//function fn(num){
+//	return function(){
+//		console.log(num);
+//	}
+//}
+//var time=setInterval(fn(5),1000);
+
+//eval()方法，可以将字符串当做JS代码执行
+//function fn(num){
+////	var num=1;
+//	console.log(num);
+//}
+//var time=setInterval('fn(5)',1000);
+
+/*var num=0;
+var time=setInterval(function(){
+	console.log(num);	
+	num++;
+	if(num>5){
+		clearInterval(time);
+	}
+},1000);*/
+
+/*var num=0;
+var time=setInterval(fn,1000);
+function fn(){
+	console.log(num);	
+	num++;
+	if(num>5){
+		clearInterval(time);
+	}
+}*/
+
+/*var num=0;
+var time=setInterval(fn(0),1000);
+function fn(num){
+	return function(){
+		console.log(num);	
+		num++;
+		if(num>5){
+			clearInterval(time);
+		}
+	}	
+}*/
+
+/*
+var time=setInterval('fn(0)',1000);
+function fn(num){
+	console.log(num);	
+	num++;
+	if(num>5){
+		clearInterval(time);
+	}
+}*/
+//屏幕自动翻页
+/*var y=0;
+setInterval(function(){
+	y+=10;
+	scrollTo(0,y);
+},100);
+*/
+//setInterval(function(){
+//	scrollBy(0,10);
+//},100);
+
+//open('http://baidu.com');
+//open('http://qq.com');
+//open('bom.html');
+//模拟屏保
+var x=0,y=0,m=10,n=10;
+var time=setInterval(function(){
+	if(x>=800){
+		m=-10;
+	}else if(x<=0){
+		m=10;
+	}
+	if(y>=600){
+		n=-10;
+	}else if(y<=0){
+		n=10;
+	}
+	x+=m;
+	y+=n;
+	moveTo(x,y);
+},20)
+//页面循环移动
+/*var x=0,y=0,m=10;
+var time=setInterval(function(){
+	if(x<800&&y==0){
+		x+=10;
+	}else if(x>=800&&y<600){
+		y+=10;
+	}else if(x>0&&y>=600){
+		x-=10;
+	}else{
+		y-=10;
+	}
+	moveTo(x,y);
+},20)*/
+//页面位置移动
+/*var x=0,y=0,m=10;
+var time=setInterval(function(){
+	if(x<800){
+		x+=10;
+	}else if(y<600){
+		y+=10;
+	}
+	moveTo(x,y);
+},100)*/
+//页面大小缩放
+/*var x=200,y=200,m=10;
+var time=setInterval(function(){
+	if(x>=800){
+		m=-10;
+	}
+	x+=m;
+	y+=m;
+	if(x<=300){
+		m=10;//放大缩小无限次
+//		clearInterval(time);//放大缩小一次
+	}
+	resizeTo(x,y);
+},100)*/
+//控制页面大小
+/*var x=200,y=200,m=10;
+var time=setInterval(function(){
+	x+=m;
+	y+=m;
+	if(x>=800){//放大到指定大小(x=y)
+		clearInterval(time);
+	}
+	resizeTo(x,y);
+},100)*/
+//var demo=open('new_file.html','_blank','width=300,height=300');
+	</script>
+	</body>
+</html>

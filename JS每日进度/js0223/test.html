@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*var str='231rao';
+			var i=123;
+			console.log(str);
+			var result=str++;
+			console.log(result);*/
+//			var o={
+//				fn:function fun(){
+//					console.log(fun);
+//				}
+//			}
+//			console.log(o.fn());
+ 	/*		var result = Object.__proto__;
+ 			var result1 = Function.__proto__;
+ 			var result2 = Array.prototype;
+ 			var result3 = Number.prototype;
+ 			var result4 = String.prototype;
+ 			var result5 = Boolean.prototype;
+ 			var result6 = Object.prototype;
+ 			var result7 = Function.prototype;
+			console.log(result);
+			console.log(result1);
+			console.log(result2);
+			console.log(result3);
+			console.log(result4);
+			console.log(result5);
+			console.log(result6);
+			console.log(result7);
+			*/
+//			var num=Object;
+//			num=num++;
+//			console.log(num);
+//			console.log(undefined==null);
+			
+			/*var obj = {
+				name:'zhangshan',
+				show:function(){
+					alert(this.name);
+				}
+			}
+			obj.show();*/
+			
+			var test = {
+				m : function(){
+					var me = this;//this绑定的是实例对象test
+					console.log(this === test);
+					fn();
+					function fn(){
+						console.log(test === this);
+						console.log(test === me);
+						console.log(this);//this指的是window
+					}
+				}
+			}
+			test.m();
+		</script>
+	</body>
+</html>

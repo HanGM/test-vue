@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>xiaoguo</title>
+		<style>
+			.clearfix:after{
+				content: "";
+				display: block;
+				clear: both;
+			}
+			.banner{
+				width: 500px;
+				height: 300px;
+				margin: auto;
+				position: relative;
+			}
+			.banner .list{
+				width: 500px;
+			}
+			.banner .box{
+				width: 500px;
+				position: absolute;
+				left: 0;
+				top: 0;
+				display: none;
+			}
+			.banner .box.cur{
+				display: block;
+			}
+			.banner .box .pic{
+				float: left;
+				width: 120px;
+				height: 300px;
+				background-color: rgba(255,0,0,.6);
+				position: relative;
+				/*left: 150px;*/
+			}
+			.banner .box .text{
+				float: left;
+				width: 350px;
+				height: 300px;
+				background-color: rgba(0,255,0,.6);
+				margin-left: 30px;
+				position: relative;
+				/*left: 300px;*/
+			}
+			.banner .box .pic.cur,.banner .box .text.cur{
+				left: 0;
+			}
+			.banner .btn{
+				width: 40px;
+				height: 80px;
+				background: white;
+				position: absolute;
+				top: 110px;
+			}
+			.banner .prev{
+				left: 0;
+			}
+			.banner .next{
+				right: 0;
+			}
+			.banner .item{
+				width: 100%;
+				position: absolute;
+				bottom: 15px;
+				text-align: center;
+			}
+			.banner .item span{
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<div class="list">
+				<div class="box cur clearfix">
+					<div class="pic cur"></div>
+					<div class="text cur">111111</div>
+				</div>
+				<div class="box clearfix">
+					<div class="pic"></div>
+					<div class="text">222222</div>
+				</div>
+				<div class="box clearfix">
+					<div class="pic"></div>
+					<div class="text">333333</div>
+				</div>
+			</div>	
+			<div class="btn prev"></div>
+			<div class="btn next"></div>
+			<div class="item">
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<script src="jquery.js"></script>
+		<script>
+			var num = 0;
+			var value = 1;
+			$('.next').click(function(){
+				value =1;
+				num = num >=$('.box').length-1 ? 0 : ++num;
+				move();
+			})
+			$('.prev').click(function(){
+				value = -1;
+				num = num <=0 ? $('.box').length-1 : --num;
+				move();
+			})
+			$('span').click(function(){
+				if(num>$(this).index()){
+					value=-1;
+				}else if(num<$(this).index()){
+					value=1;
+				}
+				num = $(this).index();
+				move();
+			})
+			function move(){
+				$('.banner .box').find('.pic').css('left',150*value).next().css('left',300*value);
+				$('.banner .box').eq(num).fadeIn().siblings().hide();
+				$('.banner .box').eq(num).find('.pic,.text').animate({
+					left:0
+				})
+				
+//				$('.banner .box').eq(num).find('.pic').css('left',150*value).end().find('.text').css('left',300*value).end().fadeIn().find('.pic,.text').animate({
+//					left:0
+//				}).end().siblings('.box').fadeOut().find('.pic').css('left',150*value).end().find('.text').css('left',300*value)
+			}
+		</script>
+	</body>
+</html>

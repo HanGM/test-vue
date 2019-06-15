@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>课后作业</title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var num = 1;
+			var str = "";
+			var strOne ="真的"
+			var flag = false;
+			var nul = null;
+			var und = undefined;
+			console.log(Boolean(num));
+			console.log(Boolean(str));
+			console.log(Boolean(strOne));
+			console.log(Boolean(flag));
+			console.log(Boolean(nul));
+			console.log(Boolean(und));
+			/*其他数据类型强制转换为Boolean布尔值类型结果:
+			number 数字类型 整数，浮点数为真，NaN为假；
+			string 字符串类型 字符串内容为空时false，有内容时true；
+			boolean 布尔值类型，真时为真，假时为假，无变化。
+			null 空对象为假
+			undefined 未定义类型为假
+			*/
+			var text='你好';
+			var content =':after{content:"'+text+'";display:black;}';
+//			var content =":after{content:\""+text+"\";display:black;}";
+//			var content =':after{content:\"'+text+'\";display:black;}';
+			console.log(content);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画封装</title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				position: absolute;
+				top: 400px;
+				left: 400px;
+			}
+		</style>
+	</head>
+	<body>
+		<button>点击运动</button>
+		<div class="box"></div>
+	</body>
+	<script>
+		var btn=document.getElementsByTagName('button')[0];
+		var box=document.getElementsByClassName('box')[0];
+		var start=parseInt(getComputedStyle(box,null).left);
+		var num=parseInt(getComputedStyle(box,null).left);
+		//向左或向右运动
+		/*btn.onclick=function(){
+			animate(20,800);
+		}
+		function animate(step,target){
+			var time=setInterval(function(){
+				step=target>num?step:-Math.abs(step);
+				if(step>0&&num>=target||step<0&&num<=target){
+					clearInterval(time);
+				}else{
+					num+=step;
+				}
+				box.style.left=num+'px';
+			},100)
+		}*/
+		
+		//往复运动		
+		/*btn.onclick=function(){
+			animation(20,start,800);	
+		}
+		function animation(step,start,target){
+			var time=setInterval(function(){
+				if(num<=start){
+					step=Math.abs(step);
+				}else if(num>=target){
+					step=-Math.abs(step);
+				}
+				num+=step;
+				box.style.left=num+'px';
+			},100);
+		}*/
+		
+	</script>
+</html>

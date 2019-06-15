@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			//table0 无变化
+			document.write('<h1>无变化</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表0</caption>')
+			var x=1;
+			while(x<=9){
+				document.write('<tr>');
+				var y=1;
+				while(y<=9){
+					document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+					y++;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table1 全变红
+			document.write('<h1>全变红</h1>');
+			document.write('<table  style="background: red;" border="1">');
+			document.write('<caption>九九乘法表1</caption>')
+			var x=1;
+			while(x<=9){
+				document.write('<tr>');
+				var y=1;
+				while(y<=9){
+					document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+					y++;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table2奇数行
+			document.write('<h1>奇数行</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表2</caption>')
+			var x=1;
+			while(x<=9){
+				if(x%2==1){
+					document.write('<tr style="background: red;">');
+				}else{
+					document.write('<tr>');
+				}			
+				var y=1;
+				while(y<=9){
+					document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+					y++;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table3奇数列
+			document.write('<h1>奇数列</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表3</caption>')
+			var x=1;
+			while(x<=9){
+				document.write('<tr>');
+				var y=1;
+				while(y<=9){
+					if(y%2==1){
+						document.write('<td style="background: red;">'+x+'*'+y+'='+x*y+'</td>');
+					}else{
+						document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+					}				
+					y++;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table4奇数行奇数列||偶数行偶数列
+			document.write('<h1>奇数行奇数列||偶数行偶数列</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表4</caption>')
+			var x=1;
+			while(x<=9){
+				document.write('<tr>');
+				var y=1;
+				while(y<=9){
+					if(x%2==1&&y%2==1||x%2==0&&y%2==0){
+						document.write('<td style="background: red;">'+x+'*'+y+'='+x*y+'</td>');
+					}else{
+						document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+					}				
+					y++;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table5 奇数行偶数列||偶数行奇数列
+			document.write('<h1>奇数行偶数列||偶数行奇数列</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表5</caption>')
+			var x=1;
+			while(x<=9){
+				document.write('<tr>');
+				var y=1;
+				while(y<=9){
+					if(x%2==1&&y%2==0||x%2==0&&y%2==1){
+						document.write('<td style="background: red;">'+x+'*'+y+'='+x*y+'</td>');
+					}else{
+						document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+					}				
+					y++;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table6 正梯形显示1
+			document.write('<h1>正梯形显示1</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表6</caption>')
+			var x=1;
+			while(x<=9){
+				document.write('<tr>');
+				var y=1;
+				while(y<=x){
+					document.write('<td>'+x+'*'+y+'='+x*y+'</td>');				
+					y++;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table7 正梯形显示2
+			document.write('<h1>正梯形显示2</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表7</caption>')
+			var x=9;
+			while(x>0){
+				document.write('<tr>');
+				var y=9;
+				while(y>0&&y>=x){
+					document.write('<td>'+x+'*'+y+'='+x*y+'</td>');				
+					y--;
+				}
+				x--;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table8 倒梯形显示1(x=9,x>0,(y=1,y<=x,y++),x--)
+			document.write('<h1>倒梯形显示1</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表8</caption>')
+			var x=9;
+			while(x>0){
+				document.write('<tr>');
+				var y=1;
+				while(y<=x){
+					document.write('<td>'+x+'*'+y+'='+x*y+'</td>');				
+					y++;
+				}
+				x--;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table9 倒梯形显示2(x=9,x>0,(y=x,y<=x&&y>0,y--),x--)
+			document.write('<h1>倒梯形显示2</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表9</caption>')
+			var x=9;
+			while(x>0){
+				document.write('<tr>');
+				var y=x;
+				while(y<=x&&y>0){
+					document.write('<td>'+x+'*'+y+'='+x*y+'</td>');				
+					y--;
+				}
+				x--;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table10 倒梯形显示3(x=1,x<10,(y=9,y>=x&&y>0,y--),x++)
+			document.write('<h1>倒梯形显示3</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表10</caption>')
+			var x=1;
+			while(x<10){
+				document.write('<tr>');
+				var y=9;
+				while(y>=x&&y>0){
+					document.write('<td>'+x+'*'+y+'='+x*y+'</td>');				
+					y--;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			//table11 倒梯形显示4(x=1,x<=9,(y=x,y>=x&&y<=9,y++),x++)
+			document.write('<h1>倒梯形显示4</h1>');
+			document.write('<table border="1">');
+			document.write('<caption>九九乘法表11</caption>')
+			var x=1;
+			while(x<=9){
+				document.write('<tr>');
+				var y=x;
+				while(y>=x&&y<=9){
+					document.write('<td>'+x+'*'+y+'='+x*y+'</td>');				
+					y++;
+				}
+				x++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+		</script>
+	</body>
+</html>

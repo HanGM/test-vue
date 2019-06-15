@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件</title>
+		<style type="text/css">
+			.box{
+				width: 200px;
+				height: 200px;
+				background: #bfa;
+				border: 1px solid black;
+				position: absolute;
+			}
+			
+		</style>
+	</head>
+	<body style="width: 3000px;height: 2000px;">
+		<div class="box"></div>
+		<script>
+			var box=document.querySelector('.box');
+			//获取盒子内部鼠标实时位置
+//			box.onmousemove=function(event){
+//				event=event||window.event;
+//				var x=event.clientX;
+//				var y=event.clientY;
+//				box.innerHTML='x='+x+',y='+y;
+//			}
+			//DIV盒子随鼠标移动效果
+			document.onmousemove=function(event){
+				event=event||window.event;
+//				var left=event.pageX;//鼠标相对与当前页面坐标
+//				var top=event.pageY;//IE8及以下不兼容
+				var left=event.clientX;//鼠标相对于可见窗口的坐标
+				var top=event.clientY;//需要加上scrollTop/Left
+				var st=document.documentElement.scrollTop||document.body.scrollTop;
+				var sl=document.documentElement.scrollLeft||document.body.scrollLeft;
+				box.style.left=left+sl+'px';
+				box.style.top=top+st+'px';
+			}
+		</script>
+	</body>
+</html>

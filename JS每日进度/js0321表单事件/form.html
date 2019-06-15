@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>邮箱自动补全</title>
+		<style type="text/css">
+			.box{
+				width: 400px;
+				height: 40px;
+				border: 1px solid black;
+				position: relative;
+			}
+			.box input{
+				width: 100%;
+				height: 100%;
+				border: none;
+				padding: 0;
+				text-indent: 10px;
+				font-size: 16px;
+			}
+			.box .wrap{
+				position: absolute;
+				top: 40px;
+				left: -1px;
+				width: 100%;
+				border: 1px solid black;
+				display: none;
+			}
+			.box .wrap .item{
+				height: 30px;
+				line-height: 30px;
+				text-indent: 10px;
+				cursor: pointer;
+			}
+			.box .wrap .item.on{
+				background-color: rgba(0,255,0,.6);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<input type="email" placeholder="请输入你的邮箱"/>
+			<div class="wrap">
+				<div class="item on"><span></span>@163.com</div>
+				<div class="item"><span></span>@126.com</div>
+				<div class="item"><span></span>@qq.com</div>
+				<div class="item"><span></span>@sina.com</div>
+				<div class="item"><span></span>@yahoo.com</div>
+			</div>
+		</div>
+		<script>
+			var box = document.querySelector('.box');
+			var inp = document.querySelector('input');
+			var wrap = document.querySelector('.box .wrap');
+			var item = document.querySelectorAll('.box .wrap .item');
+			var span = document.querySelectorAll('.box .wrap .item span');
+			var num = 0;
+			inp.onfocus = display;
+			function display(){
+				if(inp.value.indexOf('@') != -1){
+					wrap.style.display = 'none';
+				}else{
+					wrap.style.display = 'block';
+				}
+			}
+			inp.onblur = function(){
+				wrap.style.display = 'none';
+			}
+			inp.onkeyup = function(){
+				display();
+				for(var i=0;i<item.length;i++){
+					span[i].innerHTML = inp.value;
+				}
+			}
+			inp.onkeydown = function(evt){
+				var e = evt || window.event;
+				switch(e.keyCode){
+					case 38:
+					num = num <= 0 ? 0 : --num;
+					break;
+					case 40:
+					num = num >= item.length-1 ? item.length-1 : ++num;
+					break;
+					case 13:
+					if(inp.value.indexOf('@') == -1){
+						wrap.style.display = 'block';
+						inp.value = item[num].innerHTML.replace(/<\/?span>/ig,'');
+					}
+					break;
+				}
+				setItem();
+			}
+			for(var i=0;i<item.length;i++){
+				item[i].index = i;
+				item[i].onmouseover = function(){
+					num = this.index;
+					setItem();
+				}
+				function setItem(){
+					for(var j=0;j<item.length;j++){
+						item[j].className = 'item';
+					}
+					item[num].className = 'item on';
+				}
+				item[i].onmousedown = function(){
+					inp.value = item[num].childNodes[0].innerHTML + item[num].childNodes[1].nodeValue;
+//					inp.value = item[num].innerHTML.replace(/<\/?span>/ig,'');
+				}
+			}
+		</script>
+	</body>
+</html>

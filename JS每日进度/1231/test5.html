@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>练习</title>
+		<style type="text/css">
+			*{padding: 0px;margin: 0px;}
+			html,body{width: 100%;height: 100%;
+			background: url(img/注册-bg.jpg) no-repeat;
+			background-size: 100% 100%;overflow: hidden;}
+			.box{width: 900px;height: 500px;margin: 200px 500px;
+			border: 1px solid groove;box-shadow: 0px 5px 5px gray;}
+			.box1{width: 400px;height: 400px;
+			background: url(img/20181231094934.png) no-repeat center center;
+			margin: 50px 50px 0px;}
+			.box2{width: 400px;height: 400px;margin: -400px 450px 50px;
+			overflow: hidden;}
+			h1{margin: 10px 50px;}
+			input{width: 300px;height: 60px;background: #EEEEEE;
+			border: 1px solid gray;border-radius: 30px/30px;margin: 10px 50px;}
+			.s1{text-indent: 20px;font-size: 20px;}
+			.s2{background: #FF6600;color: white;font-size: 20px;}
+			input:focus{outline: none;}
+			p{text-transform: capitalize;}
+			span{color: gray;}
+			.p1{text-align: left;margin: 10px 50px;}
+			.p2{text-align: right;margin: 10px 50px;}
+			a{color: blue;text-decoration: none;}
+			.p2:after{content: "→";}
+		</style>
+	</head>
+	<body>
+		<div class="box">
+		<div class="box1"></div>
+		<div class="box2">
+			<h1>Login</h1>
+			<input class="s1" type="text" name="accunt" id="accunt" value="" placeholder="Email"/>
+			<input class="s1" type="password" name="password" id="password" value="" placeholder="Password"/>
+			<input class="s2" type="button" name="button" id="button" value="LOGIN" />
+			<p class="p1"><span>forgot</span> <a href="#">password?</a></p>
+			<p class="p2"><a href="#">create your account</a></p>
+		</div>
+		</div>
+	</body>
+</html>

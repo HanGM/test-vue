@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>JSON和XML</title>
+	</head>
+	<body>
+		<script>
+			var str = '{"title":"标题"}';//JS中的json数据
+			console.log(str);
+			console.log(eval('('+str+')'));
+			var obj = JSON.parse(str);//json数据转换为对象
+			console.log(obj);
+			var result = JSON.stringify(obj);//对象转为json数据
+			console.log(result);
+//			document.cookie = 'user=xiaoming';//本地储存数据
+			console.log(document.cookie)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script>
+			/*
+			function a(m){
+				if(m>0){
+					return m*a(--m);
+				}else{
+					return 1;
+				}
+			  }
+			console.log(a(10));
+			*/
+			
+//			function a(x){
+//				if(x<3){
+//					return x+a(++x);
+//				}else {
+//					return 0;
+//				}
+//			}
+//			console.log(a(1));
+
+//			function a(x){
+//				if(x<101){
+//					return x+a(++x);
+//				}else {
+//					return 0;
+//				}
+//			}
+//			console.log(a(1));
+
+//function digui(num){
+//	console.log(num);
+//	if(num>0){
+//		digui(num-1);
+//	}else{
+//		console.log('递归结束')
+//	}
+//	console.log(num);
+//}
+//for(var i=0;i<3;i++){
+//	digui(i);
+//}
+function type(value){
+	console.log(typeof value);
+	return typeof value;
+}
+var shuru ="null";
+if(type(shuru)!="string"){
+	console.log('no shuru');
+};
+
+function a(){
+	return function b(x){
+		var num = 12;
+		console.log(x+num)
+		return num;
+	}
+}
+var result=a()('b函数内部变量num的值是：');
+console.log(result)
+		</script>
+	</body>
+</html>

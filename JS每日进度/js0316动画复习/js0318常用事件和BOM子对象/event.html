@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>事件</title>
+		<style>
+			.box{
+				width: 600px;
+				height: 400px;
+				background: #bfa;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<form method="get">
+			<input type="text" name="text" id="text" value="" />
+			<input type="submit" />
+			<input type="reset" />
+		</form>
+		<img src="../0104/img/1.jpg"/>
+		<img src="/0104/img/1.jpg"/>
+		<script>
+			var box=document.querySelector('.box');	
+			box.onmouseenter=function(){
+				console.log('鼠标经过经过');
+			}
+			box.onmouseleave=function(){
+				console.log('鼠标离开离开');
+			}
+			//鼠标事件
+/*			document.onclick=function(){
+				console.log('鼠标点击');
+			}
+			document.ondblclick=function(){
+				console.log('鼠标双击');
+			}
+			document.onmouseover=function(){
+				console.log('鼠标经过');
+			}
+			document.onmouseout=function(){
+				console.log('鼠标离开');
+			}
+//			box.onmouseenter=function(){
+//				console.log('鼠标经过经过');
+//			}
+//			box.onmouseleave=function(){
+//				console.log('鼠标离开离开');
+//			}
+			document.onmousedown=function(){
+				console.log('鼠标按下');
+			}
+			document.onmouseup=function(){
+				console.log('鼠标松开');
+			}
+			document.onmousemove=function(){
+				console.log('鼠标移动');
+			}*/
+			
+			//键盘事件
+			document.onkeydown=function(){
+				console.log('键盘按下');
+			}
+			document.onkeypress=function(){
+				console.log('键盘按下或按住');
+			}
+			document.onkeyup=function(){
+				console.log('键盘松开');
+			}
+			
+			//表单事件
+/*			var inputs=document.querySelector('input');
+			var form=document.forms[0];
+			inputs.onfocus=function(){
+				console.log('表单获取焦点');
+			}
+			inputs.onblur=function(){
+				console.log('表单失去焦点');
+			}
+			inputs.onchange=function(){
+				console.log('表单内容变更并失去焦点')
+			}
+			form.onreset=function(){
+				console.log('表单重置')
+			}
+			form.onsubmit=function(){
+				console.log('表单提交')
+			}*/
+
+			//其他事件
+			var img = document.images[0];
+			var img2 = document.images[1];
+			window.onload=function(){
+				console.log('加载完成')
+			}
+			img.onload=function(){
+				console.log('图片加载完成')
+			}
+			window.onresize=function(){
+				console.log('窗口大小变化')
+			}
+			window.onerror=function(){
+				console.log('加载错误')
+			}
+			img2.onerror=function(){
+				console.log('图片加载错误')
+			}
+		</script>
+	</body>
+</html>

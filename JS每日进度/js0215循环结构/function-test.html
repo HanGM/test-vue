@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			#mylogo{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="mylogo"></div>
+		<script>
+			var flag=true;
+			var myLogo=document.getElementById('mylogo');
+			myLogo.onclick=function(){
+				flag=!flag;
+				if(flag){
+					myLogo.style.background="blue";
+				}else{
+					myLogo.style.background="green";
+				}
+			}
+			//
+			document.write('<ol>');
+			for(var i=1;i<=6;i++){	
+				document.write('<li>这是第'+i+'行</li>');
+			}
+			document.write('</ol>');
+			//
+			
+		</script>
+	</body>
+</html>

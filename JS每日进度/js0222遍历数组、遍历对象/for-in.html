@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			var arr=[1,2,3,4];
+			var arr1=new Array(1,2,3,4,5,6);
+//			for(var i=0;i<arr1.length;i++){
+//				console.log(arr1[i]);
+//			}
+			console.log(arr1);
+			var obj ={name:'hu',age:'54'};
+			function MyObj(){
+				this.name='kjkf';
+				this.age='23';
+			}
+//			function MyObj(name,age){
+//				this.name=name;
+//				this.age=age;
+//			}
+			var myobj=new MyObj();
+			for(var i in myobj){
+				console.log('变量i代表属性名'+i+'  myobj[i]代表属性值'+myobj[i]);
+			}
+		</script>
+		<script>
+		/*	var obj ={
+				title:'大标题',
+				el:'<div></div>',
+				attr:'class',
+				value:'.box',
+				text:'大家好！'
+			}
+			var title='盒子';
+			console.log(obj);
+			console.log(obj.title);
+			console.log(obj['title']);
+			for(var i in obj){
+				console.log(i);
+				console.log(i+':'+obj[i]);
+			}
+			var arr=[1,23,12,,,3] ;
+			for(var i=0;i<arr.length;i++){
+				console.log(arr[i]);
+			}*/
+			/*
+			var time = new Date('2019 02 22 16:00:25');
+			var time = new Date('2019/02/22 16:00:25');
+			var time = new Date('2019-02-22 16:00:25');
+			var time = new Date('2019.02.22 16:00:25');
+			var time = new Date('02.22 2019 16:00:25');
+			var time = new Date(2019,02,22,23,58,60);
+			console.log(time);*/
+/*			var arr=['hjas',23,NaN,false];
+			var ary=[new Array(),45,new Function(),undefined,712,new Object()];
+			var arm=['9','45',null,72,,new Boolean()];
+			var result=arr.concat(ary,arm);
+			var str=arr.join('.');
+			console.log(result);
+			console.log(str);
+			var num =[1,2,3,4,6,87,9];
+			var str = ['qer','ewqe','eqw','dada','dad'];
+			var i=[true,null,undefined,Object,NaN,0,'zifuchuan']
+			var end=num.join(',');
+			console.log(end);*/
+			var arr=['小马','小鹿','小猫'];
+			var arr1=['小白','小红'];
+			var arr2=['小刚','小丽','小弟'];
+			var result=arr.concat(arr1,arr2);
+//			var str=result.join('、');
+//			console.log(str);
+//			var end=[];
+//			while(result.length!=0){
+//				var start=result.pop();
+//				console.log(start+'发言');
+////				end[end.length]=start;
+//				var endReturn = end.push(start);
+//				console.log(endReturn);
+//			}
+//			console.log('未发言的人：'+result);
+//			console.log('已发言的人：'+end);
+//			console.log(result);
+////			var value=result.splice(0,0,'小海');//增
+////			var value=result.splice(0,2);//删
+////			var value=result.splice(5,0,'小海');//改	
+//			console.log(result);
+//			console.log(value);
+		</script>
+	</body>
+</html>

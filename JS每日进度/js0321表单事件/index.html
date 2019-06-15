@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>滚轮事件全屏滚动</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#wrapper{
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				overflow: hidden;
+			}
+			.wrap{
+				width: 100%;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="wrapper">
+			<div class="wrap">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+		</div>
+		<script>
+			var wrap = document.querySelector('.wrap');
+			var item = document.querySelectorAll('.item');
+			var len = item.length;
+			var flag = true;
+			var num = 0;
+			setItem();
+			eventHandler(window,'mousewheel',move);
+			eventHandler(window,'DOMMouseScroll',move);
+			//move函数
+			function move(evt){
+				if (flag) {
+					flag = false;
+					if (getDelta(evt) < 0) {
+						num = num >= len-1 ? len-1 : ++ num; 
+					}else if (getDelta(evt) > 0) {
+						num = num <= 0 ? 0 : -- num;
+					}
+					animate(wrap,{
+						marginTop : -num*innerHeight
+					},500,function(){
+						flag = true;
+					})
+				}
+			}
+			//动画
+			function animate(el,obj,time,callback){
+				var t = 1000/60;
+				var start = {};
+				if(typeof time ==='function' || time === undefined){
+					callback = time;
+					time = 300;
+				}
+				for(var i in obj){
+					start[i] = parseFloat(getComputedStyle(el,null)[i]);
+				}
+				clearInterval(el.timer);
+				el.timer = setInterval(function(){
+					var flag = true;
+					for(var i in obj){
+						var attr = i;
+						var target = obj[i];
+						var step = (target - start[i])/time*t;
+						var cur = parseFloat(getComputedStyle(el,null)[attr]);
+						if(step >= 0 && cur >= (target - step) || step <= 0 && cur <= (target - step)){
+							el.style[attr] = target + 'px';
+						}else{
+							flag = false;
+							el.style[attr] = cur + step + 'px';
+						}
+					}
+					if(flag){
+						clearInterval(el.timer);
+						callback && callback.call(el);
+					}
+				},t)
+			}
+			//事件绑定
+			function eventHandler(el,type,callback){
+				if(el.addEventListener){
+					el.addEventListener(type,callback);
+				}else if(el.attachEvent){
+					el.attachEvent('on' + type,callback);
+				}else{
+					el['on' + type] = callback;
+				}
+			}
+			//统一滚距
+			function getDelta(evt){
+				if(evt.wheelDelta){
+					return evt.wheelDelta;
+				}else{
+					return - evt.detail*40;
+				}
+			}
+			//设置每个item
+			function setItem(){
+				var arr = ['green','red','black','pink','blue'];
+				for(var i = 0;i < len;i ++){
+					item[i].style.height = innerHeight+'px';
+					item[i].style.backgroundColor = arr[i];
+				}
+			}
+			
+		</script>
+	</body>
+</html>

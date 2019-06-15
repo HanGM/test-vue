@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box" style="width: 100px;height: 100px;"></div>
+		<h1></h1>
+	</body>
+	<script>
+		var h1=document.getElementsByTagName('h1')[0];
+		var div=document.getElementsByTagName('div')[0];
+		console.log(textNode);
+		var textNode=document.createTextNode('你好');
+		
+		console.log(textNode.nodeType);
+		console.log(textNode.nodeValue);
+		console.log(textNode.nodeName);
+		div.appendChild(textNode);
+		textNode.appendData('文本节点！');
+		console.log(textNode);
+		textNode.insertData(0,'DOM');
+		console.log(textNode);
+		textNode.replaceData(0,3,'ok');
+		console.log(textNode);
+		textNode.deleteData(0,2);
+		console.log(textNode);
+		console.log(textNode.splitText(2));
+		console.log(textNode);
+//		console.log(div.childNodes)
+//		textNode.substringData()
+//		var result= div.attributes.getNamedItem('class');
+////		var result= div.getAttributeNode('class');
+//		console.log(result);
+//		var clone=result.cloneNode();
+//		h1.attributes.setNamedItem(clone);
+//		h1.attributes.removeNamedItem('class');
+//		h1.className='head';
+//		h1.className=''
+		
+		
+//		console.log(div.tagName);
+//		console.log(div.attributes);
+//		console.log(div.className)
+//		console.log(div.getAttribute('style'));
+//		div.setAttribute('title','我是title');
+//		console.log(div.getAttribute('title'))
+//		div.removeAttribute('title');
+//		var attr=document.createAttribute('title');
+//		attr.value='nihao';
+//		div.setAttributeNode(attr);
+//		console.log(attr.nodeType)
+//		console.log(attr.nodeName)
+//		console.log(attr.nodeValue)
+	</script>
+</html>

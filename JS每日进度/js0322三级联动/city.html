@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>省市县三级联动</title>
+		<script src="city.js"></script>
+	</head>
+	<body>
+		<form action="javascript:;" name="myForm">
+			<select name="provinces">
+				<option value="请选择省">请选择省</option>
+			</select>
+			<select name="citys">
+				<option value="请选择市">请选择市</option>
+			</select>
+			<select name="countys">
+				<option value="请选择县">请选择县</option>
+			</select>
+		</form>
+		<script>
+			var myForm = document.forms.myForm;
+			var provs = myForm.provinces;
+			var citys = myForm.citys;
+			var countys = myForm.countys;
+			//添加省
+			for(var i=0;i<provice.length;i++){
+				provs.add(new Option(provice[i].name,i));
+			}
+			//省变动，添加相应市
+			provs.onchange = function(){
+				citys.length = 1;
+				countys.length = 1;
+				for(var i=0;i<provice[provs.value].city.length;i++){
+					citys.add(new Option(provice[provs.value].city[i].name,i))
+				}
+			}
+			//市变动，添加相应省市下的县
+			citys.onchange = function(){
+				countys.length = 1;
+				var countysData = provice[provs.value].city[citys.value].districtAndCounty;
+				for(var i=0;i<countysData.length;i++){
+					countys.add(new Option(countysData[i],i));
+				}
+			}
+		</script>
+	</body>
+</html>

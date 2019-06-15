@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<botton id="btn">点击查看</botton><br />-->
+		<button id='demo' onclick="fn()">点击</button>
+		<script>
+			var arr=['小明','小辉','小刚','小强','小白','小黑'];			
+			function fn(){
+				var index=Math.floor(Math.random()*arr.length);
+				var result=arr.splice(index,1);
+				if(result!=0){
+					console.log('今天该'+result+'值日了!');
+				}else{
+					console.log('下一组');
+				}			
+			}	
+			/*var btn = document.getElementById('btn');
+			var arr=['小明','小辉','小刚','小强','小白','小黑'];
+			btn.onclick=function(){
+				var index =Math.floor(Math.random()*arr.length);
+				var current=arr.splice(index,1);
+				if(current.length!=0){
+					alert('今天该'+current+'值日了!');
+				}else{
+					alert('换下一组人打扫卫生！');
+				}
+			}*/		
+			
+		
+			/*var arr=[1,25,3,15,8,94,32,27,38];
+			var arr1=[0,35,63,15,59,94,32,17,39];
+			Array.prototype.bubling=function(){
+				for(var i=0;i<this.length-1;i++){
+					for(var j=0;j<this.length-1-i;j++){
+						if(this[j]>this[j+1]){
+							var temp =this[j];
+							this[j]=this[j+1];
+							this[j+1]=temp;
+						}
+					}
+				}
+				return this;
+			}
+			console.log(arr.bubling());*/
+			
+			/*var arr1=['231','23123','676r','ftterw'];
+			var arr2=[true,null,undefined,Object,0,''];
+			Array.prototype.each=function(callback){
+				for(var i=0;i<this.length;i++){
+					callback(this[i],i);
+				}
+			}
+//			arr.__proto__.each=function(callback){
+//				for(var i=0;i<this.length;i++){
+//					callback(this[i],i);
+//				}
+//			}
+			arr.each(function(v,i){console.log('arr数组元素的值'+v+'   arr数组元素对应的下标'+i)});
+//			arr1.each(function(v,i){console.log('arr1数组元素的值'+v+'   arr1数组元素对应的下标'+i)});
+//			arr2.each(function(v,i){console.log('arr2数组元素的值'+v+'   arr2数组元素对应的下标'+i)});
+			console.log(arr.sort());
+			console.log(arr.sort(function(a,b){return a-b;}));*/
+			
+		</script>
+	</body>
+</html>

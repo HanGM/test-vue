@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>jq-ajax</title>
+		<style>
+			h3{
+				color: red;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<!--注册-->
+		<!--<div>
+			<h3><span></span>请重新输入！</h3>
+			<p>账号：<input type="text" class="user"/></p>
+			<p>密码：<input type="password" class="pass"/></p>
+			<p>再次输入密码：<input type="password" class="againpass"/></p>
+			<p>身份证：<input type="text" class="idcard"/></p>
+			<p>手机号：<input type="text" class="phone"/></p>
+			<p>真实姓名：<input type="text" class="truename"/></p>
+			<p><button class="register">注册</button></p>
+		</div>-->
+		<!--登录-->
+		<div>
+			<p>账号：<input type="text" class="user"/></p>
+			<p>密码：<input type="password" class="pass"/></p>
+			<p><button class="login">登录</button></p>
+			<p><button class="back">获取用户信息</button></p>
+		</div>
+		<script src="jquery.js"></script>
+		<script>
+			//注册
+			$('.register').click(function(){
+				$.ajax({
+					type:"post",
+					url:"http://192.168.1.118:3000/BBS/AdminLoginAndRegister?action=register",
+					async:true,
+					data:{
+						userName:$('.user').val(),
+						passWord:$('.pass').val(),
+						againPass:$('.againpass').val(),
+						identificationCard:$('.idcard').val(),
+						phone:$('.phone').val(),
+						trueName:$('.truename').val()
+					},
+					success:function(res){
+						console.log(res)
+					}
+				});
+			});
+			//登录
+			$('.login').click(function(){
+				$.ajax({
+					type:"post",
+					url:"http://192.168.1.118:3000/BBS/AdminLoginAndRegister?action=login",
+					async:true,
+					data:{
+						userName:$('.user').val(),
+						passWord:$('.pass').val()
+					},
+					success:function(res){
+						console.log(res)
+					}
+				});
+			})
+			//获取用户信息
+			$('.back').click(function(){
+				$.ajax({
+					url:'http://192.168.1.118:3000/BBS/AdminLoginAndRegister?action=getUserInfo',
+					type:'post',
+					success:function(res){
+						console.log(res)
+					}
+				})
+			})
+//			var userFlag = /^[a-zA-Z\d]{6-12}$/.test($('.user').val());
+//			var passFlag = $('.pass').val() == $('.againpass').val();
+//			var idcardFlag = /^\d{6}(18|19|20)\d{2}(0[1-9]|1[012])(0[0-9]|[12]\d|3[01])\d{3}(\d|[xX])$/.test($('.idcard').val());
+//			var phoneFlag = /^1[3578]\d{9}$/.test($('.phone').val());
+//			var truenameFlag = /^[\u4e00-\u9fa5]{2,4}$/.test($('.truename').val());		
+//			if(!userFlag){
+//				$('h3').show().find('span').html('账号格式错误！！');
+//			}else if(!passFlag){
+//				$('h3').show().find('span').html('密码输入不一致！！');
+//			}else if(!idcardFlag){
+//				$('h3').show().find('span').html('身份证格式错误！！');
+//			}else if(!phoneFlag){
+//				$('h3').show().find('span').html('手机账号格式错误！！');
+//			}else if(!truenameFlag){
+//				$('h3').show().find('span').html('真实姓名格式错误！！要用中文！！');
+//			}else{
+//				$('h3').hide();
+//				$.ajax({
+//					type:"post",
+//					url:"http://localhost:3000/BBS/AdminLoginAndRegister?action=register",
+//					async:true,
+//					data:{
+//						userName:$('.user').val(),
+//						passWord:$('.pass').val(),
+//						againPass:$('.againpass').val(),
+//						identificationCard:$('.idcard').val(),
+//						phone:$('.phone').val(),
+//						trueName:$('.truename').val()
+//					},
+//					sussess:function(res){
+//						if(res.code == 200){
+//							alert('恭喜你，注册成功！')
+//						}else{
+//							$('h3').show().find('span').html(res.err);
+//						}
+//					}
+//				});
+//			}
+//			
+			
+		</script>
+	</body>
+</html>

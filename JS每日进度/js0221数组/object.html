@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<script>
+		/*var obj={
+			fn:function(){
+				console.log(this);//obj
+				return function a(){
+					console.log(this);//window
+				}
+			}
+		}	
+		obj.fn()();*/
+		/*var obj={
+			fn:function(){
+				console.log(this);//obj
+				function a(){
+					console.log(this);//window
+				}
+				a();
+			}
+		}	
+		obj.fn();*/
+		/*var obj={
+			fn:function(){
+				console.log(this);
+			}
+		}	
+		console.log(this);
+		obj.fn();*/
+		
+		/*function fn(){
+			console.log(arguments);
+			console.log(arguments.length);
+			console.log(arguments[2]);
+			for(var i=0;i<arguments.length;i++){
+				console.log(arguments[i]);
+			}
+		}
+		function a(){return 20;}
+		fn(1,'eqe',Object,false,null,undefined,a())*/
+		
+		function a(){
+//			console.log(a.caller);
+			console.log(arguments.callee.caller);
+		}
+		a();
+		function b(){
+			a();
+		}
+		b();
+		function c(fn){
+			fn();
+		}
+		c(a);
+/*		
+		function m(a){
+			if(a>0){
+				return a*arguments.callee(--a);
+			}else{
+				return 1;
+			}	
+		}
+		console.log(m(5));
+		var n=m;
+		m=null;
+		console.log(n(5));*/
+		
+	</script>		
+	</body>
+</html>

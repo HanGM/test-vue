@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>全屏滚动</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.wrapper{
+				position: absolute;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				overflow: hidden;
+			}
+			.wrap{
+				width: 100%;
+			}
+		</style>
+		<script src="common.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="wrap">
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+				<div class="item"></div>
+			</div>
+		</div>
+		<script>
+			var wrap = document.querySelector('.wrap');
+			var item = document.querySelectorAll('.item');
+			var len = item.length;
+			var flag = true;
+			var num=0;
+			setItem();
+			eventHandler(window,'mousewheel',move);
+			eventHandler(window,'DOMMouseScroll',move);
+			function move(evt){
+				if(flag){
+					flag = false;
+					if(getDelta(evt)<0){
+						num = num >= len-1 ? len-1 : ++ num;
+					}else if(getDelta(evt)>0){
+						num = num <= 0 ? 0 : --num;
+					}
+					animate(wrap,{
+						marginTop : -num*innerHeight
+					},500,function(){
+						flag = true;
+					})
+				}
+			}
+			//设置每个item样式
+			function setItem(){
+				var arr = ['green','red','blue','black','gold','pink'];
+				for(var i = 0;i < len;i ++){
+					item[i].style.height = innerHeight + 'px';
+					item[i].style.backgroundColor = arr[i];
+				}
+			}
+		</script>
+	</body>
+</html>

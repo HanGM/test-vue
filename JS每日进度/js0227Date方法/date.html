@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实时时间</title>
+	</head>
+	<body>
+		<h1 id="timeBox"></h1>
+		<script>
+			var timeBox=document.getElementById('timeBox');
+			setInterval(function(){
+				var date = new Date();
+				var year=date.getFullYear();
+				var month=date.getMonth()+1;
+				var day=date.getDate();
+				var hours=date.getHours();
+				var minutes=date.getMinutes();
+				var seconds=date.getSeconds();
+				timeBox.innerHTML=year+'年'+month+'月'+day+'日    '+hours+'时'+minutes+'分'+seconds+'秒';
+			},1000);
+		</script>
+	</body>
+</html>

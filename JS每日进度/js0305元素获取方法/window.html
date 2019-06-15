@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title name="ok"></title>
+	</head>
+	<body>
+		<button class=" first1">按钮</button>
+		<input type="text" class="aaa first bbb" />
+		<div class="first ">你好</div>
+		<!--
+        	作者：h997466006@163.com
+        	时间：2019-03-05
+        	描述：
+        -->
+        <a id="demo" href="index.html"></a>
+		<script class="aaa first">
+//			var demo=document.getElementById("demo");
+//			console.log(demo.nodeName);
+//			console.log(demo.nodeValue);
+//			console.log(demo.nodeType);
+//			console.log(typeof demo);
+//			console.log(demo.toString());
+//			console.log(typeof demo.toString());
+			/*var first=document.getElementsByClassName('first');
+			console.log(first);
+			console.log(first[0]);
+			console.log(first.length);
+			for(var i=0;i<first.length;i++){
+				console.log(first[i]);
+				console.log(first[i].nodeName);
+				console.log(first[i].nodeValue);
+				console.log(first[i].nodeType);
+			}*/
+//			var ok=document.getElementsByName('ok');
+//			console.log(ok[0]);
+			var reg=/\bfirst\b/;
+			var reg=/(^|\s)first($|\s)/;
+			console.log(reg.toString());
+//			var reg=new RegExp('(^|\\s)first($|\\s)','g')
+			var first=document.getElementsByTagName('*');
+			console.log(first);
+			for(var i=0;i<first.length;i++){
+				if(first[i].className.match(reg)){
+					console.log(first[i]);
+				}
+			}
+		</script>
+	</body>
+</html>

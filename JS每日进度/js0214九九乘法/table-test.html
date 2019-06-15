@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表格测试</title>
+	</head>
+	<body>
+		<script>
+			document.write('<h2>正梯形九九乘法1</h2>');
+			document.write('<table border="1">');
+			var a=1;
+			while(a<10){
+				document.write('<tr>');
+				var b=1;
+				while(b<=a){
+					document.write('<td>'+a+'*'+b+'='+a*b+'</td>');
+					b++;
+				}
+				a++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			
+			
+			document.write('<h2>正梯形九九乘法2</h2>');
+			document.write('<table border="1">');
+			var a=9;
+			while(a>0){
+				document.write('<tr>');
+				var b=9;
+				while(b>0&&b>=a){
+					document.write('<td>'+a+'*'+b+'='+a*b+'</td>');
+					b--;
+				}
+				a--;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			
+			
+			document.write('<h2>倒梯形九九乘法1</h2>');
+			document.write('<table border="1">');
+			var a=1;
+			while(a<10){
+				document.write('<tr>');
+				var b=a;
+				while(b>=a&&b<10){
+					document.write('<td>'+a+'*'+b+'='+a*b+'</td>');
+					b++;
+				}
+				a++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			
+			
+			document.write('<h2>倒梯形九九乘法2</h2>');
+			document.write('<table border="1">');
+			var a=1;
+			while(a<10){
+				document.write('<tr>');
+				var b=9;
+				while(b>0&&b>=a){
+					document.write('<td>'+a+'*'+b+'='+a*b+'</td>');
+					b--;
+				}
+				a++;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			
+			
+			document.write('<h2>倒梯形九九乘法3</h2>');
+			document.write('<table border="1">');
+			var a=9;
+			while(a>0){
+				document.write('<tr>');
+				var b=1;
+				while(b<10&&b<=a){
+					document.write('<td>'+a+'*'+b+'='+a*b+'</td>');
+					b++;
+				}
+				a--;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+			
+			
+			document.write('<h2>倒梯形九九乘法4</h2>');
+			document.write('<table border="1">');
+			var a=9;
+			while(a>0){
+				document.write('<tr>');
+				var b=a;	
+				while(b>0&&b<=a){
+					document.write('<td>'+a+'*'+b+'='+a*b+'</td>');
+					b--;
+				}
+				a--;
+				document.write('</tr>');
+			}
+			document.write('</table>');
+		</script>
+	</body>
+</html>

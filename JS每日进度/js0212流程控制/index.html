@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var score=80;
+			if(score<60){
+				alert("不及格");
+			}else if(score<70){
+				alert("及格")
+			}else if(score<80){
+				alert("良好")
+			}else if(score<90){
+				alert("优秀")
+			}else if(score<100){
+				alert("学霸")
+			}else if(score==100){
+				alert("学圣")
+			}
+			var nowTime="02:45";
+		    if(parseInt(nowTime)<6){
+				alert("现在是凌晨时分")
+			}else if(parseInt(nowTime)<12){
+				alert("现在是上午时分")
+			}else if(parseInt(nowTime)<20){
+				alert("现在是下午时分")
+			}else if(parseInt(nowTime)<24){
+				alert("现在是夜晚时分")
+			}else if(parseInt(nowTime)==24){}
+		</script>
+	</body>
+</html>

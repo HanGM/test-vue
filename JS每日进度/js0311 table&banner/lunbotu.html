@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>横向轮播图</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			.banner{
+				width: 320px;
+				height: 300px;
+				padding: 10px 0;
+				margin: 50px auto;
+				background: #bfa;
+				position: relative;
+			}
+			.banner .imglist{
+				position: absolute;
+				transition: all .5s;
+				/*width: 1600px;*/
+				/*overflow: hidden;*/
+			}
+			.banner li{
+				width: 320px;
+				height: 300px;
+				float: left;
+			}
+			.banner img{
+				position: absolute;
+				margin: 0 10px;
+			}
+			.banner .item{
+				position: absolute;
+				bottom: 15px;
+			}
+			.banner .item a{
+				float: left;
+				width: 10px;
+				height: 10px;
+				margin: 0 5px;
+				background: red;
+				opacity: 0.6;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="banner">
+			<ul class="imglist">
+				<li><img src="../0104/img/1.jpg"/></li>
+				<li><img src="../0104/img/2.jpg"/></li>
+				<li><img src="../0104/img/3.jpg"/></li>
+				<li><img src="../0104/img/4.jpg"/></li>
+				<li><img src="../0104/img/5.jpg"/></li>
+			</ul>
+			<div class="item">
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+			</div>
+		</div>
+		<script>
+			var banner=document.getElementsByClassName('banner')[0];
+			var imglist=document.getElementsByClassName('imglist')[0];
+			var img=document.getElementsByTagName('img');
+			var item=document.getElementsByClassName('item')[0];
+			var allA=document.getElementsByTagName('a');
+			var num=0;
+			imglist.style.width=320*img.length+'px';
+			item.style.left=(banner.offsetWidth-item.offsetWidth)/2+'px';
+			allA[0].style.background='black';
+			for(var i=0;i<allA.length;i++){
+				allA[i].index=i;
+				allA[i].onclick=function(){
+					num=this.index;
+					move();
+				}
+			}
+			function move(){
+				for(var i=0;i<allA.length;i++){
+					allA[i].style.background='';
+				}
+				allA[num].style.background='black';
+				imglist.style.left=-320*num+'px';
+			}
+			var timer=setInterval(next,3000);
+			function next(){
+				num++;
+				num%=allA.length;
+				move();
+			}
+		</script>
+	</body>
+</html>

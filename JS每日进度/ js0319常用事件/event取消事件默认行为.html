@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>取消事件默认行为</title>
+		<style>
+			
+		</style>
+	</head>
+	<body>
+		<input type="text" name="" id="" value="4" />
+		<a href="https://www.baidu.com">大于5跳转到百度，小于5不跳转</a>
+		<script>
+			var inputs=document.querySelector('input');
+			var a=document.links[0];
+			a.onclick=function(event){
+				var evt=event||window.event;
+				if(inputs.value<5){
+					if(event){
+						evt.preventDefault();//非IE
+					}else{
+						evt.returnValue=false;//IE
+					}
+				}
+				
+			}
+		</script>
+	</body>
+</html>

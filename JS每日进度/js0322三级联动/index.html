@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>表单事件</title>
+		<style type="text/css">
+			span{
+				display: none;
+				color: red;
+			}
+		</style>
+	</head>
+	<body>
+		<form action="javascript:;" name="myForm">
+			<p>姓名：<input type="text" name="user" /></p>
+			<p>密码：<input type="password" name="pass" /></p>
+			<p>邮箱：<input type="email" name="email" /><span>格式错误</span></p>
+			<input type="submit" name="submit" value="注册" />
+		</form>
+		<script>
+			var myForm = document.forms.myForm;
+			var span = document.querySelector('span');
+			console.log(myForm);
+			//
+			myForm.user.onkeyup = function(){
+				console.log(myForm.user.value);
+			}
+			//密码框设置
+			myForm.pass.onchange = function(){
+				var reg = /[\dA-z]{6,16}/;
+				if(this.value.match(reg)){
+					alert('ok')
+				}
+			}
+			//邮箱验证
+			myForm.email.onchange = function(){
+				var reg =/^[\dA-z]{6,20}@[\dA-z]{2,6}\.c(om(\.cn)?|n)$/;
+				if(!reg.test(this.value)){
+					span.style.display = 'inline-block';
+				}
+			}
+			//提交按钮设置
+			myForm.onsubmit = function(){
+				var num = 5;
+				var str;
+				myForm.submit.disabled = true;
+				myForm.submit.timer = setInterval(function(){
+					if(num<=0){
+						str = '注册';
+//						myForm.submit.disabled = false;
+						myForm.submit.removeAttribute('disabled');
+						clearInterval(myForm.submit.timer);
+					}else{
+						str =  '剩余' + num -- + '可再次提交';
+					}
+					myForm.submit.value = str;
+				},1000)	
+			}
+		</script>
+	</body>
+</html>

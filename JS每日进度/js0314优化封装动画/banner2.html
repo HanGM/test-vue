@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>动画封装</title>
+		<style>
+			.father{
+				width: 800px;
+				height: 600px;
+				border: 1px solid black;
+				margin: 50px auto;
+				text-align: center;
+			}
+			.box1{
+				width: 100px;
+				height: 100px;
+				background: red;
+			}
+			.box2{
+				width: 100px;
+				height: 100px;
+				background: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="father">
+			<button class="btn01">box1运动</button>
+			<button class="btn02">box2运动</button>
+			<div class="box1"></div>
+			<div class="box2"></div>
+		</div>
+		<script>
+			var btn01=document.getElementsByClassName('btn01')[0];
+			var btn02=document.getElementsByClassName('btn02')[0];
+			var box1=document.getElementsByClassName('box1')[0];
+			var box2=document.getElementsByClassName('box2')[0];
+			btn01.onclick=function(){
+				move(box1,{width:800},500);
+//				clearInterval(timer);
+//				timer=setInterval(function(){
+//				var oldValue=parseInt(getComputedStyle(box1,null).marginLeft);		
+//				oldValue+=12;
+//				if(oldValue>800){
+//					oldValue=800;
+//				}
+//				box1.style.marginLeft=oldValue+'px';
+//				if(oldValue==800){
+//					clearInterval(timer);
+//				}
+//				},60);
+			}
+			
+				
+			btn02.onclick=function(){
+				move(box2,{height:200},500);
+				/*clearInterval(timer);
+				timer=setInterval(function(){
+				var oldValue=parseInt(getComputedStyle(box1,null).marginLeft);		
+				oldValue-=12;
+				if(oldValue<0){
+					oldValue=0;
+				}
+				box1.style.marginLeft=oldValue+'px';
+				if(oldValue==0){
+					clearInterval(timer);
+				}
+				},60);*/
+			}
+			function move(el,obj,time,callback){
+				clearInterval(el.timer);
+				for(var i in obj){
+					var attr=i;
+					var target=obj[i];
+				}
+				var start=parseInt(getComputedStyle(el,null)[attr]);		
+				var speed=(target-start)/time*16;
+				el.timer=setInterval(function(){
+				var current=parseInt(getComputedStyle(el,null)[attr]);		
+				current+=speed;
+				if(speed>0&&current>target||speed<0&&current<target){
+					current=target;
+				}
+				el.style[attr]=current+'px';
+				if(current==target){
+					clearInterval(el.timer);
+					callback&&callback();
+				}
+				},16);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul{
+				width: 400px;
+				list-style: none;
+				cursor:pointer;
+				border: 1px solid #000;
+				overflow: hidden;
+			}
+			ul li{
+				float: left;
+				padding: 10px;
+				border-top: 2px solid transparent;
+			}
+			div{
+				width: 400px;
+				height: 400px;
+				background: #adf000;
+				display: none;
+				text-align: center;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>新闻</li>
+			<li>游戏</li>
+			<li>视频</li>
+			<li>音乐</li>
+			<li>直播</li>
+			<li>更多</li>
+		</ul>
+		<div>1</div>
+		<div>2</div>
+		<div>3</div>
+		<div>4</div>
+		<div>5</div>
+		<div>6</div>
+		<script>
+			var ul=document.getElementsByTagName('ul')[0];
+			var lis=ul.getElementsByTagName('li');
+			var div=document.getElementsByTagName('div');
+			for(var i=0;i<lis.length;i++){
+				lis[i].index=i;
+				lis[i].onclick=function(){
+					for(var j=0;j<lis.length;j++){
+						lis[j].style='';
+						div[j].style='';
+					}
+					this.style='border-top:2px solid #00f;color:#00f;';
+					div[this.index].style='display:block;';
+				}
+			}
+		</script>
+	</body>
+</html>

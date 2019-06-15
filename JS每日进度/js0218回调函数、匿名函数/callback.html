@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>回调函数</title>
+	</head>
+	<body>
+		<script>
+			//回调函数练习一
+			function add(a,b){
+				return a+b;
+			}
+			function sub(a,b){
+				return a-b;
+			}
+			function mul(a,b){
+				return a*b;
+			}
+			function div(a,b){
+				return a/b;
+			}
+			function result(x,y,z){
+				console.log(x(y,z));
+			}
+			result(add,10,15);
+			//函数回调练习二
+			function learn(arg){
+				console.log(arg);
+			}
+			function we(callback,arg){
+				var str='我爱'+arg;
+				callback(str);
+			}
+			we(learn,'JavaScript');
+		</script>
+	</body>
+</html>

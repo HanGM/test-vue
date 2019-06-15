@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>导航跟随</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			.nav{
+				width: 100%;
+				position: relative;
+			}
+			.nav ul{
+				width: 1000px;
+				overflow: hidden;
+				margin: auto;
+			}
+			.nav li{
+				float: left;
+				height: 30px;
+				line-height: 30px;
+				padding: 10px;
+				margin: 0 5px;
+				background: #bfa;
+			}
+			.nav .line{
+				position: absolute;
+				bottom: 0;
+				height: 3px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul>
+				<li>首页</li>
+				<li>找工作</li>
+				<li>联系我们</li>
+				<li>招聘</li>
+			</ul>
+			<div class="line"></div>
+		</div>
+	</body>
+</html>
+<script src="jquery.js"></script>
+<script>
+	$('.line').css({
+		width:$('.nav li').first().outerWidth(),
+		left:$('.nav li').first().offset().left
+	})
+	$('.nav li').hover(function(){
+		$('.line').stop().animate({
+			width:$(this).outerWidth(),
+			left:$(this).offset().left
+		},400)
+	},function(){
+		$('.line').stop().animate({
+			width:$('.nav li').first().outerWidth(),
+			left:$('.nav li').first().offset().left
+		},400)
+	})
+</script>

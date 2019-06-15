@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片懒加载</title>
+		<script src="js/jquery.js"></script>
+		<style type="text/css">
+			img{
+				width: 600px;
+				height: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<img src="img/image01.png" data-src="img/image01.png" alt="图片" />
+		<img src="img/image01.png" data-src="img/image02.png" alt="图片" />
+		<img src="img/image01.png" data-src="img/image03.png" alt="图片" />
+		<img src="img/image01.png" data-src="img/image04.png" alt="图片" />
+		<img src="img/image01.png" data-src="img/image05.png" alt="图片" />
+		<img src="img/image01.png" data-src="img/image06.png" alt="图片" />
+		<img src="img/image01.png" data-src="img/image07.png" alt="图片" />
+		<img src="img/image01.png" data-src="img/image08.png" alt="图片" />
+		<script>
+			$(function(){
+				var h = $(window).scrollTop() + window.innerHeight;
+				$("img").each(function(i,v){
+					if(v.offsetTop <= h){
+						$(v).prop('src',$(v).attr('data-src'))
+					}
+				});
+				$(window).scroll(function(){
+					var h = $(window).scrollTop() + window.innerHeight;
+					$("img").each(function(i,v){
+						console.log(v.offsetTop)
+						if(v.offsetTop <= h){
+							$(v).prop('src',$(v).attr('data-src'))
+						}
+					});
+				})
+			})
+		</script>
+	</body>
+</html>

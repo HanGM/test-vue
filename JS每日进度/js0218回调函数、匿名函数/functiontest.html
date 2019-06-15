@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			function a(fn){	
+//				var x='nihao';
+//				console.log('我是主调函数');
+//				fn(x);
+//				console.log('我是结尾');
+//			}
+//			function b(z){
+////				console.log('我是回调函数');
+//				console.log(z);
+//			}
+//			a(b);
+             
+//           function a(fn){
+//           	var x='你好';
+//           	console.log('主调函数');
+//           	fn(x);
+//           }function b(z){
+//           	console.log('回调函数');
+//           	console.log(z);
+//           }a(b)
+             
+             function add(a,b){
+				return a+b;
+			}
+			function sub(a,b){
+				return a-b;
+			}
+			function mul(a,b){
+				return a*b;
+			}
+			function div(a,b){
+				return a/b;
+			}
+			function result(x,y,z){
+				console.log(x(y,z));
+			}
+			result(mul,10,15);
+            
+		</script>
+	</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			li{
+				list-style: none;
+			}
+			.box{
+				width: 400px;
+				height: 40px;
+				border: 1px solid black;
+				margin: 10px auto;
+				position: relative;
+				cursor: pointer;
+			}
+			.box input{
+				width: 100%;
+				height: 100%;
+				border: none;
+				padding: 0;
+				text-indent: 10px;
+				font-size: 16px;
+			}
+			.box ul{
+				display: none;
+				position: absolute;
+				top: 40px;
+				left: -1px;
+				width: 100%;
+				border: 1px solid black;
+			}
+			.box li{
+				padding: 10px;
+			}
+			.box li.on{
+				background-color: #ccc;
+			}
+		</style>
+		<!--<script src="common.js"></script>-->
+	</head>
+	<body>
+		<div class="box">
+			<input type="text" />
+			<ul>
+				<li class="on">@163.com</li>
+				<li>@126.com</li>
+				<li>@qq.com</li>
+				<li>@sina.com</li>
+			</ul>
+		</div>
+		<script>
+			var inputs=document.querySelector('input');
+			var ul=document.querySelector('ul');
+			var li=document.querySelectorAll('li');
+			var len=li.length;
+			var num=0;
+			var flag=true;
+			var start=[];
+			for(var i=0;i<len;i++){
+				start.push(li[i].innerHTML);
+			}
+			inputs.onfocus=getFocus;
+			inputs.onblur=function(){
+				ul.style.display='none';
+			}
+			function getFocus(){
+				if(inputs.value.indexOf('@') != -1){
+					ul.style.display='none';
+				}else{
+					flag=true;
+					ul.style.display='block';
+				}
+				
+			}
+			inputs.onkeyup=function(){
+				getFocus();
+				for(var i=0;i<len;i++){
+					li[i].innerHTML=inputs.value+start[i];
+				}
+			}
+			for(var i=0;i<len;i++){
+				li[i].index=i;
+				li[i].onmouseover=function(){
+					num=this.index;
+					setLi();	
+				}
+				li[i].onmousedown=function (){
+					inputs.value=li[num].innerHTML;
+				};	
+			}
+			function setLi(){
+				var sib=siblings(li[num]);
+				for(var i=0;i<sib.length;i++){
+					removeClass(sib[i],'on');
+				}
+				addClass(li[num],'on');
+			}	
+			inputs.onkeydown=function(event){
+				var e =event||window.event;
+				switch(e.keyCode){
+				case 38:
+				num=num<=0?0:--num;
+				break;
+				case 40:
+				num=num>=len-1?len-1:++num;
+				break;
+				case 13:
+				if(flag){
+					flag=false;
+					inputs.value=li[num].innerHTML;
+					ul.style.display='none';
+					}	
+				break;
+				}	
+				setLi();
+			}
+			function siblings(el){
+				var arr=[];
+				var child=el.parentNode.childNodes;
+				for(var i=0;i<child.length;i++){
+					if(child[i].nodeType===1&&child[i]!==el){
+						arr.push(child[i]);
+					}
+				}
+				return arr;
+			}
+			function addClass(el,classN){
+				var reg=new RegExp('(^|\\s)'+classN+'($|\\s)');
+				if(!el.className.match(reg)){
+					el.className=' '+classN;
+				}
+			}
+			function removeClass(el,classN){
+				var arr=el.className.split(' ');
+				var reg=new RegExp('(^|\\s)'+classN+'($|\\s)');
+				for( var i=0;i<arr.length;i++){
+					if(arr[i].match(reg)){
+						arr.splice(i,1);
+					}
+				}
+				el.className=arr.join(' ');
+			}
+		</script>
+	</body>
+</html>

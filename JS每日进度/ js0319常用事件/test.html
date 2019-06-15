@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>鼠标拖拽和键盘事件</title>
+		<style>
+			.box{
+				width: 100px;
+				height: 100px;
+				background: red;
+				border-radius: 50%;
+				position: absolute;
+				top: 0;
+				left: 0;
+				/*display: none;*/
+			}
+			.father{
+				width: 1000px;
+				height: 400px;
+				margin: auto;
+				border: 1px solid black;
+				position: relative;
+				/*display: none;*/
+			}
+			.child{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				position: absolute;
+				top: 0;
+				left: 0;
+				/*display: none;*/
+			}
+		</style>
+		<script src="js/common.js"></script>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="father">
+			<div class="child"></div>
+		</div>
+		<script>
+			//拖拽事件
+			var box=document.querySelector('.box');
+			var flag=false;
+			var x=0,y=0;
+			var theWidth=document.documentElement.clientWidth-box.offsetWidth;
+			var theHeight=document.documentElement.clientHeight-box.offsetHeight;
+			box.onmousedown=function(event){
+				flag=true;
+				var evt=event||window.event;
+				x=evt.clientX-this.offsetLeft;
+				y=evt.clientY-this.offsetTop;
+			}
+			box.onmouseup=function(){
+				flag=false;
+			}
+			document.onmousemove=function(event){
+				var evt=event||window.event;
+				if(flag){
+					var curx=evt.clientX-x;
+					var cury=evt.clientY-y;
+					if(curx<0){
+						curx=0;
+					}else if(curx>theWidth){
+						curx=theWidth;
+					}
+					if(cury<0){
+						cury=0;
+					}else if(cury>theHeight){
+						cury=theHeight;
+					}
+					box.style.left=curx+'px';
+					box.style.top=cury+'px';
+//					animate(box,{left:curx,top:cury});
+				}
+			}
+			//键盘事件
+			var father=document.querySelector('.father');
+			var child=document.querySelector('.child');
+			var curX,curY;
+			document.onkeydown=function(event){
+				var evt=event||window.event;
+				var theLeft=parseFloat(getStyle(child,'left'));
+				var theTop=parseFloat(getStyle(child,'top'));
+				var theWidth=father.clientWidth-child.offsetWidth;
+				var theHeight=father.clientHeight-child.offsetHeight;
+				console.log(theLeft,theTop,theWidth,theHeight)
+				switch(evt.keyCode){
+					case 37:
+					curX=theLeft-10;
+					if(curX<0){
+						curX=0;
+					}
+					child.style.left=curX+'px';
+//					animate(child,{left:curX},10);
+					break;
+					case 38:
+					curY=theTop-10;
+					if(curY<0){
+						curY=0;
+					}
+					child.style.top=curY+'px';
+//					animate(child,{top:curY},10);
+					break;
+					case 39:
+					curX=theLeft+10;
+					if(curX>theWidth){
+						curX=theWidth;
+					}
+					child.style.left=curX+'px';
+//					animate(child,{left:curX},10);
+					break;
+					case 40:
+					curY=theTop+10;
+					if(curY>theHeight){
+						curY=theHeight;
+					}
+					child.style.top=curY+'px';
+//					animate(child,{top:curY},10);
+					break;
+				}
+			}
+			
+			
+			
+			//获取元素样式属性值，带单位px。
+			function getStyle(el,attr){
+				return window.getComputedStyle?getComputedStyle(el,null)[attr]:el.current[attr];
+			}
+		</script>
+	</body>
+</html>

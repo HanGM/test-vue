@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			for(var i=0;i<10;i++){
+//				if(i%2==1){
+//					continue;
+//				}
+//				console.log(i);
+//			}
+//			
+//			
+//			for(var x=0;x<10;x++){
+//				if(x>5&&x<8){
+//					continue;
+//				}
+//				console.log(x);
+//			}
+//			
+//			for(var y=0;y<10;y++){
+//				if(y==6){
+//					break;
+//				}
+//				console.log(y);
+//			}
+			
+//			function fn(){
+//				document.write('<h2>九九乘法</h2>')
+//				document.write('<table border="1">');
+//				for(var x=1;x<10;x++){
+//					document.write('<tr>');
+//					for(var y=1;y<10;y++){
+//						document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+//					}
+//					document.write('</tr>');
+//				}
+//				document.write('</table>');
+//			}
+//			for(var i=1;i<5;i++){
+//				fn();
+//			}
+			
+			function fu(b){
+				document.write('<h2>九九乘法</h2>')
+				document.write('<table border="1">');
+				for(var x=1;x<10;x++){
+					document.write('<tr>');
+					for(var y=1;y<b;y++){
+						document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+					}
+					document.write('</tr>');
+				}
+				document.write('</table>');
+			}
+			fu(10);
+//			for(var i=2;i<10;i++){
+//				fu(i);
+//			}
+//			var num=1;
+//			var str='uoio';
+//			document.write(num+str);
+//			document.write(num+parseInt(str));
+//			document.write(num+Number(str));
+			function promptDemo(){
+			   var score=prompt("请输入分数");
+			   if(score>90){
+			       document.write("哇塞。学霸");
+			   }
+			   else if(80<score){
+			       document.write("80---90");
+			   }
+			   else if(score<80){
+			       document.write("我只笑笑不说话");
+			   }
+  			}
+			
+			var a=false;
+			var b=null;
+			console.log(a==b);
+		</script>
+		<input type="button" value="点第三下" onclick="promptDemo()">
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>用户协议</title>
+		<style type="text/css">
+			.info{
+				width: 200px;
+				height: 300px;
+				background: #bfa;
+				overflow: auto;
+			}	
+		</style>
+	</head>
+	<body>
+		<div class="box">
+			<h3>请仔细阅读协议</h3>
+			<p class="info">
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+				协议内容协议内容协议内容协议内容协议内容协议内容
+			</p>
+			<label><input type="checkbox" disabled="disabled" />同意</label>
+			<input type="submit" disabled="disabled" />
+		</div>
+		<script type="text/javascript">
+			var info=document.getElementsByClassName('info')[0];
+			var inputs=document.getElementsByTagName('input');
+			info.onscroll=function(){
+				if(info.scrollHeight-info.scrollTop==info.clientHeight){
+					inputs[0].disabled=false;
+					inputs[1].disabled=false;
+				}
+			}
+		</script>
+	</body>
+</html>

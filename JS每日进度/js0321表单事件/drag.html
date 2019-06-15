@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽效果与键盘事件</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html{
+				width: 100%;
+				height: 100%;
+			}
+			.box{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100px;
+				height: 100px;
+				background-color: red;
+				border-radius: 50%;
+			}
+			.wrap{
+				position: relative;
+				width: 500px;
+				height: 500px;
+				border: 1px solid black;
+				margin: 100px auto;
+			}
+			.item{
+				position: absolute;
+				width: 100px;
+				height: 100px;
+				background-color: blue;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="wrap">
+			<div class="item"></div>
+		</div>
+		<script>
+			//键盘事件
+			var wrap = document.querySelector('.wrap');
+			var item = document.querySelector('.item');
+			var l = wrap.clientWidth - item.offsetWidth;
+			var t = wrap.clientHeight - item.offsetHeight;
+			var num = 10;
+			document.onkeydown = function(evt){
+				var e = evt || window.event;
+				var curL = parseFloat(getComputedStyle(item,null).left);
+				var curT = parseFloat(getComputedStyle(item,null).top);
+				console.log(curL,curT)
+				switch(e.keyCode){
+					case 37:
+					curL = curL - num;
+					if(curL<0){
+						curL = 0;
+					}
+					item.style.left = curL + 'px';
+					break;
+					case 38:
+					curT = curT - num;
+					if(curT<0){
+						curT = 0;
+					}
+					item.style.top = curT + 'px';
+					break;
+					case 39:
+					curL = curL + num;
+					if(curL>l){
+						curL = l;
+					}
+					item.style.left = curL + 'px';
+					break;
+					case 40:
+					curT = curT + num;
+					if(curT>t){
+						curT = t;
+					}
+					item.style.top = curT + 'px';
+					break;
+				}
+			};
+			//拖拽事件
+			var box = document.querySelector('.box');
+			var flag = false;
+			var x,y,curX,curY;
+			box.onmousedown=function(evt){
+				flag = true;
+				var e = evt ||window.event;
+				x = e.clientX - this.offsetLeft;
+				y = e.clientY - this.offsetTop;
+				
+			}
+			document.onmousemove = function(evt){
+				var e = evt || window.event;
+				var w = document.documentElement.offsetWidth - box.offsetWidth;
+				var h = document.documentElement.offsetHeight - box.offsetHeight;
+				if(flag){
+					curX = e.clientX - x;
+					curY = e.clientY - y;
+					if(curX<=0){
+						curX = 0;
+					}else if(curX>=w){
+						curX = w;
+					}
+					if(curY<=0){
+						curY = 0;
+					}else if(curY>=h){
+						curY = h;
+					}
+					box.style.left = curX + 'px';
+					box.style.top = curY + 'px';
+				}
+			}
+			box.onmouseup=function(){
+				flag = false;
+			}
+		</script>
+	</body>
+</html>

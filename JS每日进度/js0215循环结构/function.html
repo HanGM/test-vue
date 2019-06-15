@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function myfn(a){
+				document.write('<h2>函数调用表格'+i+'</h2>');
+				document.write('<table border="1">');
+				for(var x=1;x<10;x++){
+					document.write('<tr></tr>');
+					for(var y=1;y<=a;y++){
+						document.write('<td>'+x+'*'+y+'='+x*y+'</td>');
+					}
+					document.write('</tr>');
+				}
+				document.write('</table>');
+			}
+			for(var i=1;i<10;i++){
+				myfn(i);
+			}	
+		</script>
+	</body>
+</html>

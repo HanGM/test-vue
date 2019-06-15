@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>for循环</title>
+		<style>
+			#myId{
+				width: 200px;
+				height: 200px;
+				background: #008000;
+				
+				/*transition: all .5s;*/
+			}
+		</style>
+	</head>
+	<body>
+	<body>
+		<div id="myId" ></div>
+		<button>点击切换</button>
+		<script>
+			var myId=document.getElementById('myId');
+			var btn=document.getElementsByTagName('button')[0];
+			
+			btn.onclick=function(){
+				var w=0;
+				var m=10;
+				var timer=setInterval(function(){
+					if(w>=400){
+						m=-10;
+//						clearInterval(timer);
+					}else if(w<=0){
+						m=10;
+					}
+					w+=m;
+					myId.style.marginLeft=w+'px';
+//					myId.style.marginTop=w+'px';
+//					myId.style.width=w+'px';
+//					myId.style.height=w+'px';
+				},60)
+				
+			}
+			/*var flag=false;
+			btn.onclick=function(){
+				flag=!flag;
+				if(flag){
+					myId.style.width='400px';
+					myId.style.height='400px';
+					myId.style.background='black';
+					myId.style.borderRadius='20%';
+				}else{
+					myId.style='width:200px;height:200px;background:#008000;border-radius:50%;';
+				}
+
+//				myId.style='width:400px;height:400px;background:black;';
+			}*/
+		</script>
+		<!--<script>
+			var s='\n';
+			for(var i=0;i<10;i++){
+				for(var j=0;j<10;j++){
+					s+='* ';
+				}
+				s+='\n';
+			}
+			console.log(s);
+			
+			var s='\n',i,j;
+			for(i=1;i<=7;i++){
+				for(j=1;j<=15;j++){
+					s+=i*j%8?' ':'*';
+				}
+				s+='\n';
+			}
+			console.log(s);
+		</script>-->
+	</body>
+</html>

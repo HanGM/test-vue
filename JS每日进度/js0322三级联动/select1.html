@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>年月日联动优化代码</title>
+	</head>
+	<body>
+		<form action="javascript:;" name="myForm">
+			<p>请输入你的出生年月日：
+				<select name="year"></select> 年 -
+				<select name="month"></select> 月 -
+				<select name="day"></select> 日	
+			</p>	
+		</form>
+		<script>
+			var myForm = document.forms.myForm;
+			var year = myForm.year;
+			var month = myForm.month;
+			var day = myForm.day;
+			var day31 = [1,3,5,7,8,10,12];
+			var day30 = [4,6,7,9,11];
+			/*
+			新方法
+				下拉框添加选项内容
+					var opt = new Option(文本内容,value值);
+					select元素.add(opt);
+				下拉框清空选项内容
+					select元素.length = 0;
+			ECMA5 新内容
+				数组添加了indexOf()方法，和字符串的indexOf()方法效果相同
+				查询数组中是否存在某个指定元素
+				数组.indexOf(指定元素) 存在返回该元素出现的位置，不存在返回值-1
+			 */
+//			for(var i=1900;i<=2019;i++){
+//				year.add(new Option(i,i));
+//			}
+//			for(var i=1;i<=12;i++){
+//				month.add(new Option(i,i));
+//			}
+			//每个月的天数和月份关联，二月天数与是否平年润年相关联
+//			createDay(31);
+			//创建天数封装
+//			function createDay(num){
+//				for(var i=1;i<=num;i++){
+//					day.add(new Option(i,i));
+//				}
+//			}
+			createOption(year,1900,2019);
+			createOption(month,1,12);
+			createOption(day,1,31);
+			function createOption(el,start,end){
+				for(var i=start;i<=end;i++){
+					el.add(new Option(i,i));
+				}
+			}
+			//判断每个月份的天数，实现月份变动天数跟着变动
+			month.onchange = changeDay;
+			//年份变动，天数也跟着变动
+			year.onchange = changeDay;
+			function changeDay(){
+				//清除day下拉框中的选项内容
+				day.length = 0;
+				//判断该月份是出现在day31的数组中
+				if(day31.indexOf(parseInt(month.value)) != -1){
+//					createDay(31);
+					createOption(day,1,31);
+					//判断该月份是出现在day30的数组中
+				}else if(day30.indexOf(parseInt(month.value)) != -1){
+//					createDay(30);
+					createOption(day,1,30);
+					//判断该月份是2
+				}else {
+					//判断平年和润年
+					if(year.value % 4 == 0 && year.value % 100 !=0 || year.value % 400 == 0){
+//						createDay(29);
+						createOption(day,1,29);
+					}else{
+//						createDay(28);
+						createOption(day,1,28);
+					}	
+				}
+			}
+		</script>
+	</body>
+</html>

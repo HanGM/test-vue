@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>拖拽和键盘控制</title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			html{
+				width: 100%;
+				height: 100%;
+			}
+			.box{
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100px;
+				height: 100px;
+				border-radius: 50%;
+				background-color: rgba(255,0,0,.6);
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<script>
+			var box = document.querySelector('.box');
+			var x,y;
+			var flag = false;
+			var step = 10;
+			var w = document.documentElement.offsetWidth - box.offsetWidth;
+			var h = window.innerHeight - box.offsetHeight;
+			box.onmousedown = function(evt){
+				flag = true
+				var e = evt || window.event;
+				x = e.clientX - box.offsetLeft;
+				y = e.clientY - box.offsetTop;
+			}
+			document.onmousemove = function(evt){
+				var e = evt || window.event;
+				var curx = e.clientX - x;
+				var cury = e.clientY -y;
+				if(curx<=0){
+					curx = 0;
+				}else if(curx >= w){
+					curx = w;
+				}
+				if(cury<=0){
+					cury = 0;
+				}else if(cury >= h){
+					cury = h;
+				}
+				if(flag){
+					box.style.left = curx + 'px';
+					box.style.top = cury + 'px';
+				}
+			}
+			box.onmouseup = function(){
+				flag = false;
+			}
+			document.onkeydown = function(evt){
+				var e = evt || window.event;
+				var curx = parseFloat(getComputedStyle(box,null).left);
+				var cury = parseFloat(getComputedStyle(box,null).top);
+				switch(e.keyCode){
+					case 37:
+					curx -= step;
+					break;
+					case 38:
+					cury -= step;
+					break;
+					case 39:
+					curx += step;
+					break;
+					case 40:
+					cury += step;
+					break;
+				}
+				if(curx<=0){
+					curx = 0;
+				}else if(curx >= w){
+					curx = w;
+				}
+				if(cury<=0){
+					cury = 0;
+				}else if(cury >= h){
+					cury = h;
+				}
+				box.style.left = curx + 'px';
+				box.style.top = cury + 'px';
+			}
+		</script>
+	</body>
+</html>

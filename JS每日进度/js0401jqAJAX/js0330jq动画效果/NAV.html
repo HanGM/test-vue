@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>导航菜单</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			.nav{
+				width: 100%;
+			}
+			.nav ul{
+				width: 1000px;
+				overflow: hidden;
+				margin: auto;
+				background-color: #bfa;
+			}
+			.nav ul li{
+				float: left;
+				width: 100px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				overflow: hidden;
+				cursor: pointer;
+			}
+			.nav-bar div:last-child{
+				color: #fff;
+				background-color: #000;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="nav">
+			<ul>
+				<li>
+					<div class="nav-bar">
+						<div>首页</div>
+						<div>HOME</div>
+					</div>
+				</li>
+				<li>
+					<div class="nav-bar">
+						<div>商品</div>
+						<div>GOODS</div>
+					</div>
+				</li>
+				<li>
+					<div class="nav-bar">
+						<div>个人中心</div>
+						<div>CENTER</div>
+					</div>
+				</li>
+				<li>
+					<div class="nav-bar">
+						<div>关于我们</div>
+						<div>ABOUTUS</div>
+					</div>
+				</li>
+			</ul>	
+		</div>
+		<script src="jquery.js"></script>
+		<script>
+			$('.nav li').hover(function(){
+				$(this).find('.nav-bar').stop().animate({
+					marginTop:-40
+				},400)
+			},function(){
+				$(this).find('.nav-bar').stop().animate({
+					marginTop:0
+				},400)
+			});
+		</script>
+	</body>
+</html>

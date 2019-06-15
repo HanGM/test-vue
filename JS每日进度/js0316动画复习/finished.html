@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--右侧无缝自动切换-->
+		<title>横向轮播图</title>
+		<link rel="stylesheet" href="css/base.css" />
+		<script src="js/common.js"></script>
+	</head>
+	<body>
+		<div class="banner">
+			<ul class="imglist">
+				<li><img src="img/1.jpg" alt="图片" /></li>
+				<li><img src="img/2.jpg" alt="图片" /></li>
+				<li><img src="img/3.jpg" alt="图片" /></li>
+				<li><img src="img/4.jpg" alt="图片" /></li>
+				<li><img src="img/5.jpg" alt="图片" /></li>
+				<li><img src="img/6.jpg" alt="图片" /></li>
+				<li><img src="img/1.jpg" alt="图片" /></li>
+			</ul>
+			<div class="btn prev">&lt;</div>
+			<div class="btn next">&gt;</div>
+			<div class="item">
+				<span class="on"></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+				<span></span>
+			</div>
+		</div>
+		<script>
+			var banner=getClass('banner')[0];
+			var imglist=getClass('imglist')[0];
+			var img=getTag('img');
+			var span=getTag('span');
+			var prev=getClass('prev')[0];
+			var next=getClass('next')[0];
+			imglist.style.width=600*img.length+'px';
+			var num=0;
+			for(var i=0;i<span.length;i++){
+				span[i].index=i;
+				span[i].onclick=function(){
+					num=this.index;	
+					setSpan();
+					animate(imglist,{marginLeft:-600*num});
+				};
+			}
+			banner.timer=setInterval(nextPage,3000);
+			banner.onmouseover=function(){
+				clearInterval(banner.timer);
+			}
+			banner.onmouseout=function(){
+				banner.timer=setInterval(nextPage,3000);
+			}
+			function setSpan(){
+				if(num>=span.length){
+					imglist.style.marginLeft=0;
+					num=0;
+				}
+				if(num<0){
+					num=span.length-1;
+					imglist.style.marginLeft=-600*num+'px';
+				}
+				var sib=getSibling(span[num]);
+				for(var i=0;i<sib.length;i++){
+				removeClass(sib[i],'on');
+				}
+				addClass(span[num],'on');
+			}
+			prev.onclick=function(){
+				num--;
+				animate(imglist,{marginLeft:-600*num},function(){
+					setSpan();
+				});
+			}
+			next.onclick=nextPage;
+			function nextPage(){
+				num++;
+				num%=img.length;//
+				animate(imglist,{marginLeft:-600*num},function(){
+					setSpan();
+				});	
+			}
+		</script>
+	</body>
+</html>

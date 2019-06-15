@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.box{
+				width: 100px;
+				height: 100px;
+				background: #bfa;
+				position: absolute;
+			}
+			.box2{
+				width: 100px;
+				height: 100px;
+				background: #bba;
+				position: absolute;
+				left: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="box"></div>
+		<div class="box2"></div>
+		<script>
+			var box=document.querySelector('.box');
+			var flag=false;
+			box.onmousedown=function(event){
+				console.log(event)
+				event=event||window.event;
+				var x=event.clientX-box.offsetLeft;
+				var y=event.clientY-box.offsetTop;
+				document.onmousemove=function(event){
+					var sl=document.body.scrollLeft||document.documentElement.scrollLeft;
+					var st=document.body.scrollTop||document.documentElement.scrollTop;
+					box.style.left=event.clientX-sl-x+'px';
+					box.style.top=event.clientY-st-y+'px';
+				}
+				document.onmouseup=function(event){
+					document.onmousemove=null;
+					document.onmouseup=null;
+				}	
+			}
+			console.log(window.event)
+//			document.onclick=function(event){
+//				event=event||window.event;
+//				box.style.left=event.clientX+'px';
+//				box.style.top=event.clientY+'px';
+//				console.log(event)
+//			}
+//			document.onmousemove=function(event){
+//				event=event||window.event;
+//				box.style.left=event.clientX+'px';
+//				box.style.top=event.clientY+'px';
+//				console.log(event)
+//			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax技术替带form表单提交数据功能</title>
+	</head>
+	<body>
+		<!--使用get请求向后台提交数据-->
+		<!--<script>
+			var xhr = new XMLHttpRequest();
+			xhr.open('get','http://192.168.1.115:3000/fcjy/getdata？name=小明',false);
+			//发送的数据在地址后用？拼接，效果同form表单get方法
+			xhr.send(null);
+			if(xhr.status == 200){
+				console.log(xhr.responseText);
+			}else{
+				console.log('请求错误！状态码：'+ xhr.status + '错误描述：' + xhr.statusText);
+			}
+		</script>-->
+		
+		<!--使用post请求向后台提交数据-->
+		<!--<script>
+			var xhr = new XMLHttpRequest();
+			xhr.open('post','http://192.168.1.115:3000/fcjy/postdata',false);
+			//模拟form表单post方法，在open和send之间添加模拟请求头
+			xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+			xhr.send('name=xiaoming');//post提交的数据在send()中，不用？拼接
+			if(xhr.status == 200){
+				console.log(xhr.responseText);
+			}else{
+				console.log('请求错误！状态码：'+ xhr.status + '错误描述：' + xhr.statusText);
+			}
+		</script>-->
+		
+		<!--使用异步执行post请求向后台提交数据-->
+		<script>
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function(){
+				console.log(5)
+				if(xhr.readyState == 4){
+					if(xhr.status == 200){
+						console.log(xhr.responseText);
+					}else{
+						console.log('请求错误！状态码：'+ xhr.status + '错误描述：' + xhr.statusText);
+					}
+				}
+			}
+			xhr.open('post','http://192.168.1.115:3000/fcjy/postdata',true);
+			//模拟form表单post方法，在open和send之间添加模拟请求头
+			xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+			xhr.send('name=xiaoming');//post提交的数据在send()中，不用？拼接
+			
+			alert('我是主线程，看看受异步影响吗')
+		</script>
+	</body>
+</html>

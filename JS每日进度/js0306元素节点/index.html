@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>元素节点关系属性</title>
+		<script src="common.js"></script>
+	</head>
+	<body>o^o
+		<div class="box">-.-
+			<span>
+				<a href=""></a>
+			</span>
+		</div><div></div>
+		<script>
+//			var div=document.getElementsByTagName('div');
+			var div=getTag('div');
+			console.log(div[0].hasChildNodes());
+			var p=document.createElement('p');
+			p.innerHTML='I am pra';
+			div[0].appendChild(p);
+			/*console.log(div[0].hasChildNodes());
+			console.log(div[1].hasChildNodes());
+			var h1=document.createElement('h1');
+			console.log(h1);
+			console.log(div[0].appendChild(h1));
+			h1.innerHTML='I am here';
+			console.log(div[0].childNodes);
+			console.log(div[0].lastChild);
+			console.log(div[0].lastChild.previousSibling);*/
+		    /*console.log(div);
+			for(var i=0;i<div.length;i++){
+				console.log(div[i].childNodes);
+			}*/
+			/*console.log(div[0].childNodes);
+			console.log(div[0].nodeName);
+			console.log(div[0].nodeType);
+			console.log(div[0].nodeValue);
+			console.log(div[0].firstChild);
+			console.log(div[0].firstChild.nodeName);
+			console.log(div[0].firstChild.nodeValue);
+			console.log(div[0].firstChild.nodeType);
+//			console.log(div[0].lastChild);
+//			console.log(div[0].lastChild.nodeName);
+//			console.log(div[0].lastChild.nodeValue);
+//			console.log(div[0].lastChild.nodeType);
+			console.log(div[0].nextSibling);
+			console.log(div[0].nextSibling===div[1]);
+			console.log(div[0].previousSibling);
+			console.log(div[0].parentNode);*/
+			
+		</script>
+	</body>
+</html>

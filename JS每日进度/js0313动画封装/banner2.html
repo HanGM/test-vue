@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>横向轮播图</title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+			}
+			#banner{
+				width: 320px;
+				height: 300px;
+				padding: 10px 0;
+				margin: 50px auto;
+				background: #bfa;
+				border: 1px solid black;
+				position: relative;
+				overflow: hidden;
+			}
+			#banner ul{
+				position: absolute;
+				transition: all .5s;
+				/*width: 1600px;*/
+			}
+			#banner ul li{
+				float: left;
+				margin: 0 10px;
+			}
+			#nav{
+				position: absolute;
+				bottom: 15px;
+			}
+			#nav a{
+				float: left;
+				width: 15px;
+				height: 15px;
+				background: red;
+				margin: 0 5px;
+				opacity: 0.5;
+				/*兼容IE8透明*/
+				filter: alpha(opacity=50);
+			}
+			#nav a:hover{
+				background: black;
+			}
+		</style>
+		<script src="common.js"></script>
+	</head>
+	<body>
+		<div id="banner">
+			<ul>
+				<li><img src="../0104/img/1.jpg" alt="图片" /></li>
+				<li><img src="../0104/img/2.jpg" alt="图片" /></li>
+				<li><img src="../0104/img/3.jpg" alt="图片" /></li>
+				<li><img src="../0104/img/4.jpg" alt="图片" /></li>
+				<li><img src="../0104/img/5.jpg" alt="图片" /></li>
+				<li><img src="../0104/img/1.jpg" alt="图片" /></li>
+			</ul>
+			<div id="nav">
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+				<a href="javascript:;"></a>
+			</div>
+		</div>
+		<script>
+			var ul=getTag('ul')[0];
+			var imgArr=getTag('img');
+			ul.style.width=320*imgArr.length+'px';
+			var banner=getId('banner');
+			var nav=getId('nav');
+			nav.style.left=(banner.offsetWidth-nav.offsetWidth)/2+'px';
+			var index=0;
+			var allA=getTag('a');
+			allA[index].style.background='black';
+			for(var i=0;i<allA.length;i++){
+				allA[i].num=i;
+				allA[i].onclick=function(){
+					index=this.num;
+					move();
+				}
+			}
+			var timer=setInterval(function(){
+				index++;
+				index%=imgArr.length;
+				move();
+			},3000);
+			function move(){
+				ul.style.left=-320*index+'px';
+				if(index>=imgArr.length-1){
+					index=0;
+					ul.style.left=0+'px';
+				}
+				for(var j=0;j<allA.length;j++){
+					allA[j].style.background='';
+					}
+				allA[index].style.background='black';	
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="" id="link" class="demo"></a>
+		<p class="demo"></p>
+		<div id="main"></div>
+		<button id="btn"></button>
+		<input type="text" id="man"/>
+		<div class="demo"></div>
+		<script>
+			function getId(name){
+				return document.getElementById(name);
+			}
+			function getTag(name){
+				var tag=document.getElementsByTagName(name);
+				var arr=[];
+				for(var i=0;i<tag.length;i++){
+					arr.push(tag[i]);
+				}
+				return arr;
+			}
+			console.log(getId('man'));
+			console.log(getTag('button'));
+		</script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>现代事件(DOM 2级事件)</title>
+		<style type="text/css">
+			div{
+				width: 200px;
+				height: 200px;
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div></div>
+		<script>
+			var div=document.getElementsByTagName('div')[0];
+//			div.onclick=function(){
+//				alert(1);
+//			}
+//			div.onclick=function(){
+//				alert(2);
+//			}
+
+//			div.addEventListener('click',function(){
+//				alert(1);
+//			});
+//			div.addEventListener('click',function(){
+//				alert(2);
+//			})
+
+//			div.addEventListener('click',function(){
+//				alert(1);
+//			},false);
+//			div.addEventListener('click',function(){
+//				alert(2);
+//			},false)
+			function click1(){
+				alert(1);
+			}
+			function click2(){
+				alert(2);
+			}
+			eventHander(div,'click',click1);
+			eventHander(div,'click',click2);
+			removeHander(div,'click',click1);
+			removeHander(div,'click',click2);
+			function eventHander(el,type,callback){
+				if(el.addEventListener){
+					el.addEventListener(type,callback);
+				}else if(el.attachEvent){
+					el.attachEvent('on'+type,callback);
+				}else{
+					el['on'+type]=callback;
+				}
+			}
+			function removeHander(el,type,callback){
+				if(el.removeEventListener){
+					el.removeEventListener(type,callback);
+				}else if(el.detachEvent){
+					el.detachEvent('on'+type,callback);
+				}else{
+					el['on'+type]=null;
+				}
+			}
+			eventHander(window,'mousewheel',move);
+			eventHander(window,'DOMMouseScroll',move);
+			function move(evt){
+				console.log(getDelta(evt));
+			}
+			function getDelta(evt){
+				if(evt.wheelDelta){
+					return evt.wheelDelta;
+				}else{
+					return -evt.detail*40;
+				}
+			}
+		</script>
+	</body>
+</html>

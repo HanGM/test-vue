@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>页面小游戏</title>
+	</head>
+	<body>
+		<script>
+			function My(name,hp,attack,defense){
+				this.name=name;
+				this.hp=hp;
+				this.attack=attack;
+				this.defense=defense;
+			}
+			var wu=new My('悟空',100,96,81);
+			var mo=new My('墨子',100,86,88);
+			My.prototype.active=function(obj){
+				document.write('回合开始<br/>'+this.name+'对'+obj.name+'发起了攻击！<br/>');
+				var i=0;
+				while(this.hp>0&&obj.hp>0){
+					i++;
+					document.write('第'+i+'回合<br/>');
+					obj.hp-=this.attack-obj.defense;
+					this.hp-=obj.attack-this.defense;
+					document.write(this.name+'的血量剩余：'+this.hp+','+obj.name+'的血量剩余：'+obj.hp+'<br/>');
+					if(this.hp<=0){
+						document.write(this.name+'失败了！<br/>');
+					}else if(obj.hp<=0){
+						document.write(obj.name+'失败了！<br/>');
+					}
+				}
+			}
+			wu.active(mo);
+		</script>
+	</body>
+</html>

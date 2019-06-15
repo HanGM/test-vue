@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+//			var date = new Date();
+//			console.log(date);
+//			date.setDate(date.getDate() + 7);
+//			console.log(date);
+
+//			document.cookie = 'user=man';
+//			var man = 'xiaoming'
+//			document.cookie = 'user='+man+';expries=' + date;
+			console.log(document.cookie)
+			//设置指定cookie有效时间
+			function setCookie(key,value,day){
+				var str = key + '=' + value;
+				if(!day){
+					var date = new Date();
+					date.setDate(date.getDate() + day);
+					str += ';expires=' + date;
+				}
+				document.cookie = str;
+			}
+		</script>
+		
+	</body>
+</html>

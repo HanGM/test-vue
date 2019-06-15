@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<p>第一章</p>
+				<span>删除</span>
+			</li>
+			<li>
+				<p>第二章</p>
+				<span>删除</span>
+			</li>
+			<li>
+				<p>第三章</p>
+				<span>删除</span>
+			</li>
+			<li>
+				<p>第四章</p>
+				<span>删除</span>
+			</li>
+		</ul>
+		<script>
+			var ul=document.getElementsByTagName('ul')[0];
+			var span=ul.getElementsByTagName('span');
+			for(var i=0;i<span.length;i++){
+				span[i].onclick=function(){
+					ul.removeChild(this.parentNode);
+				}
+			}
+		</script>
+	</body>
+</html>

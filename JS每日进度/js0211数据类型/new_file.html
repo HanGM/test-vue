@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js数据类型转换</title>
+	</head>
+	<body>
+		<script>
+			var iNum=12;//整数
+			var fNum=12.42;//浮点数
+			var num=NaN;//Not a Number,相当于一个提示符，说明运算出错，结果不是一个数字；
+			var str="";//空字符串
+			var str1="你好";
+			var str2="2你好";
+			var str3="3.58你好";
+			var str4="4.25.24你好";
+			var str5="5";
+			var str6="6.58";
+			var str7="7.25.24";
+			var flag=true;//布尔值类型为真
+			var Flag=false;//布尔值类型为假
+			var nul=null;//空类型（空对象）
+			var und=undefined;//未定义类型
+			console.log(iNum+str);
+			console.log(iNum+nul);
+			console.log(iNum+Flag);
+			console.log(iNum+flag);
+			console.log(iNum+num);
+			console.log(iNum+und);
+			console.log(iNum+str1);
+			console.log(str+iNum);
+			console.log(str1+iNum+fNum);
+			console.log(flag+Flag);
+			console.log(nul+und);
+////+对字符串有拼接功能,其他类型都是运算功能
+//			console.log(typeof iNum);//number
+//			console.log(typeof fNum);//number
+//			console.log(typeof num);//number
+//			console.log(typeof str);//string
+//			console.log(typeof str1);//string
+//			console.log(typeof str2);//string
+//			console.log(typeof str3);//string
+//			console.log(typeof str4);//string
+//			console.log(typeof str5);//string
+//			console.log(typeof str6);//string
+//			console.log(typeof str7);//string
+//			console.log(typeof flag);//boolean
+//			console.log(typeof Flag);//boolean
+//			console.log(typeof nul);//oblect
+//			console.log(typeof und);//undefined
+////typeof 输出结果以字符串的形式显示number、string、boolean、object、undefined类型
+
+//			console.log(typeof typeof iNum);
+//			console.log(typeof typeof fNum);
+//			console.log(typeof typeof num);
+//			console.log(typeof typeof str);
+//			console.log(typeof typeof str1);
+//			console.log(typeof typeof str2);
+//			console.log(typeof typeof str3);
+//			console.log(typeof typeof str4);
+//			console.log(typeof typeof str5);
+//			console.log(typeof typeof str6);
+//			console.log(typeof typeof str7);
+//			console.log(typeof typeof flag);
+//			console.log(typeof typeof Flag);
+//			console.log(typeof typeof nul);
+//			console.log(typeof typeof und);
+////typeof typeof 输出结果均为string
+
+//			console.log(Boolean(iNum));//true
+//			console.log(Boolean(fNum));//true
+//			console.log(Boolean(num));//false
+//			console.log(Boolean(str));//false
+//			console.log(Boolean(str1));//true
+//			console.log(Boolean(str2));//true
+//			console.log(Boolean(str3));//true
+//			console.log(Boolean(str4));//true
+//			console.log(Boolean(str5));//true
+//			console.log(Boolean(str6));//true
+//			console.log(Boolean(str7));//true
+//			console.log(Boolean(flag));//true
+//			console.log(Boolean(Flag));//false
+//			console.log(Boolean(nul));//false
+//			console.log(Boolean(und));//false
+////输出结果为蓝色，且均为布尔值类型(数字0、NaN、空字符串、null、undefined、false转换为false)
+
+//			console.log(String(iNum));//12
+//			console.log(String(fNum));//12.42
+//			console.log(String(num));//NaN
+//			console.log(String(str));//
+//			console.log(String(str1));//你好
+//			console.log(String(str2));//2你好
+//			console.log(String(str3));//3.58你好
+//			console.log(String(str4));//4.25.24你好
+//			console.log(String(str5));//5
+//			console.log(String(str6));//6.58
+//			console.log(String(str7));//7.25.24
+//			console.log(String(flag));//true
+//			console.log(String(Flag));//false
+//			console.log(String(nul));//null
+//			console.log(String(und));//undefined
+////输出结果黑色，均为字符串类型
+
+//			console.log(Number(iNum));//12
+//			console.log(Number(fNum));//12.42
+//			console.log(Number(num));//NaN
+//			console.log(Number(str));//0
+//			console.log(Number(str1));//NaN
+//			console.log(Number(str2));//NaN
+//			console.log(Number(str3));//NaN
+//			console.log(Number(str4));//NaN
+//			console.log(Number(str5));//5
+//			console.log(Number(str6));//6.58
+//			console.log(Number(str7));//NaN
+//			console.log(Number(flag));//1
+//			console.log(Number(Flag));//0
+//			console.log(Number(nul));//0
+//			console.log(Number(und));//NaN
+////空字符串、布尔值为假时、空对象被转换为0，布尔值为真时被转换为1，纯数字字符串被转换为对应数字，其他被转换为NaN
+
+//			console.log(parseInt(iNum));//12
+//			console.log(parseInt(fNum));//12
+//			console.log(parseInt(num));//NaN
+//			console.log(parseInt(str));//NaN
+//			console.log(parseInt(str1));//NaN
+//			console.log(parseInt(str2));//2
+//			console.log(parseInt(str3));//3
+//			console.log(parseInt(str4));//4
+//			console.log(parseInt(str5));//5
+//			console.log(parseInt(str6));//6
+//			console.log(parseInt(str7));//7
+//			console.log(parseInt(flag));//NaN
+//			console.log(parseInt(Flag));//NaN
+//			console.log(parseInt(nul));//NaN
+//			console.log(parseInt(und));//NaN
+////数字开头的字符串被转换成对应的整数；数字被转换成对应整数数字；其他的都被转换成NaN
+
+//			console.log(parseFloat(iNum));//12
+//			console.log(parseFloat(fNum));//12.42
+//			console.log(parseFloat(num));//NaN
+//			console.log(parseFloat(str));//NaN
+//			console.log(parseFloat(str1));//NaN
+//			console.log(parseFloat(str2));//2
+//			console.log(parseFloat(str3));//3.58
+//			console.log(parseFloat(str4));//4.25
+//			console.log(parseFloat(str5));//5
+//			console.log(parseFloat(str6));//6.58
+//			console.log(parseFloat(str7));//7.25
+//			console.log(parseFloat(flag));//NaN
+//			console.log(parseFloat(Flag));//NaN
+//			console.log(parseFloat(nul));//NaN
+//			console.log(parseFloat(und));//NaN
+////1.数字开头的字符串被转换成对应的浮点数；数字被转换成对应浮点数数字；其他的都被转换成NaN
+		</script>
+	</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>小地图</title>
+		<style type="text/css">
+			body{
+				min-width: 800px;
+				margin: 0;
+				background-color: #666;
+			}
+			.list{
+				width: 800px;
+				overflow: hidden;
+				margin: auto;
+			}
+			.list .item{
+				width: 80px;
+				height: 80px;
+				float: left;
+			}
+			.black{
+				background-color: black;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			//10*10地图
+			var myMap=[
+			[1,1,1,1,1,1,1,1,1,1],//第1行
+			[1,0,0,0,1,0,0,0,1,1],//第2行
+			[1,0,1,0,1,0,1,0,0,1],//第3行
+			[0,0,1,0,0,0,1,1,0,1],//第4行
+			[1,1,0,1,1,0,0,0,1,1],//第5行
+			[1,0,0,0,1,0,1,0,0,1],//第6行
+			[1,0,1,0,0,0,0,1,0,1],//第7行
+			[1,0,1,1,0,1,0,1,0,1],//第8行
+			[1,0,0,0,0,1,0,0,0,1],//第9行
+			[1,0,1,1,1,1,1,1,1,1]//第10行
+			];
+			for(var i=0;i<myMap.length;i++){
+				document.write('<div class="list">');
+				for(var j=0;j<myMap[i].length;j++){
+					if(myMap[i][j]==1){
+						document.write('<div class="item black"></div>');
+					}else{
+						document.write('<div class="item"></div>');
+					}
+				}
+				document.write('</div>');
+			}
+		</script>
+	</body>
+</html>

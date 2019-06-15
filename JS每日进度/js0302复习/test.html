@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+<script>
+//	var num=0;
+//	var und = undefined;
+//	var str='';
+//	var nul=null;
+//	var obj={};
+//	console.log()
+//	switch(num+obj){
+//		case 1:
+//		console.log(1);
+//		break;
+//		case 2:
+//		console.log(2);
+//		break;
+//		default:
+//		console.log(NaN);
+//		break;
+//	}
+	//for循环
+//	for(var i=1;i<10;i++){
+////		i>5?console.log(10-i):console.log(i);
+//		console.log(i>5?10-i:i);
+//		/*if(i>5){
+//			console.log(10-i);
+//		}else{
+//			console.log(i);
+//		}	*/
+//	}
+	//回调函数
+	/*function fn(callback){
+		console.log(callback);
+		console.log(arguments.callee);
+		var num=12;
+		callback(num);
+	}
+	fn(function(num){
+		console.log(this);
+		console.log(num);
+		console.log(arguments.callee.caller);
+	});*/
+	//递归函数
+	/*function fn(num){
+		if(num>0){
+			console.log(num);
+			fn(--num);
+			console.log(num);
+		}
+	}
+	fn(5);*/
+	
+	/*function fn(num){
+		if(num<6){
+			console.log(num);
+			fn(++num);
+			console.log(num-1);
+		}
+	}
+	fn(1);*/
+	
+//	var obj={
+//		name:'xiaoming',
+//		sex:'man',
+//		skill:function(){
+//			console.log('singing');
+//			return 'singing';
+//		},
+//	};//字面量对象
+//	console.log(obj);
+//	console.log(obj.name,obj.sex,obj.skill());
+//	var obj=new Object();//使用Objcet创建对象
+//	function Myobj(){
+//		this.name='xiaoming';
+//		this.skill=function(){
+//			console.log('are you ok');
+//			return 'ok';
+//		}
+//	}
+	//遍历对象
+//	for(var i in obj){
+//		console.log(i);//属性、方法名
+//		console.log(obj[i]);//值、函数体
+//	}
+//	var obj=new Myobj();//自定义对象
+//	console.log(obj);
+//	console.log(obj.name,obj.skill());
+	
+//	function comp(type,a,b){
+//		obj={
+//			add:function(){return a+b;},
+//			sub:function(){return a-b;},
+//			mul:function(){return a*b;},
+//			div:function(){return a/b;},
+//		}
+//		return obj[type](a,b);
+//	}
+//	console.log(comp('add',9,3));
+//	
+//	var arr=[3,21,331,55,6];
+//	var arr2=[true,null,false,undefined,{},[],/ /,2,'ok',Function];
+//	/*for(var i=0;i<arr.length;i++){
+//		console.log(i,arr[i]);
+//	}*/
+//	//给数组原型添加遍历数组方法
+//	Array.prototype.each=function(callback){
+//		for(var i=0;i<this.length;i++){
+//			callback(i,this[i]);
+//		}
+//	}
+//	arr.each(function(index,value){
+//		console.log(index,value);
+//	});
+//	arr2.each(function(index,value){
+//		console.log(index,value);
+//	});
+////	arr.sort(function(a,b){return a-b;});
+////	console.log(arr);
+	/*//对象连缀
+	var obj={
+		title:'obj  title',
+		fn:function(){
+			console.log('fn fangfa');
+			return this;
+			},
+		other:function(){
+			console.log('other fafang');
+			return this;
+		}
+	}
+	console.log(obj.fn().other().title);*/
+	
+//	var str=' \n     klvg  \n  sjki\n	';
+//	var reg=/^\s*|\s*$/gm;
+//	var result=str.replace(reg,'');
+//	console.log(result);
+
+	var str='0123456789abcdefghijklmnopqrstuvwxyz';
+	
+</script>
+</body>
+</html>

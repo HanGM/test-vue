@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script>
+			function Person(name,attack,defense,hp){
+				this.name=name;
+				this.attack=attack;
+				this.defense=defense;
+				this.hp=hp;
+			}
+			var bai=new Person('李白',90,60,100);
+			var kui=new Person('李逵',68,80,100);
+			Person.prototype.fn=function(obj){
+				var i=0;
+					console.log(this.name+'向'+obj.name+'发起了攻击！');
+					while(this.hp>0&obj.hp>0){
+						i++;
+						console.log('第'+i+'回合');
+						obj.hp-=this.attack-obj.defense;
+						this.hp-=obj.attack-this.defense;
+						console.log(this.name+'血量剩余'+this.hp+'    '+obj.name+'血量剩余'+obj.hp);
+						if(this.hp<=0){
+							console.log(this.name+'失败了！');
+						}
+						if(obj.hp<=0){
+							console.log(obj.name+'失败了！');
+						}
+					}
+				}
+			bai.fn(kui);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>同步动画</title>
+		<style type="text/css">
+			.father{
+				width: 800px;
+				height: 600px;
+				border: 1px solid black;
+			}
+			.box{
+				width: 100px;
+				height: 100px;
+				background:red;
+			}
+			.main{
+				width: 100px;
+				height: 100px;
+				background: blue;
+			}
+		</style>
+		<script src="animate.js"></script>
+	</head>
+	<body>
+		<button class="btn">点击</button>
+		<div class="father">
+			<div class="box"></div>
+			<div class="main"></div>
+		</div>
+		<script>
+			var box=document.getElementsByClassName('box')[0];
+			var main=document.getElementsByClassName('main')[0];
+			var btn=document.getElementsByClassName('btn')[0];
+			btn.onclick=function(){
+				animates(main,{
+					width:200,
+					height:200
+				},500);
+				animate(box,{
+					width:200,
+					height:200
+				},500);
+			}
+			function animate(el,obj,time,callback){
+				var start={};//创建空对象，录入起始点
+				for(var i in obj){
+					start[i]=parseFloat(getComputedStyle(el,null)[i]);
+				}
+				var t=16;//每16毫秒运行一次
+				var timer=setInterval(function(){
+					for(var i in obj){
+						var attr=i;//属性
+						var target=obj[i];//目标点
+						//每次变动的量、速度
+						var step=(target-start[i])/(time/t);
+						//当前点
+						var current=parseFloat(getComputedStyle(el,null)[attr]);
+						//判断动画结束时机
+						if(step>0&&current>=(target-step)||step<0&&current<=(target-step)){
+							clearInterval(timer);
+							el.style[attr]=target+'px';
+							callback&&callback();//处理队列动画
+						}else{
+							console.log('box'+step)
+							el.style[attr]=current+step+'px';//属性变化
+						}
+					}
+				},t);
+			}
+		</script>
+	</body>
+</html>

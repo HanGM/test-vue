@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<h1 id="timeBox"></h1>
+		<script>
+			var timeBox=document.getElementById('timeBox');
+			setInterval(function(){
+				var date=new Date();
+				var arr=[date.getFullYear(),date.getMonth()+1,date.getDate(),date.getHours(),date.getMinutes(),date.getSeconds()]
+				for(var i=1;i<arr.length;i++){
+					if(arr[i]<10){
+						arr[i]='0'+arr[i];
+					}
+				}
+				timeBox.innerHTML=arr[0]+'年'+arr[1]+'月'+arr[2]+'日    '+arr[3]+'时'+arr[4]+'分'+arr[5]+'秒';
+			},1000)
+		</script>-->
+		<script>
+			
+//			var str=String.fromCharCode(0x2286);
+////			var str=String.fromCharCode(20013);
+//			document.write(str);
+			
+//			var reg=new RegExp('abc');
+//			var reg=/abc/;
+//			var str='abcdfpfgkokfo';
+//			console.log(str.match(reg));
+//		var reg=/\d{11}/;
+//		var str='13776544333';
+//		console.log(str.match(reg));
+//		var reg=/\d\w\s/;
+//		var reg=/\w\w\w\w/;
+//		var str='2q_Awe232';
+//			console.log(str.match(reg));
+//		var reg=/\s\s\s\s/;
+//		var str='1a	 \n 6544333';
+//			console.log(str.match(reg));
+//		var reg=/\d\d\d\d/;
+//		var str='544333';
+//			console.log(str.match(reg));
+//var reg=/^1([358]\d|66|7[35-8]|9[89])\d{8}$/;
+//var str='13454323096';
+//var result=str.match(reg);
+//if(result){
+//	console.log('手机号填写正确！');
+//}else{
+//	console.log('您的手机号有误！');
+//}
+//		var reg=/你好吗？(好|不好)/;
+////		var reg=/(?:你好吗？){2}/;
+//		var str='你好吗？你好吗？好';
+//		var result=str.match(reg);
+//		console.log(result);
+/*
+//13/5/8 0-9   166  173/5-8   198/9
+//var reg=/^1(?:[358]\d|66|7[35-8]|9[89])\d{8}$/;
+//最新手机号正则表达式:
+var reg=/^1([38]\d|4[579]|5[0-35-9]|66|7[0135-8]|9[89])\d{8}$/;
+var str='17488833566';
+var result=str.match(reg);
+if(result){
+	console.log('该号段存在，号码格式输入正确！');
+}else{
+	console.log('该号段不存在，请确认后再输入！');
+}
+console.log(result);
+*/
+var reg=/^(?:f|ht)tps?:\/\/(?:www\.)?[A-z\d]+\.(?:cn|com(?:\.cn)?)$/;
+var str='ftp://www.r5eefe32.com.cn';
+var result=str.match(reg);
+console.log(result);
+
+		</script>
+	</body>
+</html>

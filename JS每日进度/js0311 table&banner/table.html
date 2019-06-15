@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>table选项卡</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+			}
+			li{
+				list-style: none;
+			}
+			#box{
+				margin: auto;
+				width: 600px;
+				border: 1px solid black;
+			}
+			.nav{
+				overflow: hidden;
+				border-bottom: 1px solid black;
+			}
+			.nav li{
+				width: 100px;
+				height: 40px;
+				line-height: 40px;
+				text-align: center;
+				float: left;
+				cursor: pointer;
+			}
+			.nav li.cur{
+				background: black;
+				color: white;
+			}
+			#box .main{
+				height: 400px;
+				text-align: center;
+				line-height: 400px;
+				display: none;
+			}
+			#box .main.cur{
+				color: white;
+				background: black;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<ul class="nav">
+				<li class="cur">导航1</li>
+				<li>导航2</li>
+				<li>导航3</li>
+				<li>导航4</li>
+				<li>导航5</li>
+				<li>导航6</li>
+			</ul>
+			<div class="main cur">内容1</div>
+			<div class="main">内容2</div>
+			<div class="main">内容3</div>
+			<div class="main">内容4</div>
+			<div class="main">内容5</div>
+			<div class="main">内容6</div>
+		</div>
+		<script>
+			var box=document.getElementById('box');
+			var li=document.getElementsByTagName('li');
+			var div=box.getElementsByTagName('div');
+			for(var i=0;i<li.length;i++){
+				li[i].index=i;
+				li[i].onclick=function(){
+					for(var j=0;j<li.length;j++){
+						li[j].className='';
+						div[j].className='main';
+					}
+					this.className='cur';
+					div[this.index].className='main cur';
+				}
+			}
+		</script>
+		<!--<script>
+			var score=parseFloat(prompt('请输入你的成绩(0-100)'));
+			if(isNaN(score)||score<0||score>100){
+				alert('输入错误');
+			}else{
+				if(score==100){
+					alert('bmw');
+				}else if(score>=80){
+					alert('iphone');
+				}else if(score>=60){
+					alert('book');
+				}else {
+					alert('hit');
+				}
+			}
+		</script>-->
+	</body>
+</html>

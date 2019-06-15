@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>刻钟</title>
+		<style>
+			#outside{
+				width: 400px;
+				height: 400px;
+				border: 2px solid black;
+				background: wheat;
+				border-radius: 50%;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+			}
+			#inside{
+				width: 360px;
+				height: 360px;
+				border-radius: 50%;
+				position: relative;
+			}
+			span{
+				position: absolute;
+				transform: translate(-50%,-50%);
+			}
+		</style>
+	</head>
+	<body>
+		<div id="outside">
+			<div id="inside"></div>
+		</div>
+		<script>
+			var inside=document.getElementById('inside');
+			var r=180;
+			var deg=270;
+			for(var i=1;i<13;i++){
+				deg+=30;
+				var x=Math.cos(Math.PI/180*deg)*r+r;
+				var y=Math.sin(Math.PI/180*deg)*r+r;
+				inside.innerHTML+='<span style="left:'+x+'px; top:'+y+'px;">'+i+'</span>';
+			}
+		</script>
+	</body>
+</html>
