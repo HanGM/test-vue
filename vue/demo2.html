@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Vue实现跑马灯效果</title>
+		<link rel="stylesheet" href="css/bootstrap-theme.css" />
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<button class="btn btn-default" @click="move">浪起来</button>
+			<button  class="btn btn-default" @click="stop">别浪</button>
+			<h4 class="caption">{{msg}}</h4>
+		</div>
+		<script>
+			new Vue({
+				el : '.container',
+				data : {
+					msg : '猥琐发育！别浪~~' ,
+					timer : null,
+				},
+				methods : {
+					move : function (){
+						if(this.timer != null) return;
+					 	this.timer = setInterval(()=>(//箭头函数内部this指向的是函数外部作用域的this
+					 		this.msg = this.msg.substring(1) + this.msg.substring(0,1)
+					 	),400)
+					},
+					stop : function(){
+						clearInterval(this.timer)
+						this.timer = null;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<!--<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />-->
+		<title>vue组件通信子传父</title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app" class="container">
+			<!--模态框开始-->
+			<div id="myModal" class="modal fade" tabindex="-1" role="dialog">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title">警告</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>删除后无法恢复，确定要执行删除操作吗？</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal" @click="removeData(num)">确定</button>
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<!--模态框结束-->
+			<!--表单开始-->
+			<my-form @tempevent="sendData"></my-form>
+			<!--表单结束-->
+			<!--表格开始-->
+			<h2 class="text-center">表格</h2>
+			<table class="table table-bordered">
+			  <tr>
+			  	<th width="60px">序号</th>
+			  	<th>姓名</th>
+			  	<th>性别</th>
+			  	<th>年龄</th>
+			  	<th width="130px">操作</th>
+			  </tr>
+			  <tr v-for="(item,index) in list">
+			  	<td style="line-height: 34px;">{{index+1}}</td>
+			  	<td style="line-height: 34px;" v-for="(value,key) in item" v-if="key !== 'flag'"><span v-if="item.flag">{{value}}</span><input class="form-control" type="text" v-if="!item.flag" v-model="item[key]" /></td>
+			  	<td>
+					<div class="btn-group" role="group" aria-label="...">
+					  <button type="button" class="btn btn-primary" @click="updata(item)">{{item.flag ? '修改' : '确定'}}</button>
+					  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" @click="getIndex(index)">删除</button>
+					</div>
+			  	</td>
+			  </tr>
+			</table>
+			<!--表格结束-->
+		</div>
+		<!--表单组件开始-->
+		<template id="my-form">
+			<div class="form">
+			 <h2 class="text-center">表单</h2>
+			  <div class="form-group">
+			    <label for="username">姓名</label>
+			    <input type="text" class="form-control" id="username" v-model="username" placeholder="姓名">
+			  </div>
+			  <div class="form-group">
+			    <label for="sex">性别</label>
+			    <input type="text" class="form-control" id="sex" v-model="sex" placeholder="性别">
+			  </div>
+			  <div class="form-group">
+			    <label for="age">年龄</label>
+			    <input type="number" class="form-control" id="age" v-model="age" placeholder="年龄">
+			  </div>
+			  
+			  <button type="submit" class="btn btn-primary btn-block" @click="addData">添加</button>
+			</div>
+		</template>
+		<!--表单组件结束-->
+		
+		<script>
+			new Vue({
+				el : '#app',
+				data : {
+					num : 0,
+					list : [{
+						username : 'xiaoming',
+						sex : '男',
+						age : 12,
+						flag : true
+					}]
+				},
+				methods : {
+					getIndex : function(i){
+						this.num = i;
+					},
+					removeData : function(i){
+						this.list.splice(i,1)
+					},
+					updata : function(v){
+						v.flag = !v.flag;
+					},
+					sendData : function(data){
+						this.list.push(data)
+					}
+				},
+				components : {
+					myForm : {
+						template : '#my-form',
+						data : function(){
+							return {
+								username : '',
+								sex : '',
+								age : '',
+								flag : true
+							}
+						},
+						methods : {
+							addData : function(){
+								this.$emit('tempevent',{
+									username : this.username,
+									sex : this.sex,
+									age : this.age,
+									flag : true
+								})
+							}
+						}
+					}
+				}
+			})
+			
+			
+			
+		</script>
+	</body>
+</html>

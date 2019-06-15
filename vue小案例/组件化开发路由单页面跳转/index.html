@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>QQ组件化开发小案例</title>
+		<link rel="stylesheet" href="modules/bootstrap/css/bootstrap.css" />
+		<link rel="stylesheet" href="modules/font-awesome/css/font-awesome.css" />
+		<link rel="stylesheet" href="css/index.css" />
+	</head>
+	<body>
+		<div id="app">
+			<router-view></router-view>
+			<nav class="bottom-nav" v-if="flag">
+				<div class="text-center" v-for="item in mainList">
+					<router-link :to="{path: item.path}">
+						<i class="fa" :class="item.icon"></i>
+						<p>{{item.title}}</p>
+					</router-link>
+				</div>
+			</nav>
+		</div>
+		<script src="js/vue.js"></script>
+		<script src="js/vuex.js"></script>
+		<script src="js/vue-router.js"></script>
+		<script type="module" src="main.js"></script>
+	</body>
+</html>

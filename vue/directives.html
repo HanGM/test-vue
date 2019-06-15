@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue自定义指令</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="box" v-my-color:color="'red'">vue自定义指令</div>
+			<div class="box" v-my-color:background="'#bfa'">vue自定义指令</div>
+			<div class="box" v-my-color:height="'200px'">vue自定义指令</div>
+		
+			<div v-demo="'不带arg值'">vue自定义指令</div>
+		</div>
+		<!--<div id="app1">
+			<div class="box" v-my-color:color="'red'">vue自定义指令</div>
+			<div class="box" v-my-color:background="'#bfa'">vue自定义指令</div>
+			<div class="box" v-my-color:height="'200px'">vue自定义指令</div>
+		
+			<div v-my-color:color="'red'">vue自定义指令</div>
+		</div>-->
+		<script>
+//			Vue.directive('myColor',function(el,keys,vnode){
+//					el.style[keys.arg] = keys.value;
+//			})
+			new Vue({
+				el : '#app',
+				data : {
+					
+				},
+				methods : {
+					
+				},
+				directives : {
+					myColor : function (el,keys,vnode){
+						console.log(el,keys,vnode)
+						el.style[keys.arg] = keys.value;
+					},
+					demo : function(el,keys,vnode){
+						el.innerHTML = keys.value;
+					}
+				}
+			})
+//			new Vue({
+//				el : '#app1'
+//			})
+		</script>
+	</body>
+</html>

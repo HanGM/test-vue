@@ -1,0 +1,37 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+#app{
+	width: 100vw;
+	height: 100vh;
+}
+nav{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+nav ul{
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+}
+nav ul a{
+	color: #999;
+}
+nav ul .fa{
+	font-size: 20px;
+}
+nav ul p{
+	font-size: 14px;
+}
+nav .router-link-active{
+	color: #04A6DA;
+	text-decoration: none;
+}

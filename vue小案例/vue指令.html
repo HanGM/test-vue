@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>实现数据的双向绑定及按序增删改</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app" class="container">
+			<!--表单部分开始-->
+			<h2 class="text-center">表单</h2>
+			<div>
+			  <div class="form-group">
+			    <label for="username">姓名</label>
+			    <input type="text" class="form-control" id="username" v-model="username" placeholder="姓名">
+			  </div>
+			  <div class="form-group">
+			    <label for="gender">性别</label>
+			    <input type="text" class="form-control" id="gender" v-model="gender" placeholder="性别">
+			  </div>
+			  <div class="form-group">
+			    <label for="age">年龄</label>
+			    <input type="text" class="form-control" id="age" v-model="age" placeholder="年龄">
+			  </div>
+			  <div class="form-group">
+			  <button type="submit" class="btn btn-primary btn-block" @click="add">添加</button>
+			  </div>
+			</div>
+			<!--表单部分结束-->
+			<!--表格部分开始-->
+			<h2 class="text-center">表格</h2>
+			<table class="table table-bordered">
+			  <tr>
+			  	<th width="60px">序号</th>
+			  	<th>姓名</th>
+			  	<th>性别</th>
+			  	<th>年龄</th>
+			  	<th width="130px">操作</th>
+			  </tr>
+			  <tr v-for="(item,index) in list">
+			  	<td style="line-height: 34px;">{{index+1}}</td>
+			  	<td style="line-height: 34px;" v-for="(value,key) in item" v-if="key !== 'flag'"><span v-if="item.flag">{{value}}</span><input type="text" class="form-control" v-if="!item.flag" v-model="item[key]" /></td>
+			  	<td>
+			  		<div class="btn-group" role="group" aria-label="...">
+					  <button type="button" class="btn btn-info" @click="updata(item)">{{item.flag ? '修改' : '确定'}}</button>
+					  <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal" @click="getIndex(index)">删除</button>
+					</div>
+			  	</td>
+			  </tr>
+			</table>
+			<!--表格部分结束-->
+			<!--模态框部分开始-->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			        <h4 class="modal-title" id="myModalLabel">警告</h4>
+			      </div>
+			      <div class="modal-body">
+			        <p>删除后无法恢复，确定要执行删除操作吗？</p>
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal" @click="remove(num)">确定</button>
+			        <button type="button" class="btn btn-primary" data-dismiss="modal">取消</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+			<!--模态框部分结束-->
+		</div>
+		
+		<script>
+			var vm = new Vue({
+				el : "#app",
+				data : {
+					num : 0,
+					username : "",
+					gender : "",
+					age : "",
+					list : [{
+						username : "小明",
+						gender : "男",
+						age : 16,
+						flag : true
+					},{
+						username : "小辉",
+						gender : "男",
+						age : 18,
+						flag : true
+					},{
+						username : "小红",
+						gender : "女",
+						age : 14,
+						flag : true
+					},]
+				},
+				methods : {
+					add (){
+						this.list.push({
+							username : this.username,
+							gender : this.gender,
+							age : this.age,
+							flag : true
+						})
+					},
+					getIndex (i){
+						this.num = i;
+					},
+					remove (i){
+						this.list.splice(i,1)
+					},
+					updata (obj){
+						obj.flag = !obj.flag;
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

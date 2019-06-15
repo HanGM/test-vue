@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for数组</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<script src="js/listData.js"></script>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row">
+			  <div class="col-sm-6 col-md-4" v-for="item in list">
+			    <div class="thumbnail">
+			      <img :src="item.coverImg" alt="...">
+			      <div class="caption">
+			        <h3>{{item.title}}</h3>
+			        <p>{{item.describe}}</p>
+			        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			      </div>
+			    </div>
+			  </div>
+			</div>			
+		</div>
+		
+		
+		<script>
+			console.log(listData.listData00.data.list)
+			new Vue({
+				el : '.container',
+				data : {
+					list : listData.listData00.data.list,
+				}
+			})
+		</script>
+	</body>
+</html>

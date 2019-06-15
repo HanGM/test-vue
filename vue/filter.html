@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue过滤器</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<p>请输入价格：<input type="text" v-model="num" /></p>
+			<p>您输入的价格是：{{num|price}}</p>
+		</div>
+		<div id="app1">
+			<p>请输入价格：<input type="text" v-model="num" /></p>
+			<p>您输入的价格是：{{num|change}}</p>
+		</div>
+		
+		<script>
+			Vue.filter('change',function(data){
+				var data = data.trim().replace(/^0*/,'');
+				if(!isNaN(Number(data))){
+					var html = '';
+					var value = data.indexOf('.') == -1 ? data : data.slice(0,data.indexOf('.'));
+					for(var i=0,len=value.length;i<len;i++){
+						html += len-1-i != 0 && (len-1-i) % 3 == 0 ? value[i] + ',' : value[i];
+					}
+					if(data.indexOf('.') != -1){
+						html += data.slice(data.indexOf('.'))
+					}
+					return '$'+ html;
+				}else{
+					return '请输入正确格式！'
+				}
+				
+			})
+			new Vue({
+				el: '#app',
+				data: {
+					num : '',
+				},
+				filters: {
+					price (data){
+						var data = data.trim().replace(/^0*/,'');
+						if(!isNaN(Number(data))){
+							var html = '';
+							var value = data.indexOf('.') == -1 ? data : data.slice(0, data.indexOf('.'));
+							for(var i=0,len=value.length;i<len;i++){
+								html += (len-1-i)%3 == 0 && len-1-i != 0 ? value[i] + ',' : value[i];
+							}
+							if(data.indexOf('.') != -1){
+								html += data.slice(data.indexOf('.'))
+							}
+							return "￥" + html;
+						}else{
+							return '请输入正确的格式！'
+						}
+					}
+				}
+			});
+			new Vue({
+				el : '#app1',
+				data : {
+					num : '',
+				}
+			})
+		</script>
+	</body>
+</html>

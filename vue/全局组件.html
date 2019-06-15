@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue全局组件</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<h1>父组件app</h1>
+			<all></all>
+			<children></children>
+		</div>
+		<div id="app1">
+			<h1>父组件app1</h1>
+			<all></all>
+		</div>
+		<template id="children">
+			<div>
+				<p>子组件</p>
+				<all></all>
+			</div>
+		</template>
+		<!--组件模板的另一种写法-->
+		<script type="text/x-template" id="all">
+			<p>全局组件</p>
+		</script>
+		<script>
+			Vue.component('all',{
+				template: '#all',
+			});//全局组件可以在不同vue对象中使用，也可以用在vue对象的组件中
+			var vm = new Vue({
+				el: '#app',
+				components: {
+					children: {
+						template: '#children',
+					}
+				}
+			});
+			var vm1 = new Vue({
+				el: '#app1',
+				data: {
+					list:{name:'xiaoming',age:18,sex:'男'}
+				},
+				
+			});
+		</script>
+	</body>
+</html>

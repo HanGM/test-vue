@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue 组件</title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<my-vue v-for="i in list" v-bind:item="i"></my-vue>
+			
+		</div>
+		<script>
+			var vm = new Vue({
+				el : '#app',//控制区域
+				data : {//区域内数据
+					list : [{
+								coverImg : 'https://mini.eastday.com/02012/1555476843_1.jpg',
+								title : "标题1",
+								detail : '内容1'
+							},{
+								coverImg : 'https://mini.eastday.com/02012/1555476921_1.jpg',
+								title : "标题2",
+								detail : '内容2'
+							},{
+								coverImg : 'https://mini.eastday.com/02012/1555460910_3-1.jpg',
+								title : "标题3",
+								detail : '内容3'
+							},{
+								coverImg : 'https://mini.eastday.com/02012/1555461179_4.jpg',
+								title : "标题4",
+								detail : '内容4'
+							},{
+								coverImg : 'https://mini.eastday.com/02012/1555461282_1.jpg',
+								title : "标题5",
+								detail : '内容5'
+							}
+							]
+				},
+				methods : {},//区域内方法
+				components : {//区域内组件
+					myVue : {//组件myVue，就是vm实例对象中的一个小的Vue对象
+						template : '<div class="thumbnail text-center"><img :src="item.coverImg" alt="" /><div class="caption"><h3>{{item.title}}</h3><p>{{item.detail}}</p><button @click="addNum">赞{{num}}</button></div></div>',//标签模板
+						props : ['item'],
+						data : function(){//组件中data必须用函数的方式return出去
+							return {
+								num : 0
+							}
+						},
+						methods : {
+							addNum : function(){
+								this.num ++ ;
+							}
+						}
+					},
+				}
+			})
+		</script>
+	</body>
+</html>

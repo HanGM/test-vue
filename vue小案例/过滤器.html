@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue过滤器</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div>请输入金额：<input type="text" v-model="num" /></div>
+			<div>您输入的金额为：{{num|newNum}}</div>
+		</div>
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					num: '',
+				},
+				filters: {
+					newNum (data){
+						var data=data.trim().replace(/^0*/,'');
+						if(!isNaN(Number(data))){
+							var html='';
+							var newData = data.indexOf('.') == -1 ? data : data.slice(0,data.indexOf('.'));
+							for(var i=0,len=newData.length;i<len;i++){
+								if((len-1-i)%3==0 && len-1-i !=0){
+									html += newData[i]+',';
+								}else{
+									html +=newData[i];
+								}
+							}
+							if(data.indexOf('.') != -1){
+								html += data.slice(data.indexOf('.'))
+							}
+							return '￥'+html;
+						}else{
+							return '请输入正确的格式！'
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

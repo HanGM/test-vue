@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>单页面路由跳转</title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<link rel="stylesheet" href="css/font-awesome.css" />
+		<script src="js/vue.js"></script>
+		<script src="js/vuex.js"></script>
+		<script src="js/vue-router.js"></script>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			#app{
+				width: 100vw;
+				height: 100vh;
+			}
+			li{
+				list-style: none;
+			}
+			nav{
+				width: 100%;
+				position: absolute;
+				bottom: 0;
+			}
+			nav ul{
+				display: flex;
+				justify-content: space-around;
+			}
+			nav a{
+				color: #999;
+				text-decoration: none;
+			}
+			nav .fa{
+				font-size: 20px;
+			}
+			nav .router-link-active{
+				color: #04A6DA;
+				text-decoration: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<div class="container">
+				<router-view></router-view>
+			</div>
+			
+			<nav v-if="flag">
+			  	<ul>
+					<li class="text-center">
+						<router-link to="/msg">
+							<i class="fa fa-qq"></i>
+							<p>消息</p>
+						</router-link>
+					</li>
+					<li class="text-center">
+						<router-link to="/contact">
+							<i class="fa fa-address-book"></i>
+							<p>联系人</p>
+						</router-link>	
+					</li>
+					<li class="text-center">
+						<router-link to="/look">
+							<i class="fa fa-play-circle"></i>
+							<p>看点</p>
+						</router-link>	
+					</li>
+					<li class="text-center">
+						<router-link to="/state">
+							<i class="fa fa-globe"></i>
+							<p>动态</p>
+						</router-link>	
+					</li>
+				</ul>
+			</nav>
+		</div>
+		
+		<script>
+			var store = new Vuex.Store({
+				state: {
+					flag: true,
+					friendList: [{
+						pic: 'img/image01.png',
+						name: '小明',
+						tips: '坚持就是胜利'
+					},{
+						pic: 'img/image02.png',
+						name: '小辉',
+						tips: '坚持就是胜利'
+					},{
+						pic: 'img/image03.png',
+						name: '小刚',
+						tips: '坚持就是胜利'
+					},{
+						pic: 'img/image04.png',
+						name: '小强',
+						tips: '坚持就是胜利'
+					}]
+				},
+				mutations:{
+					changeFlag (state,data){
+						state.flag = data;
+					}
+				}
+			});
+			var msg = {
+				template: `
+				<div>
+					<h3 class="text-center">消息</h3>
+					<p>消息内容</p>
+				</div>
+				`,
+			};
+			var wechat = {
+				template: `
+				<div>
+					<button class="btn btn-default" @click="$router.back()">返回</button>
+					<h1>{{$route.params.name}}</h1>
+					<div>聊天内容区</div>
+					<footer><input type="text"/><button>点击</button></footer>
+				</div>
+				`,
+				mounted (){
+					if(this.$route.meta.ishidenav){
+						this.$store.commit('changeFlag',false)
+					}else{
+						this.$store.commit('changeFlag',true)
+					}
+				}
+			};
+			var contact = {
+				template: `
+				<div>
+					<h3 class="text-center">联系人</h3>
+					<div class="media" v-for="item in friendList">
+					  <router-link :to="{name: 'wechat',params: {name: item.name}}">
+					  <div class="media-left">
+					    <a href="#">
+					      <img width=50 height=50 class="media-object img-circle" :src="item.pic" alt="...">
+					    </a>
+					  </div>
+					  <div class="media-body">
+					    <h4 class="media-heading">{{item.name}}</h4>
+					    <p>{{item.tips}}</p>
+					  </div>
+					  </router-link>
+					</div>
+				</div>
+				`,
+				computed: {
+					friendList (){
+						return this.$store.state.friendList;
+					}
+				},
+				mounted (){
+					if(this.$route.meta.ishidenav){
+						this.$store.commit('changeFlag',false)
+					}else{
+						this.$store.commit('changeFlag',true)
+					}
+				}
+			};
+			var look = {
+				template: `
+				<div>
+					<h3 class="text-center">看点</h3>
+					<p>看点内容</p>
+				</div>
+				`,
+			};
+			var state = {
+				template: `
+				<div>
+					<h3 class="text-center">动态</h3>
+					<p>动态内容</p>
+				</div>
+				`,
+			};
+			var router = new VueRouter({
+				routes: [{
+					path: '/msg',
+					component: msg
+				},{
+					path: '/contact',
+					component: contact
+				},{
+					path: '/look',
+					component: look
+				},{
+					path: '/state',
+					component: state
+				},{
+					path: '*',
+					redirect: '/msg'
+				},{
+					path: '/wechat/:name',
+					component: wechat,
+					name: 'wechat',
+					meta: {
+						ishidenav: true
+					}
+				}]
+			});
+			var vm = new Vue({
+				el: '#app',
+				router,
+				store,
+				computed: {
+					flag (){
+						return this.$store.state.flag;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

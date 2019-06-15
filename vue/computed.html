@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue计算属性</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div>输入数量：<input type="bumber" v-model="num" /></div>
+			<div>输出总价：{{totleprice}}</div>
+			<div>输出英文名字：{{myname}}</div>
+			<div>输出大写反转英文名字：{{reversename}}</div>
+			<div>输出大写反转英文名字：{{reversename}}</div>
+			<!--<div>输出大写反转英文名字：{{reversename()}}</div>
+			<div>输出大写反转英文名字：{{reversename()}}</div>-->
+		</div>
+		<script>
+			var vm = new Vue({
+				el : '#app',
+				data : {
+					num : 0,
+					price: 15,
+					myname: 'hello world'
+				},
+//				methods : {
+//					reversename : function(){
+//						console.log('调用方法')
+//						return this.myname.toUpperCase().split('').reverse().join('')
+//					}
+//				},
+				//computed 计算属性当数据未发生改变时，只计算一次，结果可以复用，无需调用一次计算一次，减少性能消耗，写在js代码中方便维护，减少复用时HTML的代码量，在HTML中调用方式和调用data中属性数据一样
+				computed : {
+					totleprice: function(){
+						return this.num*this.price
+					},
+					reversename : function(){
+						console.log('计算属性')
+						return this.myname.toUpperCase().split('').reverse().join('')
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

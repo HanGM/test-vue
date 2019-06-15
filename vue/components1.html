@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>vue 组件父子通讯</title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script src="js/jquery.js"></script>
+		<script src="js/bootstrap.js"></script>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="row">
+				<div class="col-md-3"></div>
+				<div class="col-md-9 list-group">
+					<!-- 利用数组list循环组件，同时用v-bind:item="i"给组件绑定数据 -->
+					<my-vue v-for="i in list" v-bind:item="i"></my-vue>	
+				</div>
+			</div>
+			<!--模板组件可以复用，只需改变对应的数据-->
+			<my-vue v-for="i in item" v-bind:item="i"></my-vue>	
+			
+		</div>
+		<script>
+			//EMCA6对JS的扩展~下的``可以包含换行的字符串，不用再拼接字符串的，其内部的变量可以使用&{变量}，也不用再拼接了
+//			var x ='nihao';
+//			console.log(`<ul class="list-group">
+//			  <li class="list-group-item">Cras justo odio</li>
+//			  <li class="list-group-item">Dapibus ac facilisis in</li>
+//			  <li class="list-group-item">Morbi leo risus</li>
+//			  <li class="list-group-item">Porta ac consectetur ac</li>
+//			  <li class="list-group-item">Vestibulum at eros ${x}</li>
+//			</ul>`)
+			var vm = new Vue({
+				el : '#app',//控制区域
+				data : {//区域内数据
+					list : [{
+								coverImg : 'https://mini.eastday.com/02012/1555476843_1.jpg',
+								title : "标题1",
+								detail : '内容1'
+							},{
+								coverImg : 'https://mini.eastday.com/02012/1555476921_1.jpg',
+								title : "标题2",
+								detail : '内容2'
+							},{
+								coverImg : 'https://mini.eastday.com/02012/1555460910_3-1.jpg',
+								title : "标题3",
+								detail : '内容3'
+							},{
+								coverImg : 'https://mini.eastday.com/02012/1555461179_4.jpg',
+								title : "标题4",
+								detail : '内容4'
+							},{
+								coverImg : 'https://mini.eastday.com/02012/1555461282_1.jpg',
+								title : "标题5",
+								detail : '内容5'
+							}
+							],
+					item : [{
+								coverImg : 'https://04imgmini.eastday.com/mobile/20190418/2019041806_a223eb108e6049f28a66039d32fe2b88_6297_mwpm_03200403.jpg',
+								title : "标题1",
+								detail : '内容1'
+							},{
+								coverImg : 'https://00imgmini.eastday.com/mobile/20190418/20190418043556_bc371a2ce7f09ccdf8ebe74a38ef1033_7_mwpm_03200403.jpg',
+								title : "标题2",
+								detail : '内容2'
+							},{
+								coverImg : 'https://07imgmini.eastday.com/mobile/20190418/20190418051207_1e190256ada2d59b3471ab8f953c7202_1_mwpm_03200403.jpg',
+								title : "标题3",
+								detail : '内容3'
+							},{
+								coverImg : 'https://03imgmini.eastday.com/mobile/20190418/2019041720_254291caf67a4fc6a0e19be92e50a3cb_6357_mwpm_03200403.jpg',
+								title : "标题4",
+								detail : '内容4'
+							},{
+								coverImg : 'https://07imgmini.eastday.com/mobile/20190418/2019041718_a2b102247a84450fafd6e866bdad28fd_4051_mwpm_03200403.jpg',
+								title : "标题5",
+								detail : '内容5'
+							}
+							]
+				},
+				methods : {},//区域内方法
+				components : {//区域内组件
+					myVue : {//组件myVue，就是vm实例对象中的一个小的Vue对象
+						//ECMA6写法
+						template : `<div class="media list-group-item">
+									  <div class="media-left">
+									    <a href="#">
+									      <img class="media-object" :src="item.coverImg" alt="...">
+									    </a>
+									  </div>
+									  <div class="media-body">
+									    <h4 class="media-heading">{{item.title}}</h4>
+									    <p>{{item.detail}}</p>
+									    <button class="btn btn-primary" @click="addNum">赞&nbsp;{{num}}</button>
+									  </div>
+									</div>`,
+									//ECMA5写法
+//						template : '<div class="thumbnail text-center"><img :src="item.coverImg" alt="" /><div class="caption"><h3>{{item.title}}</h3><p>{{item.detail}}</p><button @click="addNum">赞{{num}}</button></div></div>',//标签模板
+						props : ['item'],//通过此属性获取外部数据
+						data : function(){//组件中data必须用函数的方式return出去
+							return {
+								num : 0
+							}
+						},
+						methods : {
+							addNum : function(){
+								this.num ++ ;
+							}
+						}
+					},
+				}
+			})
+		</script>
+	</body>
+</html>

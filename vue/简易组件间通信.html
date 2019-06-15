@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件间通讯</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<f></f>
+			<t></t>
+		</div>
+		<template id="f">
+			<div>
+				f组件：<input type="text" v-model="value" />
+				<button @click="send">发送信息到t组件</button>
+			</div>
+		</template>
+		<template id="t">
+			<div>
+				t组件接收到的信息：{{result}}！
+			</div>
+		</template>
+		<script>
+			var bus = new Vue();
+			new Vue({
+				el : "#app",
+				components : {
+					f : {
+						template : "#f",
+						data : function(){
+							return {
+								value : ''
+							}
+						},
+						methods : {
+							send : function(){
+								bus.$emit('tran',this.value)
+							}
+						},
+					},
+					t : {
+						template : "#t",
+						data : function(){
+							return {
+								result : ''
+							}
+						},
+						created : function(){
+							var _this = this;
+							bus.$on('tran',function(data){
+								_this.result = data;
+							})
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

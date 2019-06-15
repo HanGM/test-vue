@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>v-for练习</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<script src="js/testData.js"></script>
+		<script src="js/vue.js"></script>
+		<style>
+			.test .page-header{
+				width: 60%;
+				margin-bottom: 40px;
+			}
+			.test a{
+				text-decoration: none;
+			}
+			.blue{
+				color: #23527c;
+			}
+			.gray{
+				color: #555;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container test">
+			<div class="page-header center-block text-center">
+			  <h1>Bootstrap相关优质项目推荐</h1>
+			  <p>这些项目或者是对Bootstrap进行了有益的补充，或者是基于Bootstrap开发的</p>
+			</div>
+
+			<div class="row">
+				<div class="col-sm-6 col-md-4 col-lg-3" v-for="item in arr">
+					<div class="thumbnail" :style="{height:'336px'}">
+						<a href="#"><img v-bind:src="item.coverImg" alt="" /></a>
+						<div class="caption text-center">
+							<a href="#">
+								<h3 :class="color[0]">{{item.title}}
+									<br />
+									<small>{{item.small}}</small>
+								</h3>
+							</a>
+							<p :class="color[1]">{{item.detail}}</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+			var test = new Vue({
+				el : '.test',
+				data : {
+					arr : testData,
+					color : ["blue","gray"]
+				}				
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue指令</title>
+		<script src="js/vue.js"></script>
+		<style>
+			.red{
+				color: red;
+			}
+			.blue{
+				color: blue;
+			}
+			.pink{
+				color: pink;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="demo">
+			<!--	
+			vue指令书写格式： 开始标签内部+空格+指令='值'
+			
+			
+			-->
+			<!-- v-model指令 用于form表单元素（input、select、textarea），可以双向绑定数据 -->
+			<textarea v-model='val' rows="5" cols="50"></textarea>
+			<input type="text" v-model="val" />
+			<div>input中value与vul数据双向绑定：<span>{{val}}</span></div>
+			<!-- v-html指令 用于输出数据，会正常输出标签字符  -->
+			<div v-html='val'></div>
+			<!-- v-text指令 用于输出数据，不会渲染标签字符，效果等同于插入表达式{{}} -->
+			<div v-text='val'></div>
+			
+			<select v-model='color'>
+				<option value="red">红色</option>
+				<option value="blue">蓝色</option>
+				<option value="pink">粉色</option>
+			</select>
+			<div v-bind:class="color">绑定类名，通过数据双向绑定改变类名值</div>
+			<div v-bind:class="arr">数组</div>
+			<div v-bind:class="['red','blue','pink']">数组</div>
+			<div v-bind:class="obj">对象</div>
+			<div v-bind:class="{blue:0}">对象</div>
+			<div v-bind:class="{blue:1}">对象</div>
+			<div :class="color">简写</div>
+			<div v-bind:style="{color:'green',fontSize:'20px'}">样式</div>
+			<div :style="{color:'gold',fontSize:'20px'}">样式</div>
+			
+		</div>
+		
+		<script>
+			new Vue({
+				el : '#demo',//声明vue对象作用域，绑定指定元素，所有操作都在该元素内部
+				data : {//声明vue对象的属性，操作中需要使用到的数据（变量）
+					val : '初始值',
+					color : 'red',
+					arr : ['red','blue','pink'],
+					obj : {
+						red : true,//类名:真、假、逻辑/判断
+					}
+				},
+				methods : {//声明vue对象的方法，元素使用的指令对应操作和数据的操作
+					
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue 组件插槽</title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app" class="container">
+			<btn :type="'default'">发送</btn>
+			<btn :type="'success'">发送</btn>
+			<btn :type="'info'">发送</btn>
+			<btn :type="'warning'">发送</btn>
+			<btn :type="'danger'">发送
+			<p>信息</p>
+			</btn>
+			
+		</div>
+		<!--
+			组件模板template必须有一个根标签包裹，否则会报错；插槽<slot></slot>类似于一个占位符，会直接输出你在插槽位置的输入内容。
+		-->
+		<script>
+			var vm = new Vue({
+				el : '#app',//控制区域
+				data : {//区域内数据
+					
+				},
+				methods : {},//区域内方法
+				components : {//区域内组件
+					btn : {//组件myVue，就是vm实例对象中的一个小的Vue对象
+//						template : '<button class="btn" :class="str+type"><slot></slot></button>',
+						//组件模板template；插槽<slot></slot>
+						template : '<button class="btn" :class="str+type"><slot></slot></button><p>信息</p>',//标签模板
+						props : ['type'],
+						data : function(){//组件中data必须用函数的方式return出去
+							return {
+								str : 'btn-',
+								num : 0
+							}
+						},
+						methods : {
+							addNum : function(){
+								this.num ++ ;
+							}
+						}
+					},
+				}
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>filter过滤数据</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div>请输入金额：<input type="text" v-model="num" /></div>
+			<div>您输入的金额是：{{num|fullnum}}</div>
+		</div>
+		<script>
+			var vm = new Vue({
+				el : '#app',
+				data : {
+					num : '',
+				},
+				filters : {
+					fullnum (data){
+						var data = data.trim().replace(/^0*/,'');
+						var arrNum = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+						var baseUnit = ['','拾','佰','仟'];
+						var bigUnit = ['圆','万','亿'];
+						var html = '';
+						var index = 0;
+						if (!isNaN(parseInt(Number(data)))){
+							for(var i=0,len=data.length;i<len;i++){
+								if(data[i] == '0'){
+									html += arrNum[data[i]];
+								}else{
+									html += arrNum[data[i]] + baseUnit[(len-1-i)%4];
+								}
+								if((len-1-i)%4 == 0){
+									html += bigUnit[parseInt((len-1)/4) - index++];
+								}
+							}
+							data = html.replace(/零+/g,'零').replace(/零圆/g,'圆').replace(/零万/g,'万');
+							return data;
+						}else{
+							return "请输入正确格式！"
+						}
+					}
+				}
+			});
+		</script>
+	</body>
+</html>

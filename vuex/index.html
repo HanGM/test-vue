@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue核心插件vuex</title>
+		<script src="js/vue.js"></script>
+		<script src="js/vuex.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div class="f">
+				父组件输入内容：<input type="text" v-model="val" /><br />
+				{{getValue}}<br />
+				<button @click="update">点我更新数据</button>
+			</div>
+			<child></child>
+		</div>
+		<template id="child">
+			<div class="c">子组件输出内容：{{getValue}}</div>
+		</template>
+		<script>
+			var store = new Vuex.Store({//创建数据仓库
+				state : {//在state属性中储存数据
+					val : '我是数据仓库中的值',
+				},
+				mutations: {//在mutations属性中可以修改state中数据
+					changeValue (state,data){//使用函数修改state中的数据，函数默认将state对象作为第一个参数传入函数中，可以接受第二个参数来修改state中数据，实现外部数据对仓库中数据的更新，以便其他组件通信时使用
+						state.val = data;
+					}
+				}
+			});
+			var child = {
+				template : '#child',
+				computed : {
+					getValue (){
+						return store.state.val;
+					}
+				}
+			};
+			var vm = new Vue({
+				el: '#app',
+				data: {
+					val: '',
+				},
+				methods:{
+					update (){
+						store.commit('changeValue',this.val)//通过store的commit方法回调mutations中的方法并传参，来修改state中的值
+					}
+				},
+				store,//将store数据仓库引入vue对象中，在vue对象中所有组件均可使用
+				computed: {//使用computed属性取出store仓库中的值
+					getValue (){
+						return store.state.val;
+					}
+				},
+				components: {
+					child,
+				}
+			})
+		</script>
+	</body>
+</html>

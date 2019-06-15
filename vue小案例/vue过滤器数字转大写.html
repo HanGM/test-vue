@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>数字金额大写</title>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			输入金额：<input type="text" v-model="num" />
+			<div>输出大写金额:{{num | upper}}</div>
+		</div>
+		<script>
+			new Vue({
+				el: "#app",
+				data: {
+					num: ''
+				},
+				filters: {
+					upper (data){
+						if(!isNaN(Number(data))){
+							var data = data.trim().replace(/^0*/,'');
+							var arrNum = ['零','壹','贰','叁','肆','伍','陆','柒','捌','玖'];
+							var baseUnit = ['','拾','佰','仟'];
+							var bigUnit = ['圆','万','亿'];
+							var html = '';
+							var index = 0;
+							for(var i=0,len=data.length;i<len;i++){
+								if(data[i]=='0'){
+									html += arrNum[data[i]]
+								}else{
+									html +=arrNum[data[i]] + baseUnit[(len-1-i)%4];
+								}
+								if((len-1-i)%4 == 0){
+									html += bigUnit[parseInt((len-1)/4) - index++]
+								}
+							}
+							data = html.replace(/零+/g,'零').replace(/零圆/g,'圆').replace(/零万/g,'万');
+							return data;
+						}else{
+							return '请输入数字！'
+						}
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

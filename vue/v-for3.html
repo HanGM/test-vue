@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>v-for v-if v-show</title>
+		<link rel="stylesheet" href="css/bootstrap.css" />
+		<script src="js/vue.js"></script>
+		<style>
+			.box{
+				width: 200px;
+				height: 200px;
+				background-color: #bfa;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="app">
+			<!--<button v-on:click="changeFlag">点我</button>-->
+			<button @click="changeFlag">点我</button>
+			<!--<div :class="'box'" v-if="flag">{{num}}</div><br />
+			<div :class="'box'" v-if="!flag">{{num}}</div>-->
+			<div :class="'box'" v-show="flag">{{num}}</div><br />
+			<!--<div :class="'box'" v-show="!flag">{{num}}</div>-->
+			<!--<ul>
+				<li v-for="v in arr">{{v}}</li>
+				<li v-for="(v,i) in arr">{{i}}:{{v}}</li>
+				<li v-for="v in obj">{{v}}</li>
+				<li v-for="(v,k) in obj">{{k}}:{{v}}</li>
+				<li v-for="(v,k,i) in obj">{{i}}-{{k}}:{{v}}</li>
+			</ul>-->
+			<b v-for="i in arr">{{i}}</b>
+			<div class="container">
+				<ul v-for="i in obj">
+					<li>{{i}}
+						<a href="#">{{i}}</a>
+					</li>
+				</ul>
+				<table class="table table-bordered">
+				<tr><td v-for="i in obj">{{i}}</td></tr>
+				</table>
+			</div>
+		</div>
+		<script>
+			new Vue({
+				el:'#app',
+				data: {
+					flag : true,
+					num : 1990,
+					arr : [1,2,5,4,8,4],
+					obj : {
+						name : 'xiaoming',
+						age : 18,
+						gender : 'man'
+					}
+				},
+				methods : {
+					changeFlag : function(){
+						this.flag = !this.flag;
+						this.num = 2000;
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

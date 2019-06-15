@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue Table 选项卡</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div id="app" class="container">
+			<ul class="nav nav-pills nav-justified">
+			  <li role="presentation" :class="{active:index === num}" v-for="(item,index) in nav" @click="navIndex(index)"><a href="#">{{item}}</a></li>
+			</ul>
+			<div class="jumbotron" v-for="(item,index) in list" v-if="index === num">
+			  <h1>{{item.title}}</h1>
+			  <p>{{item.main}}</p>
+			  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+			</div>
+			<!--通过v-for循环创建多个组件，v-bind实现父传子数据-->
+			<my-header v-for="item in mainList" :item="item"><my-header>		
+			
+		</div>
+		<script>
+			var myHeader = {
+				template : `<div class="row">
+							<div class="col-sm-3"></div>
+							<div class="col-sm-9 list-group">
+								<div class="media list-group-item">
+								  <div class="media-left">
+								    <a href="#">
+								      <img width=160 height=90 class="media-object" :src="item.img" alt="...">
+								    </a>
+								  </div>
+								  <div class="media-body">
+								    <h4 class="media-heading">{{item.title}}</h4>
+								    <p>{{item.main}}</p>
+								    <button class="btn btn-primary" @click="addNum">赞 {{count}}</button>
+								  </div>
+								</div>
+							</div>
+						</div>`,
+				props : ['item'],
+				data (){
+					return {
+						count : 0,
+					}
+				},
+				methods : {
+					addNum (i){
+						this.count ++;
+					}
+				},
+			};
+			new Vue({
+				el : '#app',
+				data : {
+					num : 0,
+					nav : ['首页','公司产品','公司简介','联系我们'],
+					list : [{
+						title : '首页',
+						main : '首页内容'
+					},{
+						title : '公司产品',
+						main : '公司产品内容'
+					},{
+						title : '公司简介',
+						main : '公司简介内容'
+					},{
+						title : '联系我们',
+						main : '联系我们内容'
+					}],
+					mainList : [{
+						img : 'https://mini.eastday.com/02012/1555561737_1.jpg',
+						title : '标题1',
+						main : '标题1内容'
+					},{
+						img : 'https://mini.eastday.com/02012/1555545671_1.jpg',
+						title : '标题2',
+						main : '标题2内容'
+					},{
+						img : 'https://mini.eastday.com/02012/1555546539_5.jpg',
+						title : '标题3',
+						main : '标题3内容'
+					},{
+						img : 'https://00imgmini.eastday.com/mobile/20190418/2019041805_7569b3856eb84504adf70946347cb2b1_3628_cover_mwpm_03200403.jpg',
+						title : '标题4',
+						main : '标题4内容'
+					}]
+				},
+				methods : {
+					navIndex (i){
+						this.num = i;
+					}
+				},
+				//组件
+				components : {
+					myHeader
+				}
+			})
+		</script>
+		<!--不建议此用法-->
+		<!--<div id="app" class="container">
+			<ul class="nav nav-pills nav-justified">
+			  <li role="presentation" :class="{active:index === num}" v-for="(item,index) in list" @click="navIndex(index)"><a href="#">{{item.nav}}</a></li>
+			</ul>
+			<div class="jumbotron">
+			  <h1>{{list[num].title}}</h1>
+			  <p>{{list[num].main}}</p>
+			  <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+			</div>
+		</div>
+		
+		<script>
+			new Vue({
+				el : '#app',
+				data : {
+					num : 0,
+					list : [{
+						nav : '首页',
+						title : '首页标题',
+						main : '首页内容'
+					},{
+						nav : '公司产品',
+						title : '公司产品标题',
+						main : '公司产品内容'
+					},{
+						nav : '公司简介',
+						title : '公司简介标题',
+						main : '公司简介内容'
+					},{
+						nav : '联系我们',
+						title : '联系我们标题',
+						main : '联系我们内容'
+					}]
+				},
+				methods : {
+					navIndex : function(i){
+						this.num = i;
+					}
+				}
+			})
+		</script>-->
+	</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>vue-router 路由</title>
+		<script src="js/vue.js"></script>
+		<script src="js/vue-router.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<!--router-link相当于a标签，to相当于href属性-->
+			<router-link to="/home">首页</router-link>
+			<router-link to="/goods">商品</router-link>
+			<router-link to="/center">个人中心</router-link>
+			<router-view></router-view>
+				
+		</div>
+		<script>
+			var router = new VueRouter({//在路由实例中定义各种接口
+				routes: [{
+					path:'/home',
+					component: {
+						template:`<h1>首页内容</h1>`,
+					}
+				},{
+					path:'/goods',
+					component: {
+						template:`<h1>商品内容</h1>`,
+					}
+				},{
+					path:'/center',
+					component: {
+						template:`<h1>个人中心内容</h1>`,
+					}
+				},]
+				
+			});
+			var vm = new Vue({
+				el: '#app',
+				router,
+				
+			})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>vue实例</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+		<script src="js/vue.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<textarea class="form-control" rows="3" v-model='str'></textarea>
+			<p style="padding: 15px 0;" v-bind:class='{"bg-danger": num - str.length <=0}'>还可输入的文字字数为：{{num - str.length}}</p>
+			<!--<p v-bind:class='{"text-danger": num - str.length <=0}'>还可输入的文字字数为：{{num - str.length}}</p>-->
+			<div class="caption" v-for="i in arr">{{i}}</div>
+		</div>
+		<script>
+			new Vue({
+				el : '.container',
+				data : {
+					str : '',
+					num : 20,
+					arr : ['标题1','标题2','标题3','标题4','标题5']
+				}
+			})
+		</script>
+	</body>
+</html>
